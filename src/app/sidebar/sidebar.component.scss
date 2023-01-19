@@ -1,0 +1,40 @@
+#sidebar{
+    background-color: black;
+    width: 200px;
+  }
+  .xs{
+    padding: 15px;
+  }
+  .navbar{
+    border-radius: 8px;
+  }
+  
+  .xs{
+    background-color: white;
+   // border-radius: 8px;
+  }
+  .ct{
+    padding: 10px;
+    height: 75vh;
+  }
+  .li{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+  .active{
+    background-color: #84BD24;
+    //border-radius: 5px;
+    padding: 8px;
+    color: white;
+
+    width: 100%;
+  }
+  img{
+    width: 100%;
+  }
+
+ .user{
+    font-size: 30px;
+    margin-right: 30px;
+ }
