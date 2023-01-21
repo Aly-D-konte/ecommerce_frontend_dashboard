@@ -28,7 +28,7 @@
                     </a>
               </div>
               <div class="nav-item mb-3">
-                <a class="nav-link" routerLink="/sidebar/ajouter_geste" [routerLinkActive]="'active'">
+                <a class="nav-link" routerLink="/sidebar/commandes" [routerLinkActive]="'active'">
                     <i class="bi bi-clipboard-data"></i><span class="ms-1  d-sm-inline light px-3">Commandes</span>
                     </a>
               </div>
@@ -41,6 +41,12 @@
               <div class="nav-item mb-3">
                 <a class="nav-link" href="/" [routerLinkActive]="'active'">
                     <i class="bi bi-person"></i><span class="ms-1  d-sm-inline light px-3">Utilisateur</span>
+
+                    </a>
+              </div>
+              <div class="nav-item mb-3">
+                <a class="nav-link" href="/" [routerLinkActive]="'active'">
+                    <i class="bi bi-person"></i><span class="ms-1  d-sm-inline light px-3">Boutique</span>
 
                     </a>
               </div>
@@ -61,9 +67,9 @@
   
             <!-- </div> -->
         </div>
-        <main class="col container-fluid" style=" height: 100vh ; overflow: scroll; overflow-x: hidden; background-color: white;">
+        <main class="col container-fluid" style=" height: 100%   ; overflow: scroll; overflow-x: hidden; background-color: white;">
   
-            <div class="Container xs" style="background-color: #E6EAF1; height: 100vh; width: 100%;">
+            <div class="Container xs" style="background-color: #E6EAF1; height: 100vh; width: 100%; " >
                 
   
               <nav class="navbar navbar py-1" style="background-color: white;" >
@@ -81,19 +87,24 @@
                     <i class='bx bx-search icon ' style="font-size:35px"></i>
                 </form>
                 
-                <button type="button" class="btn btn-primary position-relative">
+                <div>
+                  <button type="button" class="btn btn-primary position-relative ">
                     <i class="bi bi-envelope"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
                       99+
                     </span>
                   </button>
-  
-                 <button type="button" class="btn btn-primary position-relative">
+                </div>
+               
+                <div>
+                  <button type="button" class="btn btn-primary position-relative">
                     <i class="bi bi-bell"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
                       99+
                     </span>
                   </button>
+                </div>
+                
                  <!-- <li class="nav-item ">
                    <span>Aly</span> <i class="bi bi-person user"></i> 
                   </li> -->
@@ -115,17 +126,17 @@
             
                 
                   </form> -->
-                  <ul class="navbar-nav ml-auto" >
-                    <!-- <li class="nav-item">
+                  <!-- <ul class="navbar-nav ml-auto" >
+                     <li class="nav-item">
                       <a href="/profile" class="nav-link" routerLink="profile">Aly</a>
-                    </li> -->
+                    </li>
                     <li class="nav-item">
                       <a href class="nav-link">Deconnecter</a>
                     </li>
-                  </ul>
+                  </ul> -->
             </nav>
               <router-outlet></router-outlet>
-            </div>
+           </div>
   
         </main>
     </div>
