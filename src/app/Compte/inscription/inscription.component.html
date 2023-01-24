@@ -1,0 +1,236 @@
+<section class="vh-10" style="background-color: #D9D9D9D9;">
+    <div class="container py-3 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-12">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="../assets/images/log.png"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black droit">
+  
+                  <form *ngIf="!isSuccessful"
+                  name="form"
+                  (ngSubmit)="f.form.valid && register()"
+                  #f="ngForm"
+                  novalidate>
+  
+                  
+  
+                    <h1 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Inscription</h1>
+  
+                   
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingInput"  class="form-control"
+                          name="nom"
+                          [(ngModel)]="form.nom"
+                          required
+                          minlength="3"
+                          maxlength="20"
+                          #nom="ngModel"
+                          [ngClass]="{ 'is-invalid': f.submitted && nom.errors }" 
+                          placeholder="name@example.com">
+                      <label for="floatingInput">Nom d'utilisation</label> 
+
+
+                     <div class="invalid-feedback" *ngIf="nom.errors && f.submitted">
+                        <div *ngIf="nom.errors['required']">Le nom d'utilisteur est obligatoire pour se connecter apres</div>
+                        <div *ngIf="nom.errors['minlength']">
+                          Le nom d'utilisateur doit avoir au moins 3 carateurs
+                        </div>
+                        <div *ngIf="nom.errors['maxlength']">
+                          Le nom d'utilisateur ne  doit pas depassée  20 carateurs
+
+                        </div>
+                      </div>
+                    
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput"  class="form-control"
+                            name="prenom"
+                            [(ngModel)]="form.prenom"
+                            required
+                            minlength="3"
+                            maxlength="20"
+                            #prenom="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }" 
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Prénom</label> 
+
+
+                       <div class="invalid-feedback" *ngIf="prenom.errors && f.submitted">
+                          <div *ngIf="prenom.errors['required']">Prénom est obligatoire</div>
+                          <div *ngIf="prenom.errors['minlength']">
+                            Le prenom doit avoir au moins 3 carateurs
+                          </div>
+                          <div *ngIf="prenom.errors['maxlength']">
+                            Le prénom ne doit pa depassé 20 carateurs
+                          </div>
+                        </div>
+                      
+                      </div>
+                      
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput"  class="form-control"
+                            name="username"
+                            [(ngModel)]="form.username"
+                            required
+                            minlength="3"
+                            maxlength="20"
+                            #username="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && username.errors }" 
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Nom </label> 
+
+
+                       <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
+                          <div *ngIf="username.errors['required']">Nom est obligatoire</div>
+                          <div *ngIf="username.errors['minlength']">
+                            Le nom doit avoir au monis 3 carateurs
+                          </div>
+                          <div *ngIf="username.errors['maxlength']">
+                            Le nom ne doit pas depassé 20 carateurs
+                          </div>
+                        </div>
+                      
+                      </div>
+                      
+                     
+                      <div class="form-floating mb-3 ">
+                       
+                        <input type="email"  class="form-control" id="floatingInput" 
+                            name="email"
+                            [(ngModel)]="form.email"
+                            required
+                            email
+                            #email="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Email</label>
+                        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                          <div *ngIf="email.errors['required']">Email is required</div>
+                          <div *ngIf="email.errors['email']">
+                            Email doit contenir au moins un @
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-floating mb-3 ">
+                       
+                        <input type="email"  class="form-control" id="floatingInput" 
+                            name="telephone"
+                            [(ngModel)]="form.telephone"
+                            required
+                            telephone
+                            #telephone="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && telephone.errors }"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Telephone</label>
+                        <div class="invalid-feedback" *ngIf="telephone.errors && f.submitted">
+                          <div *ngIf="telephone.errors['required']">Le numero de talephon est obligatoire</div>
+                          <div *ngIf="telephone.errors['email']">
+                            LE numéro de telephone doit avoir au moins 6 chiffres
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mb-4 col-12 col-md-6 form-row form-floating">
+                        <select name="sexe" id="sexe" class="form-select form-control">
+                          <option selected>--Genre--</option>
+                          <option> Homme</option>
+                          <option> Femme</option>
+                          <label for="genre*">--Genre--</label>
+                        </select>
+              
+                      </div>
+
+                      <!-- <div class="mb-3 col-12 col-md-6 form-row form-floating">
+                        <select id="sexe" formControlName="libelleEntite" class="form-select form-control inputvalue"
+                          [(ngModel)]="libelleEntite">
+                          <option selected> --- entites ---</option>
+                          <option *ngFor="let entite of entites$">{{entite.nom}}</option>
+                        </select>
+                        <label for="entity">Entité<span style="color: red;">*</span></label>
+                      </div> -->
+                        
+                      <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword"
+                            name="password"
+                            [(ngModel)]="form.password"
+                            required
+                            minlength="6"
+                            #password="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+                            placeholder="Password">
+                        <label for="floatingPassword">Mot de passe</label> 
+
+                        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+                          <div *ngIf="password.errors['required']">Mot de passe incorrecte</div>
+                          <div *ngIf="password.errors['minlength']">
+                            Le Mot de passe est de 6 carateurs
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="form-floating mb-3 py-3">
+                        <input type="text" class="form-control" id="floatingInput"  class="form-control"
+                            name="adresse"
+                            [(ngModel)]="form.adresse"
+                            required
+                            minlength="3"
+                            maxlength="20"
+                            #adresse="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }" 
+                            placeholder="name@example.com">
+                        <label for="floatingInput"> Adresse</label> 
+
+
+                       <div class="invalid-feedback" *ngIf="adresse.errors && f.submitted">
+                          <div *ngIf="adresse.errors['required']">L'adresse  est obligatoire</div>
+                          <div *ngIf="adresse.errors['minlength']">
+                            L'adresse doit avoir au moins 3 carateurs
+                          </div>
+                          <div *ngIf="adresse.errors['maxlength']">
+                            L'adresse ne doit pas depassée 20 carateurs
+                          </div>
+                        </div>
+                      
+                      </div>
+                      
+                      <a class="small text-muted "   style="color: red;" href="#!">Mot de passe oublié?</a>
+  
+                   
+                    <div class="form-group pt-1 mb-4">
+                      <button class="btn btn-primary btn-block">
+                        Inscrire
+                      </button>
+                    </div>
+  
+                   
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Vous avez un compte?  <a routerLink="/connexion"
+                        style="color: red;">Connexion</a></p>
+                    <a href="#!" class="small text-muted">Conditions d'utilisation.</a>
+                    <a href="#!" class="small text-muted">Politique de confidentialité</a>
+                
+                
+                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed"> 
+                      Signup failed!<br />{{ errorMessage }}
+                    </div>
+
+                 </form> 
+
+                 <div class="alert alert-success" *ngIf="isSuccessful">
+                    Your registration is successful!
+                  </div>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </section>
+  

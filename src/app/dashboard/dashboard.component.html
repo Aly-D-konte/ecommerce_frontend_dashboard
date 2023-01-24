@@ -1,11 +1,14 @@
-<div class="container-fluid h-100">
+<div
+  class="container-fluid h-100 ici"
+  style="overflow: scroll; overflow-x: hidden"
+>
   <div class="row">
     <div class="col-12 col-md-12">
-      <section class="row gy-3 py-3 set">
+      <section class="row gy-3 py-3 set" >
         <div class="col-6 col-md-3 pt-3">
-          <div class="card ">
+          <div class="card">
             <div class="haut">
-              <p class="pcard">200</p>
+              <p class="pcard">{{afficherBoutique.length}}</p>
               <i class="bi bi-shop-window"></i>
             </div>
             <p class="textcard">Totals boutiques</p>
@@ -39,50 +42,45 @@
           </div>
         </div>
       </section>
-   
-   </div>
-   <!--Partie courbe(chart)------------------------------------------------------->
-   <div class="card">
-    <h5>Apercy des gains</h5>
-    <!-- <p-chart></p-chart> -->
     </div>
-   <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-12">
-        <section class="row  gy-3">
-          <div class="col-6 col-md-8 pt-3">
-            <div class="card">A</div>
-          </div>
-          <div class="col-6 col-md-4 pt-3">
-            <div class="card">B</div>
-          </div>
-        </section>
-      </div>
+    <!--Partie courbe(chart)------------------------------------------------------->
+    <div class="card">
+      <h5>Apercy des gains</h5>
+      <!-- <p-chart></p-chart> -->
     </div>
-   </div>
-
-
-   <div class="ajout pt-4">
-    <a
-      data-bs-toggle="modal"
-      href="#exampleModal"
-      data-bs-whatever="@getbootstrap"
-      class="btntu "
-      >Nouvelle boutique</a
-    >
-   </div>
     <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <section class="row gy-3">
+            <div class="col-6 col-md-8 pt-3">
+              <div class="card">A</div>
+            </div>
+            <div class="col-6 col-md-4 pt-3">
+              <div class="card">B</div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="ajout pt-4">
+      <a
+        data-bs-toggle="modal"
+        href="#exampleModal"
+        data-bs-whatever="@getbootstrap"
+        class="btntu"
+        >Nouvelle boutique</a
+      >
+    </div>
 
     <div class="row">
       <div class="col-12 col-md-12">
-        <section class="row ">
-          <div class="col-6 col-md-4 pt-3">
-            <div class="card boutique ">
-              <img src="../assets/images/1.jpg" alt="" srcset="">
-              <h2 class="h text-center">B’SHOP</h2>
-              <p>Magasin de cosmétiques
-                à Bamako
-               </p>
+         <section class="row ">
+           <div class="col-6 col-md-4 " *ngFor="let boutique of afficherBoutique ">
+            <div class="card boutique"  >
+              <img src="{{boutique.image }}" alt="" srcset="">
+              <h2 class="h text-center">{{boutique.nom}}</h2>
+              <p>{{boutique.description.slice(0.5)}}</p>
                <p><span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -90,199 +88,169 @@
                 <span class="fa fa-star"></span></p>
 
             </div>
-          </div>
+          </div> 
+         
 
-          <div class="col-6 col-md-4 pt-3">
-            <div class="card">
-              <img src="../assets/images/1.jpg" alt="" srcset="">
-              <h2>B’SHOP</h2>
-              <p>Magasin de cosmétiques
-                à Bamako
-               </p>
-               <p><span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span></p>
-
-            </div>
-          </div>
-          <div class="col-6 col-md-4 pt-3">
-            <div class="card">
-              <img src="../assets/images/1.jpg" alt="" srcset="">
-              <h2>B’SHOP</h2>
-              <p>Magasin de cosmétiques
-                à Bamako
-               </p>
-               <p><span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span></p>
-
-            </div>
-          </div>
-          
+     
         </section>
+     
       </div>
     </div>
-  </div> 
-</div>
-</div>
-
-
-
-
-
-
-
-
+  </div>
+  <style>
+    .ici::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  
 
 <!-- Partie poup pour le formulaire de creation d'une boutique -->
 
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajouter une Boutique</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-    <div class="modal-body">
-      <form
-        *ngIf="!isLoggedIn"
-        name="form"
-        (ngSubmit)="f.form.valid && ajouerboutique1()"
-        #f="ngForm"
-        novalidate
-      >
-        <div class="row justify-content-between text-left mb-3">
-          <div class="form-group col-sm-6 flex-column d-flex">
-            <label class="col-form-label">Nom :</label>
-            <input
-              type="text"
-              class="form-control"
-              id="code"
-              name="nom"
-              [(ngModel)]="boutique.nom"
-              required
-              #nom="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
-            />
-            <div
-              *ngIf="nom.errors && f.submitted"
-              class="invalid-feedback"
-            >
-              Le nom de la boutique est obligatoire
-            </div>
-          </div>
-          <div class="form-group col-sm-6 flex-column d-flex">
-            <label class="col-form-label">Description :</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nom"
-              name="description"
-              [(ngModel)]="boutique.description"
-              required
-              #description="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && description.errors }"
-            />
-            <div
-              *ngIf="description.errors && f.submitted"
-              class="invalid-feedback"
-            >
-              La description de la boutique est obligatoire
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-between text-left mb-3">
-          <div class="form-group col-sm-6 flex-column d-flex">
-            <label class="col-form-label">Adresse :</label>
-            <input
-              type="text"
-              class="form-control"
-              id="adresse"
-              name="adresse"
-              [(ngModel)]="boutique.adresse"   required
-              #adresse="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }"
-            />
-            <div *ngIf="adresse.errors && f.submitted" class="invalid-feedback">
-              L'adresse de le boutique est obligatoire
-              </div>
-          </div>
-          <!-- <div class="form-group col-sm-6 flex-column d-flex"> <label class="col-form-label">Nombre d'Habitant :</label> <input type="text" class="form-control" id="habitant"  name="code"
-      [(ngModel)]="region.habitant"> </div> -->
-        </div>
-
-        <div class="mb-4 col-12 col-md-6 form-row form-floating">
-          <select name="sexe" id="sexe" class="form-select form-control">
-            <option selected>--Etat--</option>
-            <option> false</option>
-            <option> true</option>
-            <label for="etat*">--Etat--</label>
-          </select>
-
-        </div>
-        <!-- <div class="row justify-content-between text-left mb-3">
-          <div class="form-group col-sm-6 flex-column d-flex">
-            <label class="col-form-label">etat:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="activite"
-              name="activiterregion"
-              [(ngModel)]="region.activiterregion"
-              required
-              #activiterregion="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && activiterregion.errors }"
-            />
-            <div *ngIf="activiterregion.errors && f.submitted" class="invalid-feedback">
-              Username is required!
-              </div>
-          </div>
-         -->
-        <div class="mb-4 col-12 col-md-6 form-row form-floating ">
-          <div class="form-group col-sm-6 flex-column d-flex">
-          <input
-            type="file"
-            class="custom-file-input"
-            id="inputGroupFile01"
-            aria-describedby="inputGroupFileAddon01"
-            name="file"
-            formControlName="file"
-            (change)="fileChang($event)"
-            
-          />
-          <label class="custom-file-label" for="inputGroupFile01"
-            >Choisi une image</label
-          >
-          </div>
-         
-        </div>
-        <button type="submit" class="btn btn-primary " >Ajouter</button>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une Boutique</h5>
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn-close"
           data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          *ngIf="!isLoggedIn"
+          name="form"
+          (ngSubmit)="f.form.valid && ajoutBout()"
+          #f="ngForm"
+          novalidate
         >
-          fermer
-        </button>
-      </form>
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Nom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="code"
+                name="boutique.nom"
+                [(ngModel)]="boutique.nom"
+                required
+                #nom="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+              />
+              <div *ngIf="nom.errors && f.submitted" class="invalid-feedback">
+                Le nom de la boutique est obligatoire
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Description :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                name="boutique.description"
+                [(ngModel)]="boutique.description"
+                required
+                #description="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && description.errors }"
+              />
+              <div
+                *ngIf="description.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                La description de la boutique est obligatoire
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Adresse :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="adresse"
+                name="boutique.adresse"
+                [(ngModel)]="boutique.adresse"
+                required
+                #adresse="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }"
+              />
+              <div
+                *ngIf="adresse.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                L'adresse de la boutique est obligatoire
+              </div>
+            </div>
+          
+
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">user_id :</label>
+              <input
+                type="number"
+                class="form-control"
+                id="user_id"
+                name="boutique.user_id"
+                [(ngModel)]="boutique.user_id"
+                required
+                #user_id="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && user_id.errors }"
+              />
+              <div
+                *ngIf="user_id.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                User de la boutique est obligatoire
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row justify-content-between text-left mb-2">
+             
+       
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01"
+                
+                (change)="fileChang($event)"
+              />
+              <label class="custom-file-label" for="inputGroupFile01"
+                >Choisi une image</label
+              >
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+
+
+              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="etat">
+                <label for="etat">--Etat--</label>
+              
+                <option value="0">false</option>
+                <option value="1">true</option>
+              </select>
+                </div>
+          </div>
+          <button type="submit" class="bt">Ajouter</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            fermer
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-  
 </div>
-
-

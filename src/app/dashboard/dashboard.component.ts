@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApplicationConfig } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Boutiques } from '../Model/boutiques';
@@ -15,12 +16,14 @@ import { BoutiquesService } from '../Services/boutiques.service';
 })
 export class DashboardComponent implements OnInit {
 
+
+    jaimes: any
+    afficherBoutique: any;
    // form: FormGroup;
     boutique: Boutiques = {
         nom: '',
         description: '',
         adresse: '',
-
         etat: false,
         user_id: new User
       };
@@ -32,6 +35,7 @@ export class DashboardComponent implements OnInit {
     errorMessage = '';
     content?: string;
     contenu?: string;
+    etat:any
 
 
 
@@ -53,21 +57,41 @@ export class DashboardComponent implements OnInit {
   config: ApplicationConfig | undefined;
     file: any;
   constructor(private fb: FormBuilder,
-    private boutiqueservice : BoutiquesService) {
+    private boutiqueservice : BoutiquesService,
+    private route: ActivatedRoute,
+    private routes: Router) {
  
         
 }
 
 
   ngOnInit(): void {
+
+
+    //nombre totals de boutique
+
+ 
+    //
+    // this.boutiqueservice.ajouterBout(this.boutique.nom, this.boutique.adresse, this.boutique.description, this.boutique.etat, this.boutique.user_id, this.file).subscribe(data=>{
+        
+    //     this.boutiques =data
+    // })
+
+
+    this.boutiqueservice.getAll().subscribe(data=>{
+        this.afficherBoutique = data
+        console.log("Afficher la  " +this.afficherBoutique);
+      })
+      //
+
     
     this.formmodule = this.fb.group({
         nom: ["", Validators.required],
         file: ["", Validators.required],
         description: ["", Validators.required],
         adresse: ["", Validators.required],
-        etat:["",Validators.required]
-        // user_id:["",Validators.required]
+        etat:["",Validators.required],
+        user_id:["",Validators.required]
       })
 
     this.multiAxisData = {
@@ -228,50 +252,83 @@ this.multiAxisOptions = {
 
   fileChang(event: any) {
     this.file = event.target.files[0];
+    console.log(this.file)
   }
   
-  ajouerboutique1(){
-    this.boutique = this.formmodule.value
+//   ajouerboutique1(){
+//     console.log("ajoutttttttttttt de la boutique" + this.boutique.adresse + "  " + this.boutique.description + " " + this.boutique.etat +" " + this.boutique.nom + "  " + this.file)
+//     this.boutique = this.formmodule.value
+//     let data = new FormData()
+//     this.boutiqueservice.ajouterBoutique(this.boutique.nom, this.boutique.description, this.boutique.adresse,this.boutique.user_id, this.boutique.etat, this.file).subscribe(data=>{
+//         this.formmodule.reset()
+//         this.message = " Boutique ajouté avec succès";
+//         this.contenu = data.contenu
+//     })
+//     this.formmodule.reset()
+
+//   };
+
+//   ajouerboutique() {
+//     Swal.fire({
+//       title: 'Voulez-vous ajouter cette region?',
+//       showDenyButton: true,
+//       showCancelButton: true,
+//       confirmButtonText: 'Save',
+//       denyButtonText: `Don't save`,
+//     }).then((result) => {
+//       /* Read more about isConfirmed, isDenied below */
+
+//       if (result.isConfirmed) {
+//         this.boutiqueservice
+//           .ajouterBoutique(
+//             this.boutique.nom,
+//             this.boutique.description,
+//             this.boutique.adresse,
+//             this.boutique.etat,
+//             this.boutique.user_id,
+//             this.file
+//           )
+//           .subscribe((data) => {
+//             console.log("ajouttttttttttttttttttttttttttttttttttttttttt de la boutique" + this.boutique)
+//             this.boutique = data;
+//             console.log('ajout de la region' + this.boutique);
+//           });
+//         Swal.fire('Saved!', '', 'success');
+//       } else if (result.isDenied) {
+//         Swal.fire('Changes are not saved', '', 'info');
+//       }
+//     });
+//   }
+
+
+//la methode de jaime
+
+Jaime(){
+    // this.boutiqueservice.Jaime(this.jaimes, this.)
+}
+
+
+ajoutBout(){
     let data = new FormData()
-    this.boutiqueservice.ajouterBoutique(this.boutique.nom, this.boutique.description, this.boutique.adresse,this.boutique.user_id, this.boutique.etat, this.file).subscribe(data=>{
+    if(this.etat === "0"){
+        this.boutique.etat = false
+    }else{
+        this.boutique.etat = true
+    }
+console.log(this.boutique)
+    this.boutiqueservice.ajouterBoutique(this.boutique.nom, this.boutique.adresse, this.boutique.description, this.boutique.etat, this.boutique.user_id, this.file).subscribe(data=>{
+        this.boutique = this.formmodule.value
+       this.afficherBoutique =data
         this.formmodule.reset()
-        this.message = " Boutique ajouté avec succès";
-        this.contenu = data.contenu
+         this.message = " Boutique ajouté avec succès";
+         this.contenu = data.contenu
+        
     })
+}
 
-  };
 
-  ajouerboutique() {
-    Swal.fire({
-      title: 'Voulez-vous ajouter cette region?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
+//listes de boutiques
 
-      if (result.isConfirmed) {
-        this.boutiqueservice
-          .ajouterBoutique(
-            this.boutique.nom,
-            this.boutique.description,
-            this.boutique.adresse,
-            this.boutique.etat,
-            this.boutique.user_id,
-            this.file
-          )
-          .subscribe((data) => {
-            console.log("ajouttttttttttttttttttttttttttttttttttttttttt de la boutique" + this.boutique)
-            this.boutique = data;
-            console.log('ajout de la region' + this.boutique);
-          });
-        Swal.fire('Saved!', '', 'success');
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info');
-      }
-    });
-  }
 
 }
 
