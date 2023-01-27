@@ -1,5 +1,7 @@
+
+
 <div
-  class="container-fluid h-100 ici"
+  class="container-fluid h-100  ici"
   style="overflow: scroll; overflow-x: hidden"
 >
   <div class="row">
@@ -73,7 +75,7 @@
       >
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12 col-md-12">
          <section class="row ">
            <div class="col-6 col-md-4 " *ngFor="let boutique of afficherBoutique ">
@@ -95,7 +97,7 @@
         </section>
      
       </div>
-    </div>
+    </div> -->
   </div>
   <style>
     .ici::-webkit-scrollbar {
@@ -103,6 +105,21 @@
     }
   </style>
   
+
+  <div class="row ">
+    <div class="col-12 col-md-6 col-lg-4 cad"  *ngFor="let boutique of afficherBoutique ">
+      <div class="card w-30" >
+        <img src="{{boutique.image }}" alt="Image" >
+        <div class="card-body">
+          <h2 class="h3 card-title ">{{boutique.nom}}</h2>
+          <p class="card-text">{{boutique.description}}</p>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- Partie poup pour le formulaire de creation d'une boutique -->
 

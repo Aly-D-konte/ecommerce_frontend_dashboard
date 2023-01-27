@@ -43,15 +43,19 @@ export class ConnexionComponent implements OnInit {
           this.isLoggedIn = true;
 
           
-      if(data.isLoggedIn == true){
-        this.route.navigateByUrl("sidebar/dashboard")
-
+      
+        // this.route.navigateByUrl("sidebar/dashboard")
+        this.route.navigate(['/sidebar/dashboard']).then(()=>{
+          setTimeout(() => {
+            location.reload();
+          }, 100);
+        });
         this.roles = this.storageService.getUser().roles;
-      }
-         // this.route.navigateByUrl('/dashboard');
+    
+      // this.route.navigateByUrl("sidebar/dashboard")
 
-         //this.roles = this.storageService.getUser().roles;
-         this.reloadPage();
+        //  this.roles = this.storageService.getUser().roles;
+        //  this.reloadPage();
         },
         error: err => {
           this.errorMessage = err.error.message;

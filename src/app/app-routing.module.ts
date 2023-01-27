@@ -10,6 +10,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 const routes: Routes = [
 
   {path: 'connexion', component: ConnexionComponent},
+  {
+    path: '',
+    redirectTo: 'connexion',
+    pathMatch: 'full'
+  },
   {path: 'inscription', component: InscriptionComponent},
   {
     path: "sidebar",

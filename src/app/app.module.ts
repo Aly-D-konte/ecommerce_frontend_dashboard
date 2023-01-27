@@ -14,6 +14,7 @@ import { ProfileComponent } from './Compte/profile/profile.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProduitsComponent } from './produits/produits.component';
+import { CommandeComponent } from './commande/commande.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProduitsComponent } from './produits/produits.component';
     ProfileComponent,
     CategorieComponent,
     ProduitsComponent,
+    CommandeComponent,
   
   ],
   imports: [

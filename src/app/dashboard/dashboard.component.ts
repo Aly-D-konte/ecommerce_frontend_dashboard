@@ -52,9 +52,7 @@ export class DashboardComponent implements OnInit {
   basicOptions: any;
   formmodule!: FormGroup;
 
-  subscription: Subscription | undefined;
-
-  config: ApplicationConfig | undefined;
+  
     file: any;
   constructor(private fb: FormBuilder,
     private boutiqueservice : BoutiquesService,

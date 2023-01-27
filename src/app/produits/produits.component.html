@@ -1,4 +1,4 @@
-
+<!-- 
 
 <div class="container">
 <div class="row">
@@ -87,4 +87,296 @@
               </div>
         </div>
     </div>
+</div> -->
+<div class="contaire-fluid" style="overflow: scroll; overflow-x: hidden">
+<div class="header pt-1">
+  <h3>Les produits</h3>
+</div>
+
+  <div class="bt">
+    <div class="ajout pt-4">
+      <a
+        data-bs-toggle="modal"
+        href="#exampleModal"
+        data-bs-whatever="@getbootstrap"
+        class="btntu"
+        >Nouvelle produit</a
+      >
+    </div>
+    <div class="recherche">
+      <form class="d-none d-md-flex ms-4">
+        <input
+          class="form-control border-0"
+          type="search"
+          placeholder="Search"
+          style="background-color: #e6eaf1"
+        />
+        <i class="bx bx-search icon" style="font-size: 35px"></i>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-md-6 col-lg-3" *ngFor ="let prod of produits">
+      <div class="card ">
+        <div class="card-image">
+          <img style="height: 160px;" class="card-img-top" src="{{prod.image}}" alt="Image produit" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <h2 class="h3 card-title ">{{prod.nom}}</h2>
+          <p class="card-text">{{prod.description.slice(0.25)}}</p>
+          <div class="row">
+            <div class="icon">
+              <div class="modifier">
+                <i class="fa-regular fa-pen-to-square"></i>
+            
+              </div>
+              <div class="supprimer">
+                <i class="fa-solid fa-trash-can"></i>
+            
+              </div>
+            </div>
+            
+            
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un produit</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          *ngIf="!isLoggedIn"
+          name="form"
+          (ngSubmit)="f.form.valid && AjouterProduit()"
+          #f="ngForm"
+          novalidate
+        >
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Nom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                name="produits.nom"
+                [(ngModel)]="produits.nom"
+                required
+                #nom="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && produits.errors }"
+              />
+              <div *ngIf="nom.errors && f.submitted" class="invalid-feedback">
+                Le nom du produit est obligatoire
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Description :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                name="produits.description"
+                [(ngModel)]="produits.description"
+                required
+                #description="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && description.errors }"
+              />
+              <div
+                *ngIf="description.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                La description de la boutique est obligatoire
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Marque :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="marque"
+                name="produits.marque"
+                [(ngModel)]="produits.marque"
+                required
+                #marque="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && marque.errors }"
+              />
+              <div
+                *ngIf="marque.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                La marque est obligatoire
+              </div>
+            </div>
+          
+
+          </div>
+         
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Model :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="model"
+                name="produits.model"
+                [(ngModel)]="produits.model"
+                required
+                #model="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && model.errors }"
+              />
+              <div
+                *ngIf="model.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le model du produit est obligatoire
+              </div>
+            </div>
+            <div class="row justify-content-between text-left mb-3">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Categorie_id :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Categorie_id"
+                  name="produits.Categorie_id"
+                  [(ngModel)]="produits.Categorie_id"
+                  required
+                  #Categorie_id="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && Categorie_id.errors }"
+                />
+                <div
+                  *ngIf="Categorie_id.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  L'id de la categorie du produit est obligatoire
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Capacité :</label>
+              <input
+                type="number"
+                class="form-control"
+                id="capacite"
+                name="produits.capacite"
+                [(ngModel)]="produits.capacite"
+                required
+                #capacite="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && capacite.errors }"
+              />
+              <div
+                *ngIf="capacite.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                La capacité de la du produit est obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Quantite_disponible :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="quantite_disponible"
+                name="produits.quantite_disponible"
+                [(ngModel)]="produits.quantite_disponible"
+                required
+                #quantite_disponible="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && quantite_disponible.errors }"
+              />
+              <div
+                *ngIf="quantite_disponible.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                La quantite_disponible est obligatoire
+              </div>
+            </div>
+          
+          
+  
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">boutique_id :</label>
+              <input
+                type="number"
+                class="form-control"
+                id="boutique_id"
+                name="produits.boutique_id"
+                [(ngModel)]="produits.boutique_id"
+                required
+                #boutique_id="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && boutique_id.errors }"
+              />
+              <div
+                *ngIf="boutique_id.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                L'id de la boutique est obligatoire
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row justify-content-between text-left mb-2">
+             
+       
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01"
+                
+                (change)="fileChang($event)"
+              />
+              <label class="custom-file-label" for="inputGroupFile01"
+                >Choisi une image</label
+              >
+            </div>
+            <!-- <div class="form-group col-sm-6 flex-column d-flex">
+
+
+              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="etat">
+                <label for="etat">--Etat--</label>
+              
+                <option value="0">false</option>
+                <option value="1">true</option>
+              </select>
+                </div>
+          </div> -->
+          <button type="submit" class="bt">Ajouter</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            fermer
+          </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

@@ -19,6 +19,8 @@ export class SidebarComponent implements OnInit {
   Role!:any;
 
   isLoginFailed = false;
+  showAdmin=false;
+  showSuperAdmin=false;
 
   constructor( 
     @Inject(PLATFORM_ID) private platformId: object,
