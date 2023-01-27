@@ -1,0 +1,28 @@
+<div class="table-responsive ra py-5">
+  <h3>Categories</h3>
+  <table class="table" id="season-tble">
+    <thead>
+      <tr>
+        <th scope="col" class="ra">N°</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Image</th>
+        <th scope="col" class="ra1">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cate of categories; let i = index">
+        <td scope="row">{{i+1}}</td>
+        <td >{{cate.nom}}</td>
+        <td>{{cate.image}}</td>
+
+        <td>
+          <i class="bi bi-pencil-square i" [routerLink]=""></i>&nbsp; &nbsp;
+          &nbsp; <button><i class="bi bi-trash-fill i"></i></button>
+        </td>
+      </tr>
+      <!-- (click)="supprimer(user)" -->
+    </tbody>
+  </table>
+  <!-- <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls> -->
+  <!-- <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Précédent" nexLabel="Suivant"> </pagination-controls> -->
+</div>

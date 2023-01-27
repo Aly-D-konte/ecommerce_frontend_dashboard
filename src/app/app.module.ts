@@ -8,19 +8,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ConnexionComponent } from './Compte/connexion/connexion.component';
+import { InscriptionComponent } from './Compte/inscription/inscription.component';
+import { ProfileComponent } from './Compte/profile/profile.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { ProduitsComponent } from './produits/produits.component';
+import { CommandeComponent } from './commande/commande.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    ConnexionComponent,
+    InscriptionComponent,
+    ProfileComponent,
+    CategorieComponent,
+    ProduitsComponent,
+    CommandeComponent,
+    PanierComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

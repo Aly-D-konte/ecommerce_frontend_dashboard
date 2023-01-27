@@ -1,0 +1,11 @@
+.d-md-block img{
+    position: absolute;
+    top: 40%;
+    align-items: center;
+    font-size: 30px;
+    height: 18%;
+}
+
+.droit{
+    background-color: #84BD24;
+}

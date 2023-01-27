@@ -1,0 +1,45 @@
+<div class="col-12  col-md-10 ">
+    <div class="row ro py-1">
+      <h2>Commandes</h2>
+      <div class="trait"></div>
+      <div class="position">
+        <!-- <button (click)="exportToExcel()" class="btn btnAjouter">Exporter le fichier</button> -->
+        <form action="">
+          <button class="btn btnAjouter recherche" style="display:flex ;"><i class="bi bi-search "></i> <input
+              type="text" style=" border: 0; background: transparent; font-size: 12px; " name="searchText"
+              [(ngModel)]="searchText"></button>
+        </form>
+      </div>
+      <div class="table-responsive ra py-3">
+        <table id="season-tble" class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Code</th>
+              <th scope="col">Nom</th>
+              <th scope="col">azerty</th>
+              <th scope="col">Total</th>
+              <th scope="col">Voir</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>   
+            <tr *ngFor=" let commande of commandes">
+                <!-- | paginate:{itemsPerPage: 5, currentPage:page} |  filter:searchText let i = index" -->
+                 
+              <td >{{commande.date}}</td>
+              <td>{{commande.nom}}</td>
+              <td>{{commande.statut}}<td>
+              <td>azertyu</td>
+              <td>xcvbn</td>
+              <td>Voir Plus</td>
+              <td><a >TRYUI</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <h2 class="text-center"  *ngIf="!PostulantTire">Aucun postulant-tire dans la base de donnée</h2> -->
+        <!-- <pagination-controls style="background-color:gray!important;" (pageChange)="page = $event" previousLabel="Précedant" nextLabel="Suivant" color="black"> -->
+        <!-- </pagination-controls> -->
+      </div>
+    </div>
+  </div>

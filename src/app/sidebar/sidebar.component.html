@@ -1,114 +1,161 @@
-<div class="container-fluid" style="overflow: hidden;">
-    <div class="row flex-nowrap" >
-        <div id="sidebar" class="col-auto sidebar  collapse collapse-horizontal show"
-            style="height: 100vh;" >
-  
-            <div class="col  py-1 mt-5 mb-2">
+<div class="container-fluid" style="overflow: hidden" >
+  <div class="row flex-nowrap">
+    <div 
+      id="sidebar"
+      class="col-auto sidebar collapse collapse-horizontal show"
+      style="height: 100vh"
+    >
+      <div class="col py-1 mt-5 mb-2">
+        <img src="../assets/images/log.png" alt="" srcset="" />
+      </div>
 
-                <img src="../assets/images/log.png" alt="" srcset="">
-            </div>
-  
-            <div class="li mt-5 mb-5">
-  
-              <div class="nav-item mb-3">
-                <a class="nav-link" routerLink="/sidebar/dashboard" [routerLinkActive]="'active'">
-                    <i class="bi bi-clipboard-data"></i><span class="ms-1  d-sm-inline light px-3">Dashbord</span>
-                    
-                    </a>
-              </div>
-  
-              <div class="nav-item mb-3">
-                <a class="nav-link" routerLink="/sidebar/accueil" [routerLinkActive]="'active'">
-                    <i class="bi bi-list-task"></i><span class="ms-1  d-sm-inline light px-3">Categories</span>                    </a>
-              </div>
-  
-              <div class="nav-item mb-3">
-                <a class="nav-link" routerLink="/sidebar/ajouter_geste" [routerLinkActive]="'active'">
-                    <i class="bi bi-box-seam"></i><span class="ms-1  d-sm-inline light px-3">Produits</span>
-                    </a>
-              </div>
-              <div class="nav-item mb-3">
-                <a class="nav-link" routerLink="/sidebar/commandes" [routerLinkActive]="'active'">
-                    <i class="bi bi-clipboard-data"></i><span class="ms-1  d-sm-inline light px-3">Commandes</span>
-                    </a>
-              </div>
-              <div class="nav-item mb-3">
-                <a class="nav-link" routerLink="/sidebar/ajouter_geste" [routerLinkActive]="'active'">
-                    <i class="bi bi-truck"></i><span class="ms-1  d-sm-inline light px-3">Livreurs</span>
-                    </a>
-              </div>
-  
-              <div class="nav-item mb-3">
-                <a class="nav-link" href="/" [routerLinkActive]="'active'">
-                    <i class="bi bi-person"></i><span class="ms-1  d-sm-inline light px-3">Utilisateur</span>
-
-                    </a>
-              </div>
-              <div class="nav-item mb-3">
-                <a class="nav-link" href="/" [routerLinkActive]="'active'">
-                    <i class="bi bi-person"></i><span class="ms-1  d-sm-inline light px-3">Boutique</span>
-
-                    </a>
-              </div>
-              <div class="nav-item mb-3 ">
-                <a class="nav-link" routerLink="/sidebar/ajouter_geste" [routerLinkActive]="'active'">
-                    <i class="bi bi-gear"></i><span class="ms-1  d-sm-inline light px-3">Compte</span>
-                    </a>
-              </div>
-              <div class="nav-item mt-5">
-                <a class="nav-link mx-auto d-block " type="submit" >
-                    <i class="bi bi-box-arrow-right"></i><span class="ms-1  d-sm-inline light px-3">Deconnexion</span>
-
-                    </a>
-              </div>
-  
-            </div>
-  
-  
-            <!-- </div> -->
+      <div class="li mt-5 mb-5">
+        <div class="nav-item mb-3">
+          <a
+            class="nav-link"
+            routerLink="/sidebar/dashboard"
+            [routerLinkActive]="'active'"
+          >
+            <i class="bi bi-clipboard-data"></i
+            ><span class="ms-1 d-sm-inline light px-3" >Dashbord</span>
+          </a>
         </div>
-        <main class="col container-fluid" style=" height: 100%   ; overflow: scroll; overflow-x: hidden; background-color: white;">
+
+        <div class="nav-item mb-3">
+          <a
+            class="nav-link"
+            routerLink="/sidebar/categorie"
+            [routerLinkActive]="'active'"
+          >
+            <i class="bi bi-list-task"></i
+            ><span class="ms-1 d-sm-inline light px-3">Categories</span>
+          </a>
+        </div>
+
+        <div class="nav-item mb-3">
+          <a
+            class="nav-link"
+            routerLink="/sidebar/produit"
+            [routerLinkActive]="'active'"
+          >
+            <i class="bi bi-box-seam"></i
+            ><span class="ms-1 d-sm-inline light px-3">Produits</span>
+          </a>
+        </div>
+        <div class="nav-item mb-3">
+          <a
+            class="nav-link"
+            routerLink="/sidebar/commandes"
+            [routerLinkActive]="'active'"
+          >
+            <i class="bi bi-clipboard-data"></i
+            ><span class="ms-1 d-sm-inline light px-3">Commandes</span>
+          </a>
+        </div>
+        <div class="nav-item mb-3">
+          <a
+            class="nav-link"
+            routerLink="/sidebar/ajouter_geste"
+            [routerLinkActive]="'active'"
+          >
+            <i class="bi bi-truck"></i
+            ><span class="ms-1 d-sm-inline light px-3">Livreurs</span>
+          </a>
+        </div>
+
+        <div class="nav-item mb-3">
+          <a class="nav-link" href="/" [routerLinkActive]="'active'">
+            <i class="bi bi-person"></i
+            ><span class="ms-1 d-sm-inline light px-3">Utilisateur</span>
+          </a>
+        </div>
+        <div class="nav-item mb-3">
+          <a class="nav-link" href="/" [routerLinkActive]="'active'">
+            <i class="bi bi-person"></i
+            ><span class="ms-1 d-sm-inline light px-3">Boutique</span>
+          </a>
+        </div>
+        <div class="nav-item mb-3">
+          <a
+            class="nav-link"
+            routerLink="/sidebar/ajouter_geste"
+            [routerLinkActive]="'active'"
+          >
+            <i class="bi bi-gear"></i
+            ><span class="ms-1 d-sm-inline light px-3">Compte</span>
+          </a>
+        </div>
+
+        <div class="nav-item mt-5">
+          <a class="nav-link mx-auto d-block" type="submit">
+            <i class="bi bi-box-arrow-right"></i
+            ><span class="ms-1 d-sm-inline light px-3">Deconnexion</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- </div> -->
+    </div>
+    <main
+      class="col container-fluid"
+      style="height: 100%; background-color: white"
+    >
+      <div
+        class="Container xs"
+        style="background-color: #e6eaf1; height: 100vh; width: 100%"
+      >
+        <nav class="navbar navbar py-1" style="background-color: white">
+          <a
+            href="#"
+            class="sidebar-toggler flex-shrink-0"
+            data-bs-toggle="collapse"
+            data-bs-target="#sidebar"
+            aria-expanded="false"
+            aria-controls="collapseWidthExample"
+          >
+            <i class="bi bi-list fa-3x mx-2"></i>
+          </a>
+
+          <i class="fa-regular fas-envelope"></i>
+
+          <form class="d-none d-md-flex ms-4">
+            <input
+              class="form-control border-0"
+              type="search"
+              placeholder="Search"
+              style="background-color: #e6eaf1"
+            />
+            <i class="bx bx-search icon" style="font-size: 35px"></i>
+          </form>
+          <div class="row d-flex w-80">
+            <div class="col-6 col-md-6">
+              <button type="button" class="btn-primary position-relative">
+                <i class="bi bi-envelope"></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
+                >
+                  99+
+                </span>
+              </button>
+            </div>
   
-            <div class="Container xs" style="background-color: #E6EAF1; height: 100vh; width: 100%; " >
-                
-  
-              <nav class="navbar navbar py-1" style="background-color: white;" >
-                <a href="#" class="sidebar-toggler flex-shrink-0" data-bs-toggle="collapse"
-                    data-bs-target="#sidebar" aria-expanded="false"
-                    aria-controls="collapseWidthExample">
-                    <i class="bi bi-list fa-3x mx-2"></i>
-                </a>
-             
-                
-                    <i class="fa-regular fas-envelope"></i>  
-                
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search" style="background-color: #E6EAF1;">
-                    <i class='bx bx-search icon ' style="font-size:35px"></i>
-                </form>
-                
-                <div>
-                  <button type="button" class="btn btn-primary position-relative ">
-                    <i class="bi bi-envelope"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
-                      99+
-                    </span>
-                  </button>
-                </div>
-               
-                <div>
-                  <button type="button" class="btn btn-primary position-relative">
-                    <i class="bi bi-bell"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger">
-                      99+
-                    </span>
-                  </button>
-                </div>
-                
-                 <!-- <li class="nav-item ">
+            <div class="col-6 col-md-6">
+              <button type="button" class="btn-primary position-relative">
+                <i class="bi bi-bell"></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-danger"
+                >
+                  99+
+                </span>
+              </button>
+            </div>
+          </div>
+          
+
+          <!-- <li class="nav-item ">
                    <span>Aly</span> <i class="bi bi-person user"></i> 
                   </li> -->
-                  <!-- <form>
+          <!-- <form>
                     <button
                     
                       href="/inscription"
@@ -126,7 +173,7 @@
             
                 
                   </form> -->
-                  <!-- <ul class="navbar-nav ml-auto" >
+          <!-- <ul class="navbar-nav ml-auto" >
                      <li class="nav-item">
                       <a href="/profile" class="nav-link" routerLink="profile">Aly</a>
                     </li>
@@ -134,11 +181,44 @@
                       <a href class="nav-link">Deconnecter</a>
                     </li>
                   </ul> -->
-            </nav>
-              <router-outlet></router-outlet>
-           </div>
-  
-        </main>
-    </div>
+          <form class="d-flex" *ngIf="!isLoggedIn">
+            <button
+              href="/inscription"
+              type="button"
+              class="btn btn-sm btn-primary me-2"
+              routerLink="/inscription"
+            >
+              <i class="fas fa-user-plus me-2"></i>Inscription
+            </button>
+            <button
+              href="/connexion"
+              type="button"
+              class="btn btn-sm btn-outline me-2"
+              routerLink="/connexion"
+            >
+              <i class="fas fa-sign-in-alt me-2"></i>Connexion
+            </button>
+          </form>
+          <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <li class="nav-item">
+                  <a href="/profile" class="nav-link" routerLink="profile">{{
+                    username
+                  }}</a>
+                </li>
+              </div>
+              <div class="col-12 col-md-6">
+              <li class="nav-item">
+                <a href class="nav-link" (click)="logout()">Deconnecter</a>
+              </li>
+              </div>
+            </div>
+          
+          </ul>
+        </nav>
+        <router-outlet></router-outlet>
+      </div>
+    </main>
   </div>
-  
+</div>
