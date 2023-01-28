@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApplicationConfig } from '@angular/platform-browser';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Boutiques } from '../Model/boutiques';
 import { User } from '../Model/user';
 import { BoutiquesService } from '../Services/boutiques.service';
@@ -350,6 +351,17 @@ console.log(this.boutique)
     this.boutiqueservice.ajouterBoutique(this.boutique.nom, this.boutique.adresse, this.boutique.description, this.boutique.etat, this.boutique.user_id, this.file).subscribe(data=>{
         this.boutique = this.formmodule.value
        this.afficherBoutique =data
+       Swal.fire({
+        heightAuto: false,
+        // position: 'top-end',
+        icon: 'success',
+        text: 'Boutique créée avec succès',
+        showConfirmButton: false,
+        timer: 2500
+      })
+     // this.routes.navigateByUrl("/sidebar/dashboard")
+   // La methode permettra d'actualiser la page apres l'ajout
+     window.location.reload();
         this.formmodule.reset()
          this.message = " Boutique ajouté avec succès";
          this.contenu = data.contenu
