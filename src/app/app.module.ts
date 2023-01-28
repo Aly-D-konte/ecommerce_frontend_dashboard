@@ -12,6 +12,9 @@ import { ConnexionComponent } from './Compte/connexion/connexion.component';
 import { InscriptionComponent } from './Compte/inscription/inscription.component';
 import { ProfileComponent } from './Compte/profile/profile.component';
 import { CategorieComponent } from './categorie/categorie.component';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { ProduitsComponent } from './produits/produits.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
@@ -36,6 +39,9 @@ import { PanierComponent } from './panier/panier.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+
+    Ng2SearchPipeModule,
+
     
 
   ],

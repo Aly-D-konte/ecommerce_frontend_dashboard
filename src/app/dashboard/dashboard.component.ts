@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApplicationConfig } from '@angular/platform-browser';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Boutiques } from '../Model/boutiques';
 import { User } from '../Model/user';

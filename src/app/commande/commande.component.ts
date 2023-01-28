@@ -16,8 +16,16 @@ export class CommandeComponent implements OnInit {
 
     //Recuperer toutes les commandes
 
+    // console.log("voir si ca marche:" + this.commandes.code);
+
     this.commandeService.AffichageCommande().subscribe(data =>{
       return this.commandes= data
+
+      for(let test of this.commandes){
+         console.log("voir si ca marche:" + test.panier.id);
+
+      }
+
     })
     //recuperer toutes les 
 

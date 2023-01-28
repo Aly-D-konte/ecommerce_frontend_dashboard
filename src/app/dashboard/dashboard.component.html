@@ -8,19 +8,28 @@
     <div class="col-12 col-md-12">
       <section class="row gy-3 py-3 set" >
         <div class="col-6 col-md-3 pt-3">
-          <div class="card">
+
+          <div class="card bg">
             <div class="haut">
               <p class="pcard">{{afficherBoutique.length}}</p>
+             
+             <div class="icon">
+
               <i class="bi bi-shop-window"></i>
+
+             </div>
             </div>
             <p class="textcard">Totals boutiques</p>
           </div>
         </div>
         <div class="col-6 col-md-3 pt-3">
-          <div class="card">
+          <div class="card bg1">
             <div class="haut">
               <p class="pcard">200</p>
-              <i class="bi bi-shop-window"></i>
+              <div class="icon">
+                <i class="bi bi-shop-window"></i>
+  
+               </div>
             </div>
             <p class="textcard">Totals revenus(annuel)</p>
           </div>
@@ -29,7 +38,10 @@
           <div class="card">
             <div class="haut">
               <p class="pcard">200</p>
-              <i class="bi bi-shop-window"></i>
+              <div class="icon">
+                <i class="bi bi-shop-window"></i>
+  
+               </div>
             </div>
             <p class="textcard">Totals utilisateurs</p>
           </div>
@@ -38,7 +50,10 @@
           <div class="card">
             <div class="haut">
               <p class="pcard">200</p>
-              <i class="bi bi-shop-window"></i>
+              <div class="icon">
+                <i class="bi bi-shop-window"></i>
+  
+               </div>
             </div>
             <p class="textcard">Totals revenus(mensuel)</p>
           </div>
@@ -110,15 +125,22 @@
     <div class="col-12 col-md-6 col-lg-4 cad"  *ngFor="let boutique of afficherBoutique ">
       <div class="card w-30" >
         <img src="{{boutique.image }}" alt="Image" >
-        <div class="card-body">
-          <h2 class="h3 card-title ">{{boutique.nom}}</h2>
+        <div class="boutique">
+          <h2 class="h3 card-title text-center">{{boutique.nom}}</h2>
           <p class="card-text">{{boutique.description}}</p>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+          <p><span class="fa fa-star checked"></span></p>  
+
+
+        
+
+          <div class="lien">
+              <div class="modifie">  <i class="bi bi-pencil-square i" [routerLink]=""></i> </div>
+              <div class="delete">  <i class="bi bi-trash-fill i"></i></div>
           </div>
+
         </div>
       </div>
+
     </div>
 
 <!-- Partie poup pour le formulaire de creation d'une boutique -->
@@ -228,6 +250,7 @@
                 User de la boutique est obligatoire
               </div>
             </div>
+
           </div>
 
 
