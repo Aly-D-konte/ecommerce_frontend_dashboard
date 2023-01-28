@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
+    "@angular/cdk": "^15.1.2",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
     "@angular/core": "^14.0.0",
@@ -18,9 +19,12 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@types/chart.js": "^2.9.37",
+    "chart.js": "^2.9.4",
     "ng2-search-filter": "^0.5.1",
+    "primeng": "^15.1.1",
     "rxjs": "~7.5.0",
-    "sweetalert2": "^11.7.0",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

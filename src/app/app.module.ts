@@ -15,6 +15,7 @@ import { CategorieComponent } from './categorie/categorie.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProduitsComponent } from './produits/produits.component';
 import { CommandeComponent } from './commande/commande.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CommandeComponent } from './commande/commande.component';
     CategorieComponent,
     ProduitsComponent,
     CommandeComponent,
+    PanierComponent,
   
   ],
   imports: [
@@ -36,6 +38,7 @@ import { CommandeComponent } from './commande/commande.component';
     HttpClientModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    
 
   ],
   providers: [],

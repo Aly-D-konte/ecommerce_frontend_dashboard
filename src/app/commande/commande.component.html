@@ -1,1 +1,79 @@
-<p>commande works!</p>
+<div class="col-12  col-md-10 ">
+    <div class="row ro py-1">
+      <h2>Commandes</h2>
+      <div class="trait"></div>
+      <div class="position">
+        <!-- <button (click)="exportToExcel()" class="btn btnAjouter">Exporter le fichier</button> -->
+        <form action="">
+          <button class="btn btnAjouter recherche" style="display:flex ;"><i class="bi bi-search "></i> <input
+              type="text" style=" border: 0; background: transparent; font-size: 12px; " name="searchText"
+              [(ngModel)]="searchText"></button>
+        </form>
+      </div>
+      <!-- <div class="table-responsive ra py-3">
+        <table id="season-tble" class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Code</th>
+              <th scope="col">Statut</th>
+              <th scope="col">Panier</th>
+              <th scope="col">Voir</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>   
+            <tr *ngFor="let commande of commandes">
+                | paginate:{itemsPerPage: 5, currentPage:page} |  filter:searchText let i = index" 
+              <td scope="row">{{commande.date}}</td>
+              <td>{{commande.code}}</td>
+              <td>{{commande.statut}}<td>
+              <td>{{commande.panier.quantite}}</td>
+              <td>Voir Plus</td>
+              <td><a >TRYUI</a></td>
+            </tr>
+          </tbody>
+        </table>
+         <h2 class="text-center"  *ngIf="!PostulantTire">Aucun postulant-tire dans la base de donnée</h2> -->
+        <!-- <pagination-controls style="background-color:gray!important;" (pageChange)="page = $event" previousLabel="Précedant" nextLabel="Suivant" color="black"> -->
+        <!-- </pagination-controls> -
+      </div> -->
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Code</th>
+            <th>Statut</th>
+            <th>Panier</th>
+            <th>Voir</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of commandes">
+            <td>{{commande.date}}</td>
+            <td>{{commande.code}}</td>
+            <td>
+                <select name="statut" id="statut-select">
+                <!-- <option value="">--Statut--</option> -->
+                <option >{{commande.statut}}</option>
+                <!-- <option value="1">{{commande.statut}}</option> -->
+                <!-- <option value="2">{{commande.statut}}</option> -->
+
+               
+            </select>
+            
+          </td>
+            <td>{{commande.panier.id}}</td>
+            <td>Voir plus</td>
+            <td>
+                <i class="bi bi-pencil-square i" [routerLink]=""></i>&nbsp; &nbsp;
+                &nbsp; <button><i class="bi bi-trash-fill i"></i></button>
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>

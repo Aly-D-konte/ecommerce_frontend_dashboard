@@ -10,8 +10,19 @@
   }
   .haut{
     display: flex;
+  
+ 
 }
-i{
+.bg{
+  background-color: #84BD24;
+
+}
+.bg1{
+  background-color: #E38800;
+}
+
+
+.icon{
     margin-left: 160px;
     font-size: 30px;
 }
@@ -26,6 +37,14 @@ p{
 .bt{
   background-color: #E38800;
   text-decoration: none;
+}
+.lien{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #E38800;
+  margin: 20px;
+  font-size: 30px;
 }
 .cad{
   padding-bottom: 80px;

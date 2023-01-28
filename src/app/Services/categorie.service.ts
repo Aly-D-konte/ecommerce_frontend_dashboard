@@ -14,6 +14,6 @@ export class CategorieService {
   constructor( private htttp : HttpClient) { }
 
   AfficherCategorie(): Observable<Categorie[]>{
-    return this.htttp.get<Categorie[]>(`http:localhost:8080/api/categorie/liste`);
+    return this.htttp.get<Categorie[]>(`${this.url}`);
   }
 }

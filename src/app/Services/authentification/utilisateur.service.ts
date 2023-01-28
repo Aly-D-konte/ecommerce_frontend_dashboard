@@ -27,9 +27,9 @@ export class UserService {
   }
 
 
-  //nombre des utilisateurs
+  //Toutes les utilisateurs
 
   getAllUser():Observable<any>{
-    return this.http.get("http://localhost:8080/api/pays/utilisateur")
+    return this.http.get("http://localhost:8080/api/auth/utilisateur")
   }
 }

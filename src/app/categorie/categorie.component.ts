@@ -21,10 +21,16 @@ export class CategorieComponent implements OnInit {
   ngOnInit(): void {
 
     //Afficher les categories
-    console.log("Toutes les categories" +  this.categories.nom  );
 
     this.categorieService.AfficherCategorie().subscribe(data =>{
-      this.categories = data
+      this.categories = data;
+      
+      for(let test of this.categories){
+        console.log("voir si ca marche:" + test.nom);
+
+     }
+
+      
     })
   }
 
