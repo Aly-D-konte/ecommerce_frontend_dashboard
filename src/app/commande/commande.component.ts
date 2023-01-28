@@ -15,6 +15,7 @@ export class CommandeComponent implements OnInit {
   ngOnInit(): void {
 
     //Recuperer toutes les commandes
+
     // console.log("voir si ca marche:" + this.commandes.code);
 
     this.commandeService.AffichageCommande().subscribe(data =>{

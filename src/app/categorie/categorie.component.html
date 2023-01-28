@@ -3,15 +3,18 @@
   <table class="table" id="season-tble">
     <thead>
       <tr>
+
         <th >N°</th>
         <th >Nom</th>
         <th >Image</th>
         <th>Action</th>
+
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cate of categories; let i = index">
         <td >{{i+1}}</td>
+
         <td >{{cate.nom}}</td>
         <td>{{cate.image}}</td>
 

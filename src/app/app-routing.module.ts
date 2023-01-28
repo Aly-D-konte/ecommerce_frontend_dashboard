@@ -4,7 +4,9 @@ import { CategorieComponent } from './categorie/categorie.component';
 import { CommandeComponent } from './commande/commande.component';
 import { ConnexionComponent } from './Compte/connexion/connexion.component';
 import { InscriptionComponent } from './Compte/inscription/inscription.component';
+
 import { ProfileComponent } from './Compte/profile/profile.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProduitsComponent } from './produits/produits.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
