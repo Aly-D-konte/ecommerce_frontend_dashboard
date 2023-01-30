@@ -8,7 +8,7 @@ import { Categorie } from '../Model/categorie';
 })
 export class CategorieService {
 
-  url = 'http:localhost:8080/api/categorie/liste'
+  url = "http://localhost:8080/api/categorie/liste"
 
 
   constructor( private htttp : HttpClient) { }

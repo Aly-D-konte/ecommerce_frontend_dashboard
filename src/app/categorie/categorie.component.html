@@ -11,9 +11,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let cate of categories; let i = index">
-        <td >{{i+1}}</td>
+        <td >{{cate.id}}</td>
         <td >{{cate.nom}}</td>
-        <td>{{cate.image}}</td>
+        <td><img class="image" src="{{cate.image}}" alt="" srcset=""></td>
 
         <td>
           <i class="bi bi-pencil-square i" [routerLink]=""></i>&nbsp; &nbsp;
@@ -26,3 +26,4 @@
   <!-- <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls> -->
   <!-- <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Précédent" nexLabel="Suivant"> </pagination-controls> -->
 </div>
+

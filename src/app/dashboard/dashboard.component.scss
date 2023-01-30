@@ -1,8 +1,18 @@
 
-.card {
+.card  {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    height: 100px;
      
   }
+  .btntu  {
+    background-color: #E38800;
+    text-decoration: none;
+    color: white;
+
+     
+  }
+ 
+
   .pcard {
     vertical-align: inherit;
     font-size: 2rem;
@@ -20,15 +30,16 @@
 .bg1{
   background-color: #E38800;
 }
+.user{
+  background-color: #4D819E;
+}
 
 
 .icon{
     margin-left: 160px;
     font-size: 30px;
 }
-p{
-    margin-left: 5px;
-}
+
 .checked {
   color: #84BD24;
 }
@@ -43,10 +54,25 @@ p{
   flex-direction: row;
   justify-content: space-between;
   color: #E38800;
-  margin: 20px;
+  margin: 10px;
   font-size: 30px;
 }
 .cad{
   padding-bottom: 80px;
 }
-
+.boutique{
+  font-size: 10px;}
+h4{
+  font-size: 20px;
+}
+.milieu{
+  height: 290px; 
+  width: 240px;
+}
+.text{
+  font-size: 12px;
+}
+.etat{
+  margin-left: 80%;
+  background-color:#E38800;
+}

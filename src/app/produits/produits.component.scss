@@ -13,15 +13,27 @@
     font-size: 20px;
 
   }
-  .bt{
-    display: flex;
-    grid-template-columns: auto auto;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  // .bt{
+  //   display: flex;
+  //   grid-template-columns: auto auto;
+  //   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  // }
+  
+  .image{
+    height: 130px;
   }
 
-  .card-image{
-    height: 100px;
+  .entete{
+    display: flex;
+    flex-direction: row;
+  justify-content: space-around;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+
   }
+
+  .header{
+    margin-left: 20px;  }
 //   .card-image img{
 
 //   }

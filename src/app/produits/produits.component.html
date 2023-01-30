@@ -88,43 +88,42 @@
         </div>
     </div>
 </div> -->
-<div class="contaire-fluid" style="overflow: scroll; overflow-x: hidden">
-<div class="header pt-1">
-  <h3>Les produits</h3>
-</div>
-
-  <div class="bt">
-    <div class="ajout pt-4">
-      <a
-        data-bs-toggle="modal"
-        href="#exampleModal"
-        data-bs-whatever="@getbootstrap"
-        class="btntu"
-        >Nouvelle produit</a
-      >
+<div class="contaire-fluid ici" style="overflow: scroll; overflow-x: hidden">
+  <div class="entete mb-2 mt-3">
+    <div class="header ">
+      <h3>Les produits</h3>
     </div>
-    <div class="recherche">
-      <form class="d-none d-md-flex ms-4">
-        <input
-          class="form-control border-0"
-          type="search"
-          placeholder="Search"
-          style="background-color: #e6eaf1"
-        />
-        <i class="bx bx-search icon" style="font-size: 35px"></i>
-      </form>
-    </div>
+    
+      <div class="bt mb-3">
+        <div class="ajout">
+          <a
+            data-bs-toggle="modal"
+            href="#exampleModal"
+            data-bs-whatever="@getbootstrap"
+            class="btntu"
+            >Nouvelle produit</a
+          >
+        </div>
+      
+      </div>
   </div>
+
   <div class="row">
-    <div class="col-6 col-md-6 col-lg-3" *ngFor ="let prod of produits">
-      <div class="card ">
-        <div class="card-image">
-          <img style="height: 160px;" class="card-img-top" src="{{prod.image}}" alt="Image produit" class="card-img-top">
+    <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor ="let prod of produits">
+      <div class="card milieu">
+        <div class="image">
+          <img   style=
+          "
+          width: 60%;
+         margin-left: 50px;
+         
+          "
+            src="{{prod.image}}" alt="Image produit">
         </div>
         <div class="card-body">
-          <h2 class="h3 card-title ">{{prod.nom}}</h2>
-          <p class="card-text">{{prod.description.slice(0.25)}}</p>
-          <div class="row">
+          <h2 class="h3 card-title text-center pt-5">{{prod.nom}}</h2>
+          <!-- <p class="card-text">{{prod.description.slice(0.25)}}</p> -->
+          <div class="row ">
             <div class="icon">
               <div class="modifier">
                 <i class="fa-regular fa-pen-to-square"></i>
@@ -144,6 +143,11 @@
   </div>
 </div>
 
+<style>
+  .ici::-webkit-scrollbar {
+    display: none;
+  }
+</style>
 <div
   class="modal fade"
   id="exampleModal"

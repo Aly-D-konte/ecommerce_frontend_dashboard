@@ -30,6 +30,6 @@ export class UserService {
   //Toutes les utilisateurs
 
   getAllUser():Observable<any>{
-    return this.http.get("http://localhost:8080/api/auth/utilisateur")
+    return this.http.get("http://localhost:8080/api/auth/liste")
   }
 }

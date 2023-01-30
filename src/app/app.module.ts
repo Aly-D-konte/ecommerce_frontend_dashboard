@@ -16,6 +16,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProduitsComponent } from './produits/produits.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
+import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PanierComponent } from './panier/panier.component';
     ProduitsComponent,
     CommandeComponent,
     PanierComponent,
+    UtilisateursComponent,
   
   ],
   imports: [

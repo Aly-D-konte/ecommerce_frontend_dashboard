@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Boutiques } from '../Model/boutiques';
 import { User } from '../Model/user';
+import { UserService } from '../Services/authentification/utilisateur.service';
 import { BoutiquesService } from '../Services/boutiques.service';
 // import Chart from 'chart.js/auto';
 
@@ -58,10 +59,12 @@ public chart : any;
 
   
     file: any;
+  user: any;
   constructor(private fb: FormBuilder,
     private boutiqueservice : BoutiquesService,
     private route: ActivatedRoute,
-    private routes: Router) {
+    private routes: Router,
+    private userService: UserService) {
  
         
 }
@@ -85,8 +88,13 @@ public chart : any;
     this.boutiqueservice.getAll().subscribe(data=>{
         this.afficherBoutique = data
         console.log("Afficher la  " +this.afficherBoutique);
+
       })
-      //
+      //liste des utilisateurs
+
+      this.userService.getAllUser().subscribe(data=>{
+        this.user = data
+      })
 
     
     this.formmodule = this.fb.group({
@@ -281,55 +289,10 @@ public chart : any;
 
 //   }
 
-  fileChang(event: any) {
+fileChang(event: any) {
     this.file = event.target.files[0];
     console.log(this.file)
   }
-  
-//   ajouerboutique1(){
-//     console.log("ajoutttttttttttt de la boutique" + this.boutique.adresse + "  " + this.boutique.description + " " + this.boutique.etat +" " + this.boutique.nom + "  " + this.file)
-//     this.boutique = this.formmodule.value
-//     let data = new FormData()
-//     this.boutiqueservice.ajouterBoutique(this.boutique.nom, this.boutique.description, this.boutique.adresse,this.boutique.user_id, this.boutique.etat, this.file).subscribe(data=>{
-//         this.formmodule.reset()
-//         this.message = " Boutique ajouté avec succès";
-//         this.contenu = data.contenu
-//     })
-//     this.formmodule.reset()
-
-//   };
-
-//   ajouerboutique() {
-//     Swal.fire({
-//       title: 'Voulez-vous ajouter cette region?',
-//       showDenyButton: true,
-//       showCancelButton: true,
-//       confirmButtonText: 'Save',
-//       denyButtonText: `Don't save`,
-//     }).then((result) => {
-//       /* Read more about isConfirmed, isDenied below */
-
-//       if (result.isConfirmed) {
-//         this.boutiqueservice
-//           .ajouterBoutique(
-//             this.boutique.nom,
-//             this.boutique.description,
-//             this.boutique.adresse,
-//             this.boutique.etat,
-//             this.boutique.user_id,
-//             this.file
-//           )
-//           .subscribe((data) => {
-//             console.log("ajouttttttttttttttttttttttttttttttttttttttttt de la boutique" + this.boutique)
-//             this.boutique = data;
-//             console.log('ajout de la region' + this.boutique);
-//           });
-//         Swal.fire('Saved!', '', 'success');
-//       } else if (result.isDenied) {
-//         Swal.fire('Changes are not saved', '', 'info');
-//       }
-//     });
-//   }
 
 
 //la methode de jaime
@@ -361,6 +324,8 @@ console.log(this.boutique)
      // this.routes.navigateByUrl("/sidebar/dashboard")
    // La methode permettra d'actualiser la page apres l'ajout
      window.location.reload();
+
+     //finnnnnnnnnnnnnnnnnnnnnnnnnnn
         this.formmodule.reset()
          this.message = " Boutique ajouté avec succès";
          this.contenu = data.contenu

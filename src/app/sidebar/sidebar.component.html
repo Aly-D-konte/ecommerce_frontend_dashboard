@@ -127,7 +127,7 @@
             />
             <i class="bx bx-search icon" style="font-size: 35px"></i>
           </form>
-          <div class="row d-flex w-80">
+          <div class="row d-flex w-70">
             <div class="col-6 col-md-6">
               <button type="button" class="btn-primary position-relative">
                 <i class="bi bi-envelope"></i>
@@ -199,16 +199,16 @@
               <i class="fas fa-sign-in-alt me-2"></i>Connexion
             </button>
           </form>
-          <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+          <ul class="navbar-nav " *ngIf="isLoggedIn">
             <div class="row">
-              <div class="col-12 col-md-6">
+              <div class="col-6 col-md-6">
                 <li class="nav-item">
                   <a href="/profile" class="nav-link" routerLink="profile">{{
                     username
                   }}</a>
                 </li>
               </div>
-              <div class="col-12 col-md-6">
+              <div class="col-6 col-md-6">
               <li class="nav-item">
                 <a href class="nav-link" (click)="logout()">Deconnecter</a>
               </li>

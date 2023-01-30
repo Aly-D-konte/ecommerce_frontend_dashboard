@@ -15,6 +15,7 @@ export class CategorieComponent implements OnInit {
     nom: '',
   
   };
+  file: any;
 
   constructor(  private categorieService: CategorieService)   { }
 
@@ -32,6 +33,10 @@ export class CategorieComponent implements OnInit {
 
       
     })
+  }
+  fileChang(event: any) {
+    this.file = event.target.files[0];
+    console.log(this.file)
   }
 
 }

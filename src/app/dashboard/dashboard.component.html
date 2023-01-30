@@ -33,9 +33,9 @@
           </div>
         </div>
         <div class="col-6 col-md-3 pt-3">
-          <div class="card">
+          <div class="card user">
             <div class="haut">
-              <p class="pcard">200</p>
+              <p class="pcard">{{user.length}}</p>
               <div class="icon">
                 <i class="bi bi-shop-window"></i>
   
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="col-6 col-md-3 pt-3">
-          <div class="card">
+          <div class="card bg">
             <div class="haut">
               <p class="pcard">200</p>
               <div class="icon">
@@ -119,13 +119,22 @@
   </style>
   
 
-  <div class="row ">
-    <div class="col-12 col-md-6 col-lg-4 cad"  *ngFor="let boutique of afficherBoutique ">
-      <div class="card w-30" >
-        <img src="{{boutique.image }}" alt="Image" >
+  <div class="row pt-3">
+    <div class="col-12 col-md-6 col-lg-3 cad"  *ngFor="let boutique of afficherBoutique ">
+      <div class="card milieu" >
+        <div class=" etat">
+          <p>{{boutique.etat}}</p>
+        </div>
+        <img src="{{boutique.image }}" alt="Image" 
+          style=
+          "
+          width: 100%;
+          height: 30%;
+          "
+        >
         <div class="boutique">
-          <h2 class="h3 card-title text-center">{{boutique.nom}}</h2>
-          <p class="card-text">{{boutique.description}}</p>
+          <h4 class="h3 card-title text-center">{{boutique.nom}}</h4>
+          <p class="card-text text">{{boutique.description}}</p>
           <p><span class="fa fa-star checked"></span></p>  
 
 
@@ -269,7 +278,7 @@
             <div class="form-group col-sm-6 flex-column d-flex">
 
 
-              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="etat">
+              <select name="etat" id="sexe" class="form-select form-control"  [(ngModel)]="etat">
                 <label for="etat">--Etat--</label>
               
                 <option value="0">false</option>
