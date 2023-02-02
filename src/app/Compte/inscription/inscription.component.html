@@ -31,7 +31,7 @@
                           maxlength="20"
                           #nom="ngModel"
                           [ngClass]="{ 'is-invalid': f.submitted && nom.errors }" 
-                          placeholder="name@example.com">
+                          placeholder="nom">
                       <label for="floatingInput">Nom d'utilisation</label> 
 
 
@@ -56,7 +56,7 @@
                             maxlength="20"
                             #prenom="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }" 
-                            placeholder="name@example.com">
+                            placeholder="prenom">
                         <label for="floatingInput">Prénom</label> 
 
 
@@ -66,7 +66,7 @@
                             Le prenom doit avoir au moins 3 carateurs
                           </div>
                           <div *ngIf="prenom.errors['maxlength']">
-                            Le prénom ne doit pa depassé 20 carateurs
+                            Le prénom ne doit pas depassé 20 carateurs
                           </div>
                         </div>
                       
@@ -74,23 +74,23 @@
                       
                       <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput"  class="form-control"
-                            name="username"
-                            [(ngModel)]="form.username"
+                            name="Nom"
+                            [(ngModel)]="form.Nom"
                             required
                             minlength="3"
                             maxlength="20"
-                            #username="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && username.errors }" 
+                            #Nom="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && Nom.errors }" 
                             placeholder="name@example.com">
                         <label for="floatingInput">Nom </label> 
 
 
-                       <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
-                          <div *ngIf="username.errors['required']">Nom est obligatoire</div>
-                          <div *ngIf="username.errors['minlength']">
+                       <div class="invalid-feedback" *ngIf="Nom.errors && f.submitted">
+                          <div *ngIf="Nom.errors['required']">Nom est obligatoire</div>
+                          <div *ngIf="Nom.errors['minlength']">
                             Le nom doit avoir au monis 3 carateurs
                           </div>
-                          <div *ngIf="username.errors['maxlength']">
+                          <div *ngIf="Nom.errors['maxlength']">
                             Le nom ne doit pas depassé 20 carateurs
                           </div>
                         </div>
@@ -126,11 +126,11 @@
                             telephone
                             #telephone="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && telephone.errors }"
-                            placeholder="name@example.com">
+                            placeholder="70707070">
                         <label for="floatingInput">Telephone</label>
                         <div class="invalid-feedback" *ngIf="telephone.errors && f.submitted">
                           <div *ngIf="telephone.errors['required']">Le numero de talephon est obligatoire</div>
-                          <div *ngIf="telephone.errors['email']">
+                          <div *ngIf="telephone.errors['telephone']">
                             LE numéro de telephone doit avoir au moins 6 chiffres
                           </div>
                         </div>
@@ -183,7 +183,7 @@
                             maxlength="20"
                             #adresse="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }" 
-                            placeholder="name@example.com">
+                            placeholder="adresse">
                         <label for="floatingInput"> Adresse</label> 
 
 
@@ -203,7 +203,7 @@
   
                    
                     <div class="form-group pt-1 mb-4">
-                      <button class="btn btn-primary btn-block">
+                      <button class=" btn-primary btn-block">
                         Inscrire
                       </button>
                     </div>

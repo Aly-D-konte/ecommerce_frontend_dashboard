@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { Categorie } from '../Model/categorie';
 import { CategorieService } from '../Services/categorie.service';
 
@@ -10,14 +12,20 @@ import { CategorieService } from '../Services/categorie.service';
 export class CategorieComponent implements OnInit {
   p = 1;
   categories: any
+ // catego:any
   categorie: Categorie={
 
     nom: '',
   
   };
+  isLoggedIn = false;
+  isLoginFailed = false;
+
+  formmodule!: FormGroup;
   file: any;
 
-  constructor(  private categorieService: CategorieService)   { }
+  constructor(  private categorieService: CategorieService, private fb: FormBuilder
+    )   { }
 
   ngOnInit(): void {
 
@@ -26,12 +34,12 @@ export class CategorieComponent implements OnInit {
     this.categorieService.AfficherCategorie().subscribe(data =>{
       this.categories = data;
       
-      for(let test of this.categories){
-        console.log("voir si ca marche:" + test.nom);
+     })
 
-     }
 
-      
+     this.formmodule = this.fb.group({
+      nom: ["", Validators.required],
+     
     })
   }
   fileChang(event: any) {
@@ -39,4 +47,22 @@ export class CategorieComponent implements OnInit {
     console.log(this.file)
   }
 
+  AjoutCategorie(){
+    this.categorieService.ajouterCategorie(this.categorie.nom, this.file).subscribe(data=>{
+      //console.log("c'est quel nom" + )
+      this.categorie =this.formmodule.value;
+      this.categories =data
+
+      Swal.fire({
+        heightAuto: false,
+        // position: 'top-end',
+        icon: 'success',
+        text: 'Categorie créée avec succès',
+        showConfirmButton: false,
+        timer: 2500
+      })
+   // La methode permettra d'actualiser la page apres l'ajout
+     window.location.reload();
+    })
+  }
 }

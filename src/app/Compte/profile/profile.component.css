@@ -1,0 +1,12 @@
+.form{
+    display: flex;
+}
+.btnAjouter{
+    background-color: #F58220;
+    align-items: center;
+    margin-left: 30%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 40%;
+
+}

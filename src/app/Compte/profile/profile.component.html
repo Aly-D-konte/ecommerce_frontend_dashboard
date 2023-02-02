@@ -1,4 +1,77 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<div class="container-fluid"  >
+  <div class="col-12 " *ngIf="currentUser; else loggedOut ">
+    <div class="col-6 col-md-12 pt-4 form" >
+      <div class="card  w-100"  >
+        <div class="row  justify-content-between ">
+          <form >
+            <fieldset>
+              <legend class="display-6 text-center my-3"><b>Profile</b></legend>
+            </fieldset>
+            <div class="trait"></div>
+            <div class="row col-12">
+         
+              <div class="mb-3 col-12 col-md-6 form-row ">
+              <label for="name">Nom</label>
+      
+                <input type="text" name="name" id="name" placeholder="Nom" value="{{ currentUser.username }}" class="form form-control inputvalue">
+              </div>
+              
+              <div class="mb-3 col-12 col-md-6 form-row ">
+                <label for="firstname">Prénom</label>
+      
+                <input type="text" name="firstname" id="firstname" value="{{ currentUser.prenom }}" placeholder="Prénom"
+                  class="form form-control inputvalue">
+              </div>
+              
+              <div class="mb-3 col-12 col-md-6 form-row ">
+                <label for="email">Email</label>
+      
+                <input type="email" name="email" id="email" value="{{ currentUser.email }}" placeholder="email"
+                  class="form form-control inputvalue ">
+              </div>
+              <div class="mb-3 col-12 col-md-6 form-row ">
+                <label for="num">Numéro</label>
+      
+                <input type="text" name="num" id="num" value="{{ users.numero }}" placeholder="Numéro" class="form form-control inputvalue">
+              </div>
+              <div class="mb-3 col-12 col-md-6 form-row " *ngIf="nomboutique; else loggedOut ">
+                <label for="num">Boutique</label>
+      
+                <input type="text" name="boutique" id="boutique" value="{{ nomboutique.nom }}" placeholder="boutique" class="form form-control inputvalue">
+              </div>
+              <div class="mb-3 col-12 col-md-6 form-row ">
+                <label for="role">ROLE</label>
+                <input type="text" name="role" id="role" value="{{ currentUser.roles }}" placeholder="ROLE" disabled
+                class="form form-control inputvalue ">
+              </div>
+           
+            </div>
+            <button class="btn btnAjouter">Modifier</button>
+         
+         
+          </form>
+          
+       </div>
+ 
+      </div>
+
+      <div class="col-6 col-md-4">
+        <div class="card mb-4 h-100">
+          <div class="card-body text-center mb-4" *ngIf="users;  else loggedOut">
+            <img src="{{users.image}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            
+          </div>
+        </div>
+        
+       </div>
+
+    </div>
+
+</div>
+
+ 
+<!-- <div class="container" *ngIf="currentUser; else loggedOut">
     <header class="jumbotron">
       <h3>
         <strong>{{ currentUser.username }}</strong> Profile
@@ -15,7 +88,7 @@
       </li>
     </ul>
   </div>
-  
+   -->
   <ng-template #loggedOut>
     Please login.
   </ng-template>

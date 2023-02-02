@@ -1,5 +1,20 @@
 <div class="table-responsive ra py-5">
-  <h3>Categories</h3>
+<div class="bt">
+  <div class="titre">
+    <h3>Categories</h3>
+
+  </div>
+  <div class="ajout pt-4">
+    <a
+      data-bs-toggle="modal"
+      href="#exampleModal"
+      data-bs-whatever="@getbootstrap"
+      class="btntu"
+      >Nouvelle categorie</a
+    >
+  </div>
+</div>
+
   <table class="table" id="season-tble">
     <thead>
       <tr>
@@ -10,7 +25,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cate of categories; let i = index">
+
+      
+      <tr *ngFor="let cate of categories">
+        
         <td >{{cate.id}}</td>
         <td >{{cate.nom}}</td>
         <td><img class="image" src="{{cate.image}}" alt="" srcset=""></td>
@@ -27,3 +45,82 @@
   <!-- <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Précédent" nexLabel="Suivant"> </pagination-controls> -->
 </div>
 
+<!-- Partie poup pour le formulaire de creation d'une boutique -->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une categorie</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          *ngIf="!isLoggedIn"
+          name="form"
+          (ngSubmit)="f.form.valid && AjoutCategorie()"
+          #f="ngForm"
+          novalidate
+        >
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Nom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                name="categories.nom"
+                [(ngModel)]="categories.nom"
+                required
+                #nom="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+              />
+              <div *ngIf="nom.errors && f.submitted" class="invalid-feedback">
+                Le nom de la categorie est obligatoire
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-between text-left mb-2">
+             
+       
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01"
+                
+                (change)="fileChang($event)"
+              />
+              <label class="custom-file-label" for="inputGroupFile01"
+                >Choisi une image</label
+              >
+            </div>
+           
+          </div>
+          <button type="submit" class="bt">Ajouter</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            fermer
+          </button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

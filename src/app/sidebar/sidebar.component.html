@@ -64,13 +64,13 @@
         </div>
 
         <div class="nav-item mb-3">
-          <a class="nav-link" href="/utilisateur" [routerLinkActive]="'active'">
+          <a class="nav-link"  routerLink="/sidebar/utilisateur" [routerLinkActive]="'active'">
             <i class="bi bi-person"></i
             ><span class="ms-1 d-sm-inline light px-3">Utilisateur</span>
           </a>
         </div>
         <div class="nav-item mb-3 " >
-          <a class="nav-link" href="/boutique" [routerLinkActive]="'active'">
+          <a class="nav-link" routerLink="/sidebar/dashboard/boutique" [routerLinkActive]="'active'">
             <i class="bi bi-shop-window"></i>
             <span class="ms-1 d-sm-inline light px-3">Boutique</span>
           </a>
@@ -87,9 +87,10 @@
         </div>
 
         <div class="nav-item mt-5">
-          <a class="nav-link mx-auto d-block" type="submit">
-            <i class="bi bi-box-arrow-right"></i
-            ><span class="ms-1 d-sm-inline light px-3">Deconnexion</span>
+          <a class="nav-link mx-auto d-block" type="submit" routerLink="/inscription"
+          [routerLinkActive]="'active'"> 
+            <i class="bi bi-box-arrow-right" ></i
+            ><span class="ms-1 d-sm-inline light ">Deconnexion</span>
           </a>
         </div>
       </div>
@@ -118,7 +119,7 @@
 
           <i class="fa-regular fas-envelope"></i>
 
-          <form class="d-none d-md-flex ms-4">
+          <form class="d-none d-md-flex ms-4 search">
             <input
               class="form-control border-0"
               type="search"
@@ -127,7 +128,7 @@
             />
             <i class="bx bx-search icon" style="font-size: 35px"></i>
           </form>
-          <div class="row d-flex w-70">
+          <div class="row  notif">
             <div class="col-6 col-md-6">
               <button type="button" class="btn-primary position-relative">
                 <i class="bi bi-envelope"></i>
@@ -198,17 +199,18 @@
             >
               <i class="fas fa-sign-in-alt me-2"></i>Connexion
             </button>
+            
           </form>
           <ul class="navbar-nav " *ngIf="isLoggedIn">
             <div class="row">
-              <div class="col-6 col-md-6">
+              <div class="col-6 col-md-6 u">
                 <li class="nav-item">
                   <a href="/profile" class="nav-link" routerLink="profile">{{
                     username
                   }}</a>
                 </li>
               </div>
-              <div class="col-6 col-md-6">
+              <div class="col-6 col-md-6 Deconnecter">
               <li class="nav-item">
                 <a href class="nav-link" (click)="logout()">Deconnecter</a>
               </li>

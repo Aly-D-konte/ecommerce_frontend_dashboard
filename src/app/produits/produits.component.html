@@ -88,7 +88,7 @@
         </div>
     </div>
 </div> -->
-<div class="contaire-fluid ici" style="overflow: scroll; overflow-x: hidden">
+<div class="contaire-fluid ici "  style="overflow: scroll; overflow-x: hidden" >
   <div class="entete mb-2 mt-3">
     <div class="header ">
       <h3>Les produits</h3>
@@ -107,6 +107,11 @@
       
       </div>
   </div>
+  <style>
+    .ici::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 
   <div class="row">
     <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor ="let prod of produits">

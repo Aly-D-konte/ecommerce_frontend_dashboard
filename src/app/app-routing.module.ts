@@ -8,6 +8,7 @@ import { ProfileComponent } from './Compte/profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProduitsComponent } from './produits/produits.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 
 const routes: Routes = [
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       {path: 'produit', component: ProduitsComponent},
       {path: 'commande', component: CommandeComponent},
       {path: 'profile', component: ProfileComponent},
+      {path: 'utilisateur', component: UtilisateursComponent},
 
     ]}
 

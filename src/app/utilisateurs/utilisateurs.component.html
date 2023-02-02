@@ -1,1 +1,50 @@
-<p>utilisateurs works!</p>
+
+<div class="table-responsive ra py-5">
+    <div class="bt">
+      <div class="titre">
+        <h3>Les utilisateurs</h3>
+    
+      </div>
+      <!-- <div class="ajout pt-4">
+        <a
+          data-bs-toggle="modal"
+          href="#exampleModal"
+          data-bs-whatever="@getbootstrap"
+          class="btntu"
+          >Nouveau utilisateur</a
+        >
+      </div> -->
+    </div>
+<table class="table" id="season-tble">
+    <thead>
+      <tr>
+        <th >Nom</th>
+        <th >Prénom</th>
+        <th >Email</th>
+        <th >Numéro</th>
+        <th >Genre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      
+      <tr *ngFor="let use of user">
+        
+        <td >{{use.nom}}</td>
+        <td >{{use.prenom}}</td>
+        <td>{{use.email}}</td>
+        <td>{{use.numero}}</td>
+        <td>{{use.genre}}</td>
+
+        <td>
+          <i class="bi bi-pencil-square i" [routerLink]=""></i>&nbsp; &nbsp;
+          &nbsp; <button><i class="bi bi-trash-fill i"></i></button>
+        </td>
+      </tr>
+      <!-- (click)="supprimer(user)" -->
+    </tbody>
+  </table>
+  <!-- <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls> -->
+  <!-- <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Précédent" nexLabel="Suivant"> </pagination-controls> -->
+</div>
