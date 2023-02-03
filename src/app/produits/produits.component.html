@@ -1,99 +1,13 @@
-<!-- 
-
-<div class="container">
-<div class="row">
-    <div class="input-group">
-        <div class="form-outline">
-          <input type="search" id="form1" class="form-control" />
-          <label class="form-label" for="form1">Search</label>
-        </div>
-        <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button>
+<div
+  class="container-fluid h-100 ici"
+  style="overflow: scroll; overflow-x: hidden"
+>
+  <div class="contaire-fluid ici" style="margin-bottom: 20vh !important;">
+    <div class="entete mb-2 mt-3">
+      <div class="header">
+        <h3>Les produits</h3>
       </div>
-</div>
-   
-    <div class="row">
-        <div class="col-6 col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-        </div>
-    </div>
-</div> -->
-<div class="contaire-fluid ici "  style="overflow: scroll; overflow-x: hidden" >
-  <div class="entete mb-2 mt-3">
-    <div class="header ">
-      <h3>Les produits</h3>
-    </div>
-    
+
       <div class="bt mb-3">
         <div class="ajout">
           <a
@@ -104,267 +18,260 @@
             >Nouvelle produit</a
           >
         </div>
-      
       </div>
+    </div>
+    <style>
+      .ici::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+
+    <div class="row">
+      <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor="let prod of produits">
+        <div class="card milieu">
+          <div class="image">
+            <img
+              style="width: 60%; margin-left: 50px"
+              src="{{ prod.image }}"
+              alt="Image produit"
+            />
+          </div>
+          <div class="card-body">
+            <h2 class="h3 card-title text-center pt-5">{{ prod.nom }}</h2>
+            <!-- <p class="card-text">{{prod.description.slice(0.25)}}</p> -->
+            <div class="row">
+              <div class="icon">
+                <div class="modifier">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </div>
+                <div class="supprimer">
+                  <i class="fa-solid fa-trash-can"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
   <style>
     .ici::-webkit-scrollbar {
       display: none;
     }
   </style>
-
-  <div class="row">
-    <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor ="let prod of produits">
-      <div class="card milieu">
-        <div class="image">
-          <img   style=
-          "
-          width: 60%;
-         margin-left: 50px;
-         
-          "
-            src="{{prod.image}}" alt="Image produit">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un produit</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-        <div class="card-body">
-          <h2 class="h3 card-title text-center pt-5">{{prod.nom}}</h2>
-          <!-- <p class="card-text">{{prod.description.slice(0.25)}}</p> -->
-          <div class="row ">
-            <div class="icon">
-              <div class="modifier">
-                <i class="fa-regular fa-pen-to-square"></i>
-            
-              </div>
-              <div class="supprimer">
-                <i class="fa-solid fa-trash-can"></i>
-            
-              </div>
-            </div>
-            
-            
-          </div>
-       </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<style>
-  .ici::-webkit-scrollbar {
-    display: none;
-  }
-</style>
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter un produit</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form
-          *ngIf="!isLoggedIn"
-          name="form"
-          (ngSubmit)="f.form.valid && AjouterProduit()"
-          #f="ngForm"
-          novalidate
-        >
-          <div class="row justify-content-between text-left mb-3">
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">Nom :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="nom"
-                name="produits.nom"
-                [(ngModel)]="produits.nom"
-                required
-                #nom="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && produits.errors }"
-              />
-              <div *ngIf="nom.errors && f.submitted" class="invalid-feedback">
-                Le nom du produit est obligatoire
-              </div>
-            </div>
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">Description :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="description"
-                name="produits.description"
-                [(ngModel)]="produits.description"
-                required
-                #description="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && description.errors }"
-              />
-              <div
-                *ngIf="description.errors && f.submitted"
-                class="invalid-feedback"
-              >
-                La description de la boutique est obligatoire
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-between text-left mb-3">
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">Marque :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="marque"
-                name="produits.marque"
-                [(ngModel)]="produits.marque"
-                required
-                #marque="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && marque.errors }"
-              />
-              <div
-                *ngIf="marque.errors && f.submitted"
-                class="invalid-feedback"
-              >
-                La marque est obligatoire
-              </div>
-            </div>
-          
-
-          </div>
-         
-          <div class="row justify-content-between text-left mb-3">
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">Model :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="model"
-                name="produits.model"
-                [(ngModel)]="produits.model"
-                required
-                #model="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && model.errors }"
-              />
-              <div
-                *ngIf="model.errors && f.submitted"
-                class="invalid-feedback"
-              >
-                Le model du produit est obligatoire
-              </div>
-            </div>
+        <div class="modal-body">
+          <form
+            *ngIf="!isLoggedIn"
+            name="form"
+            (ngSubmit)="f.form.valid && AjouterProduit()"
+            #f="ngForm"
+            novalidate
+          >
             <div class="row justify-content-between text-left mb-3">
               <div class="form-group col-sm-6 flex-column d-flex">
-                <label class="col-form-label">Categorie_id :</label>
+                <label class="col-form-label">Nom :</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="Categorie_id"
-                  name="produits.Categorie_id"
-                  [(ngModel)]="produits.Categorie_id"
+                  id="nom"
+                  name="produits.nom"
+                  [(ngModel)]="produits.nom"
                   required
-                  #Categorie_id="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && Categorie_id.errors }"
+                  #nom="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && produits.errors }"
+                />
+                <div *ngIf="nom.errors && f.submitted" class="invalid-feedback">
+                  Le nom du produit est obligatoire
+                </div>
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Description :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  name="produits.description"
+                  [(ngModel)]="produits.description"
+                  required
+                  #description="ngModel"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && description.errors
+                  }"
                 />
                 <div
-                  *ngIf="Categorie_id.errors && f.submitted"
+                  *ngIf="description.errors && f.submitted"
                   class="invalid-feedback"
                 >
-                  L'id de la categorie du produit est obligatoire
+                  La description de la boutique est obligatoire
                 </div>
               </div>
             </div>
 
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">Capacité :</label>
-              <input
-                type="number"
-                class="form-control"
-                id="capacite"
-                name="produits.capacite"
-                [(ngModel)]="produits.capacite"
-                required
-                #capacite="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && capacite.errors }"
-              />
-              <div
-                *ngIf="capacite.errors && f.submitted"
-                class="invalid-feedback"
-              >
-                La capacité de la du produit est obligatoire
+            <div class="row justify-content-between text-left mb-3">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Marque :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="marque"
+                  name="produits.marque"
+                  [(ngModel)]="produits.marque"
+                  required
+                  #marque="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && marque.errors }"
+                />
+                <div
+                  *ngIf="marque.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  La marque est obligatoire
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row justify-content-between text-left mb-3">
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">Quantite_disponible :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="quantite_disponible"
-                name="produits.quantite_disponible"
-                [(ngModel)]="produits.quantite_disponible"
-                required
-                #quantite_disponible="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && quantite_disponible.errors }"
-              />
-              <div
-                *ngIf="quantite_disponible.errors && f.submitted"
-                class="invalid-feedback"
-              >
-                La quantite_disponible est obligatoire
-              </div>
-            </div>
-          
-          
-  
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <label class="col-form-label">boutique_id :</label>
-              <input
-                type="number"
-                class="form-control"
-                id="boutique_id"
-                name="produits.boutique_id"
-                [(ngModel)]="produits.boutique_id"
-                required
-                #boutique_id="ngModel"
-                [ngClass]="{ 'is-invalid': f.submitted && boutique_id.errors }"
-              />
-              <div
-                *ngIf="boutique_id.errors && f.submitted"
-                class="invalid-feedback"
-              >
-                L'id de la boutique est obligatoire
-              </div>
-            </div>
-          </div>
 
+            <div class="row justify-content-between text-left mb-3">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Model :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="model"
+                  name="produits.model"
+                  [(ngModel)]="produits.model"
+                  required
+                  #model="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && model.errors }"
+                />
+                <div
+                  *ngIf="model.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  Le model du produit est obligatoire
+                </div>
+              </div>
+              <div class="row justify-content-between text-left mb-3">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="col-form-label">Categorie_id :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Categorie_id"
+                    name="produits.Categorie_id"
+                    [(ngModel)]="produits.Categorie_id"
+                    required
+                    #Categorie_id="ngModel"
+                    [ngClass]="{
+                      'is-invalid': f.submitted && Categorie_id.errors
+                    }"
+                  />
+                  <div
+                    *ngIf="Categorie_id.errors && f.submitted"
+                    class="invalid-feedback"
+                  >
+                    L'id de la categorie du produit est obligatoire
+                  </div>
+                </div>
+              </div>
 
-          <div class="row justify-content-between text-left mb-2">
-             
-       
-            <div class="form-group col-sm-6 flex-column d-flex">
-              <input
-                type="file"
-                class="custom-file-input"
-                id="inputGroupFile01"
-                aria-describedby="inputGroupFileAddon01"
-                
-                (change)="fileChang($event)"
-              />
-              <label class="custom-file-label" for="inputGroupFile01"
-                >Choisi une image</label
-              >
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Capacité :</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="capacite"
+                  name="produits.capacite"
+                  [(ngModel)]="produits.capacite"
+                  required
+                  #capacite="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && capacite.errors }"
+                />
+                <div
+                  *ngIf="capacite.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  La capacité de la du produit est obligatoire
+                </div>
+              </div>
             </div>
-            <!-- <div class="form-group col-sm-6 flex-column d-flex">
+            <div class="row justify-content-between text-left mb-3">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Quantite_disponible :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="quantite_disponible"
+                  name="produits.quantite_disponible"
+                  [(ngModel)]="produits.quantite_disponible"
+                  required
+                  #quantite_disponible="ngModel"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && quantite_disponible.errors
+                  }"
+                />
+                <div
+                  *ngIf="quantite_disponible.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  La quantite_disponible est obligatoire
+                </div>
+              </div>
+
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">boutique_id :</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="boutique_id"
+                  name="produits.boutique_id"
+                  [(ngModel)]="produits.boutique_id"
+                  required
+                  #boutique_id="ngModel"
+                  [ngClass]="{
+                    'is-invalid': f.submitted && boutique_id.errors
+                  }"
+                />
+                <div
+                  *ngIf="boutique_id.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  L'id de la boutique est obligatoire
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left mb-2">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                  (change)="fileChang($event)"
+                />
+                <label class="custom-file-label" for="inputGroupFile01"
+                  >Choisi une image</label
+                >
+              </div>
+              <!-- <div class="form-group col-sm-6 flex-column d-flex">
 
 
               <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="etat">
@@ -375,16 +282,17 @@
               </select>
                 </div>
           </div> -->
-          <button type="submit" class="bt">Ajouter</button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            fermer
-          </button>
-          </div>
-        </form>
+              <button type="submit" class="bt">Ajouter</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                fermer
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
