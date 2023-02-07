@@ -28,6 +28,7 @@ export class ConnexionComponent implements OnInit {
         this.isLoggedIn = true;
        // this.roles = this.storageService.getUser().roles;
         this.usernameOrEmail = this.storageService.getUser().username;
+        this.route.navigateByUrl("sidebar/dashboard")
        
       }
     }
@@ -45,17 +46,17 @@ export class ConnexionComponent implements OnInit {
           
       
         // this.route.navigateByUrl("sidebar/dashboard")
-        this.route.navigate(['/sidebar/dashboard']).then(()=>{
-          setTimeout(() => {
-            location.reload();
-          }, 100);
-        });
+        // this.route.navigate(['/sidebar/dashboard']).then(()=>{
+        //   setTimeout(() => {
+        //     location.reload();
+        //   }, 100);
+        // });
         this.roles = this.storageService.getUser().roles;
     
-      // this.route.navigateByUrl("sidebar/dashboard")
+       this.route.navigateByUrl("/sidebar/dashboard")
 
         //  this.roles = this.storageService.getUser().roles;
-        //  this.reloadPage();
+         // this.reloadPage();
         },
         error: err => {
           this.errorMessage = err.error.message;

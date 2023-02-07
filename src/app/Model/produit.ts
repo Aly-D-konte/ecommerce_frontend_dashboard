@@ -11,7 +11,7 @@ export class Produit {
     prix?: number;
     modele?: string;
     capacite?: string;
-    quantite_disponible?: number;
+    quantite_disponible: number | undefined;
     type?: string;
     boutique_id ?: Boutiques;
     user_id?: User;

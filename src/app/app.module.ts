@@ -18,7 +18,10 @@ import { ProduitsComponent } from './produits/produits.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
-
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,13 @@ import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     
-
+    JwtModule.forRoot({
+      config: {
+       tokenGetter: tokenGetter,
+      allowedDomains: ["localhost:4200"]
+      },
+    }),
+    
 
   ],
   providers: [],

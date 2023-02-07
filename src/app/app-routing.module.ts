@@ -7,6 +7,7 @@ import { InscriptionComponent } from './Compte/inscription/inscription.component
 import { ProfileComponent } from './Compte/profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProduitsComponent } from './produits/produits.component';
+import { AuthGuardService } from './Services/auth-guard.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 
@@ -19,10 +20,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {path: 'inscription', component: InscriptionComponent},
+
   {
     
     path: "sidebar",
-    component: SidebarComponent,
+    component: SidebarComponent, canActivate: [AuthGuardService],
     children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'categorie', component: CategorieComponent},
@@ -37,6 +39,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuardService]
 })
 export class AppRoutingModule { }

@@ -44,8 +44,9 @@ export class ProduitsComponent implements OnInit {
     //Affichage des toutes les boutique
 
     this.produitService.AffichageProduit().subscribe(data=>{
-      //console.log("La liste de produits")
       this.produits = data 
+      console.log("La liste de produits" + this.produits.quantite_disponible)
+
     })
 
 
