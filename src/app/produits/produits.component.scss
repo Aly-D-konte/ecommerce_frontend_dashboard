@@ -43,3 +43,10 @@
   font-size: 20px;
   color: #E38800;
 }
+.mesbtn{
+  display: flex;
+grid-template-columns: auto auto;
+justify-content: space-between;
+
+
+}

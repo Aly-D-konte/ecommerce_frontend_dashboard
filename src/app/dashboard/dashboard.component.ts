@@ -11,10 +11,12 @@ import * as Chart from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  templateUrl: './dashboard.component.html' ,
   styleUrls: ['./dashboard.component.scss'],
+ 
 })
 export class DashboardComponent implements OnInit {
+  
   jaimes: any;
   afficherBoutique: any;
   // form: FormGroup;
@@ -26,7 +28,6 @@ export class DashboardComponent implements OnInit {
     etat: false,
     user_id: new User(),
   };
-
   isLoggedIn = false;
   isLoginFailed = false;
   message?: string;
@@ -48,11 +49,15 @@ export class DashboardComponent implements OnInit {
 
   basicOptions: any;
   formmodule!: FormGroup;
-
+  idboutique: any
   aly=12;
    mali=13
   file: any;
   user: any;
+  modifierBoutiquenId: any;
+  affich: any;
+  nom: any;
+  etatchange: any;
   constructor(
     private fb: FormBuilder,
     private boutiqueservice: BoutiquesService,
@@ -118,6 +123,24 @@ PieChart(){
   });
 }
   ngOnInit(): void {
+
+  this.idboutique = this.route.snapshot.params['idboutique'];
+    const moi=1;
+    console.log("mon id =========================",this.idboutique)
+    this.boutiqueservice.AfficheBoutiqueParId(this.idboutique).subscribe(data=>{
+      
+      this.affich = data;
+
+     // this.nom=data.nom;
+      console.log("id de la boutique" + JSON.stringify( this.affich.nom));
+
+      // this.boutiqueservice.changeEtat(this.idboutique, this.etat.etat).subscribe(data=>{
+      //   console.log('est ce que ça marche ' + data)
+      //   this.etat = data;
+      //   console.log('est ce que ça marche ' + this.etat)
+      // })
+    })
+ 
   
     //
     // this.boutiqueservice.ajouterBout(this.boutique.nom, this.boutique.adresse, this.boutique.description, this.boutique.etat, this.boutique.user_id, this.file).subscribe(data=>{
@@ -129,6 +152,10 @@ PieChart(){
 
     this.boutiqueservice.getAll().subscribe((data) => {
       this.afficherBoutique = data;
+      for(let bt of this.afficherBoutique)
+      {
+        this.modifierBoutiquenId = bt.id
+      }
       console.log('Afficher la  ' + this.afficherBoutique);
     });
     //liste des utilisateurs
@@ -199,5 +226,61 @@ PieChart(){
       });
   }
 
-  //listes de boutiques
+
+
+  ///MOdificationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+  
+  modifierBoutique() {
+   
+    // console.log("azetyrut" +id);
+
+
+    this.boutiqueservice
+      .modifierBoutique(this.idboutique,
+        this.boutique.nom,
+        this.boutique.adresse,
+        this.boutique.description,
+        this.boutique.etat,
+        this.boutique.user_id,
+        this.file
+      )
+      .subscribe((data) => {
+        this.boutique = this.formmodule.value;
+        this.afficherBoutique = data;
+        Swal.fire({
+          heightAuto: false,
+          // position: 'top-end',
+          icon: 'success',
+          text: 'Boutique modifiée avec succès',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        // this.routes.navigateByUrl("/sidebar/dashboard")
+        // La methode permettra d'actualiser la page apres l'ajout
+        window.location.reload();
+
+        //finnnnnnnnnnnnnnnnnnnnnnnnnnn
+        this.formmodule.reset();
+        this.message = ' Boutique modifiée avec succès';
+        this.contenu = data.contenu;
+      });
+  }
+
+  //Modifier etat
+
+  ChangeEtat(idboutique:number,etat:boolean){
+    console.log(idboutique + "boutique donnée")
+    console.log(etat + "etat donné")
+    this.boutiqueservice.changeEtat(idboutique, etat).subscribe(data=>{
+      console.log('est ce que ça marche ' + data)
+      this.etatchange = data
+      console.log(data + "etat donné")
+      this.reloadPage();    
+    })
+  }
+  
+  reloadPage(): void {
+    window.location.reload();
+  // this.route.navigateByUrl("/sidebar/w")
+   }
 }

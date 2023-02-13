@@ -8,8 +8,14 @@
     background-color: #E38800;
     text-decoration: none;
     color: white;
+    box-shadow: 1px 1px 10px #E38800 ;
+    
+
 
      
+  }
+  .textcard{
+    color: white;
   }
  
 
@@ -17,6 +23,7 @@
     vertical-align: inherit;
     font-size: 2rem;
     font-weight: lighter;
+    color: white;
   }
   .haut{
     display: flex;
@@ -38,6 +45,7 @@
 .icon{
     margin-left: 160px;
     font-size: 30px;
+    color: white;
 }
 
 .checked {
@@ -49,7 +57,7 @@
   background-color: #E38800;
   text-decoration: none;
 }
-.lien{
+.lien, .modifi {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -71,8 +79,27 @@ h4{
 }
 .text{
   font-size: 12px;
+  
 }
 .etat{
   margin-left: 80%;
-  background-color:#E38800;
+  color:#E38800;
+}
+.modifi{
+  margin-bottom: 30px;
+}
+
+.change{
+  font-size: 15px;
+  text-decoration: none;
+  border: none;
+  box-shadow: #84BD24;
+  height: 25px;
+  color: #84BD24;
+  text-align: center;
+}
+.changeEtat{
+  display: flex;
+  justify-content: space-around ;
+
 }

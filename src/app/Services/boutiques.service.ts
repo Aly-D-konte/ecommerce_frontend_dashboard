@@ -56,4 +56,43 @@ jaime ='http://localhost:8080/jaime/ajouter'
         nombreBoutique(id : number):Observable<any>{
           return this.http.get(`${this.url}/${id}`)
         }
+
+        //la partie modification d'une boutique
+
+        modifierBoutique(id:number, nom:any, description :any, adresse: any, etat:any, user_id:any,  file :any): Observable<any>{
+          console.log("nom : " + nom + "etat :" + etat    + "description: " + description)
+              const data = new FormData()
+              //data.append('id', id);
+              data.append('nom', nom );
+              data.append('description', description );
+              data.append('adresse', adresse );
+              data.append('etat', etat );
+              data.append('file', file );
+              data.append('user_id', user_id );
+              console.log(file)
+              
+              return this.http.put<any>(`http://localhost:8080/api/boutique/modifier/${id}`, data)
+            }
+
+//Suppression
+
+suprimerBoutique(id: any): Observable<any> {
+  return this.http.delete(`http://localhost:8080/api/boutique/supprimer/${id}`);
+}
+
+//Affichage par ID
+
+AfficheBoutiqueParId(id: number){
+  return this.http.get(`http://localhost:8080/api/boutique/${id}`)
+}
+
+//Changer l'etat boutique
+
+changeEtat(id: number, etat: boolean) {
+  // const data = new FormData();
+  // data.append('etat', etat);
+
+  return this.http.patch(`http://localhost:8080/api/boutique/etat/${id}`, {etat});
+}
+        
 }

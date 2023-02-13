@@ -37,4 +37,15 @@ export class ProduitService {
     
     return this.http.post<any>(`${this.url}/ajouter` ,data)
   }
+
+
+
+  modifier(id: any, data: any): Observable<any> {
+    return this.http.put(`${this.url}/modifier/${id}`, data);
+  }
+  //Suppression
+
+  Supprimer(id: any): Observable<any> {
+    return this.http.delete(`${this.url}/supprimer/${id}`);
+  }
 }

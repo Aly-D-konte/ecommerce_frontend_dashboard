@@ -49,7 +49,7 @@
                   <i class="fa-regular fa-pen-to-square"></i>
                 </div>
                 <div class="supprimer">
-                  <i class="fa-solid fa-trash-can"></i>
+                  <i class="fa-solid fa-trash-can "  (click)="supprimerProduit()"></i>
                 </div>
               </div>
             </div>
@@ -131,97 +131,113 @@
               </div>
             </div>
 
-            <div class="row justify-content-between text-left mb-3">
-              <div class="form-group col-sm-6 flex-column d-flex">
-                <label class="col-form-label">Marque :</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="marque"
-                  name="produits.marque"
-                  [(ngModel)]="produits.marque"
-                  required
-                  #marque="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && marque.errors }"
-                />
-                <div
-                  *ngIf="marque.errors && f.submitted"
-                  class="invalid-feedback"
-                >
-                  La marque est obligatoire
-                </div>
-              </div>
-            </div>
 
             <div class="row justify-content-between text-left mb-3">
               <div class="form-group col-sm-6 flex-column d-flex">
-                <label class="col-form-label">Model :</label>
+                <label class="col-form-label">Prix :</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="prix"
+                  min="0"
+                  name="produits.prix"
+                  [(ngModel)]="produits.prix"
+                  required
+                  #prix="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && prix.errors }"
+                />
+                <div
+                  *ngIf="prix.errors && f.submitted"
+                  class="invalid-feedback"
+                >
+                  La prix est obligatoire
+                </div>
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="col-form-label">Type :</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="model"
-                  name="produits.model"
-                  [(ngModel)]="produits.model"
+                  id="type"
+                  name="produits.type"
+                  [(ngModel)]="produits.type"
                   required
-                  #model="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && model.errors }"
+                  #type="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && type.errors }"
                 />
                 <div
-                  *ngIf="model.errors && f.submitted"
+                  *ngIf="type.errors && f.submitted"
                   class="invalid-feedback"
                 >
-                  Le model du produit est obligatoire
+                  Le type du produit est obligatoire
                 </div>
               </div>
+         
+
               <div class="row justify-content-between text-left mb-3">
-                <div class="form-group col-sm-6 flex-column d-flex">
+                 <!-- <div class="form-group col-sm-6 flex-column d-flex">
+
+
+              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="etat">
+                <label for="etat">--Etat--</label>
+              
+                <option value="0">false</option>
+                <option value="1">true</option>
+              </select>
+                </div>
+          </div> -->
+                <!-- <div class="form-group col-sm-6 flex-column d-flex">
                   <label class="col-form-label">Categorie_id :</label>
                   <input
                     type="text"
+                    min="0"
                     class="form-control"
-                    id="Categorie_id"
-                    name="produits.Categorie_id"
-                    [(ngModel)]="produits.Categorie_id"
+                    id="categorie_id"
+                    name="produits.categorie_id"
+                    [(ngModel)]="produits.categorie_id"
                     required
-                    #Categorie_id="ngModel"
+                    #categorie_id="ngModel"
                     [ngClass]="{
-                      'is-invalid': f.submitted && Categorie_id.errors
+                      'is-invalid': f.submitted && categorie_id.errors
                     }"
                   />
                   <div
-                    *ngIf="Categorie_id.errors && f.submitted"
+                    *ngIf="categorie_id.errors && f.submitted"
                     class="invalid-feedback"
                   >
                     L'id de la categorie du produit est obligatoire
                   </div>
+                </div> -->
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="col-form-label">Capacité :</label>
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="capacite"
+                    name="produits.capacite"
+                    [(ngModel)]="produits.capacite"
+                    required
+                    #capacite="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && capacite.errors }"
+                  />
+                  <div
+                    *ngIf="capacite.errors && f.submitted"
+                    class="invalid-feedback"
+                  >
+                    La capacité de la du produit est obligatoire
+                  </div>
                 </div>
               </div>
-
-              <div class="form-group col-sm-6 flex-column d-flex">
-                <label class="col-form-label">Capacité :</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="capacite"
-                  name="produits.capacite"
-                  [(ngModel)]="produits.capacite"
-                  required
-                  #capacite="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && capacite.errors }"
-                />
-                <div
-                  *ngIf="capacite.errors && f.submitted"
-                  class="invalid-feedback"
-                >
-                  La capacité de la du produit est obligatoire
-                </div>
-              </div>
+  
+             
             </div>
             <div class="row justify-content-between text-left mb-3">
               <div class="form-group col-sm-6 flex-column d-flex">
                 <label class="col-form-label">Quantite_disponible :</label>
                 <input
-                  type="text"
+                  type="number"
+                  min="0"
                   class="form-control"
                   id="quantite_disponible"
                   name="produits.quantite_disponible"
@@ -244,6 +260,7 @@
                 <label class="col-form-label">boutique_id :</label>
                 <input
                   type="number"
+                  min="0"
                   class="form-control"
                   id="boutique_id"
                   name="produits.boutique_id"
@@ -287,14 +304,23 @@
               </select>
                 </div>
           </div> -->
+          <div class="mesbtn">
+            <div class="ajout">
               <button type="submit" class="bt">Ajouter</button>
+
+            </div>
+            <div class="fermer">
               <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                fermer
-              </button>
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Annuller
+            </button>
+            </div>
+           
+          </div>
+             
             </div>
           </form>
         </div>

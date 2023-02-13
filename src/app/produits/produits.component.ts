@@ -82,4 +82,11 @@ export class ProduitsComponent implements OnInit {
   }  )
 
 }
+
+//Suppression
+supprimerProduit(): void{
+  this.produitService.Supprimer(this.produit.id).subscribe(data=>{
+    this.produit = data;
+  })
+}
 }

@@ -90,7 +90,7 @@
           <a class="nav-link mx-auto d-block" type="submit" routerLink="/inscription"
           [routerLinkActive]="'active'"> 
             <i class="bi bi-box-arrow-right" ></i
-            ><span class="ms-1 d-sm-inline light ">Deconnexion</span>
+            ><span class="ms-1 d-sm-inline light " (click)="logout()">Deconnexion</span>
           </a>
         </div>
       </div>
@@ -128,7 +128,7 @@
             />
             <i class="bx bx-search icon" style="font-size: 35px"></i>
           </form>
-          <div class="row  notif">
+            <!-- <div class="row  notif">
             <div class="col-6 col-md-6">
               <button type="button" class="btn-primary position-relative">
                 <i class="bi bi-envelope"></i>
@@ -150,8 +150,7 @@
                 </span>
               </button>
             </div>
-          </div>
-          
+          </div>  -->
 
           <!-- <li class="nav-item ">
                    <span>Aly</span> <i class="bi bi-person user"></i> 
@@ -210,11 +209,11 @@
                   }}</a>
                 </li>
               </div>
-              <div class="col-6 col-md-6 Deconnecter">
+              <!-- <div class="col-6 col-md-6 Deconnecter">
               <li class="nav-item">
                 <a href class="nav-link" (click)="logout()">Deconnecter</a>
               </li>
-              </div>
+              </div> -->
             </div>
           
           </ul>
