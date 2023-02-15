@@ -16,6 +16,11 @@ export class ProduitService {
     return this.http.get<Produit[]>(`${this.url}/liste`);
   }
 
+
+
+  AjouterProduit(formData: FormData) {
+    return this.http.post(`${this.url}/ajouter`, formData);
+  }
   
   //La mthode permettant d'ajouter un produit
 
@@ -38,6 +43,7 @@ export class ProduitService {
     return this.http.post<any>(`${this.url}/ajouter` ,data)
   }
 
+  
 
 
   modifier(id: any, data: any): Observable<any> {

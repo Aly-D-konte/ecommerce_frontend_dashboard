@@ -17,6 +17,11 @@ jaime ='http://localhost:8080/jaime/ajouter'
     return this.http.get<Boutiques[]>(`http://localhost:8080/api/boutique/liste`);
   }
 
+  
+  getAll1(): Observable<any> {
+    return this.http.get<any>(`http://localhost:8080/api/boutique/liste`);
+  }
+
     //methode permettant d'ajouter une boutique
     ajouterBoutique(nom:any, description :any, adresse: any, etat:any, user_id:any,  file :any): Observable<any>{
       console.log("nom : " + nom + "etat :" + etat    + "description: " + description)

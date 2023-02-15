@@ -20,8 +20,9 @@ export class DashboardComponent implements OnInit {
   jaimes: any;
   afficherBoutique: any;
   // form: FormGroup;
-
+noms:any;
   boutique: Boutiques = {
+    
     nom: '',
     description: '',
     adresse: '',
@@ -230,16 +231,20 @@ PieChart(){
 
   ///MOdificationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
   
-  modifierBoutique() {
+  modifierBoutique(idboutique:any) {
    
     // console.log("azetyrut" +id);
 
+console.log("nom :"+ this.boutique.nom)
+console.log("adresse :"+ this.boutique.adresse)
+console.log("adresse :"+ this.boutique.adresse)
+console.log("etat :"+ this.boutique.etat)
 
     this.boutiqueservice
-      .modifierBoutique(this.idboutique,
+      .modifierBoutique(idboutique,
         this.boutique.nom,
         this.boutique.adresse,
-        this.boutique.description,
+        this.boutique.adresse,
         this.boutique.etat,
         this.boutique.user_id,
         this.file
@@ -278,9 +283,60 @@ PieChart(){
       this.reloadPage();    
     })
   }
-  
+
   reloadPage(): void {
     window.location.reload();
   // this.route.navigateByUrl("/sidebar/w")
    }
+
+  //  +++++++++++++++++++++++++++++++++++
+
+  modifierBout(idboutique:any){
+        alert("Je suis ID "+ idboutique)
+      this.boutiqueservice.AfficheBoutiqueParId(idboutique).subscribe(data=>{
+      
+        this.affich = data;
+
+        console.log("je boutique "+this.affich.nom)
+      })
+  }
+
+
+
+
+
+
+
+//================================================ suprimer ===================
+
+openModal(nom : any, id : number) {
+  Swal.fire({
+    title: nom,
+    text: "Commfirmer la suppression ?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText : "NON",
+    confirmButtonText: 'OUI'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //suppp
+      this.boutiqueservice.suprimerBoutique(id).subscribe(() => {});
+      console.log(id)
+      Swal.fire({
+        title: 'Supprimer  avec succès',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      });
+      window.location.reload()
+
+
+    }
+  });
+}
+
+
 }

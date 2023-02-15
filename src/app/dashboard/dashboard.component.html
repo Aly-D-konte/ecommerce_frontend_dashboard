@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-12 col-md-12">
       <section class="row gy-3 py-3 set">
-        <div class="col-6 col-md-3 pt-3">
+        <div class="col-6 col-md-6 pt-3">
           <div class="card bg">
             <div class="haut">
-              <p class="pcard">{{ afficherBoutique.length }}</p>
+              <p *ngIf="afficherBoutique && afficherBoutique.length" class="pcard">{{afficherBoutique.length }}</p>
 
               <div class="icon">
                 <i class="bi bi-shop-window"></i>
@@ -28,7 +28,7 @@
             <p class="textcard">Totals revenus(annuel)</p>
           </div>
         </div> -->
-        <div class="col-6 col-md-3 pt-3">
+        <div class="col-6 col-md-6 pt-3">
           <div class="card user">
             <div class="haut">
               <p class="pcard">{{ user.length }}</p>
@@ -78,17 +78,22 @@
   Les differentes boutiques 
 </div>
 
+
+
+
     <div class=" pt-4" id="boutique">
+    <button class="btntu">
       <a
-        data-bs-toggle="modal"
-        href="#exampleModal"
-        data-bs-whatever="@getbootstrap"
-        class="btntu" 
-        >
-          <i class="fa-solid fa-plus"></i>
-          Ajouter une boutique
-       </a
+      data-bs-toggle="modal"
+      href="#exampleModal"
+      data-bs-whatever="@getbootstrap"
+      class="lien"
       >
+        <i class="fa-solid fa-plus"></i>
+        Ajouter une boutique
+     </a
+    >
+    </button>
     </div>
     <!-- <form (ngSubmit)="ChangeEtat()">
       <select name="etat" id="etat"  [(ngModel)]="etatchange">
@@ -128,7 +133,7 @@
     }
   </style>
 
-  <div class="row pt-3" id="#boutique">
+  <!-- <div class="row pt-3" id="#boutique">
     <div
       class="col-12 col-md-6 col-lg-3 cad"
       *ngFor="let boutique of afficherBoutique"
@@ -142,8 +147,7 @@
           <div >
             
             <p> Etat: {{ boutique.etat }}</p>
-            <!-- <p>Eat: {{etat.etatchange}}</p> -->
-    <!--  -->
+            - <p>Eat: {{etat.etatchange}}</p> --
   
           </div>
         </div>
@@ -167,12 +171,54 @@
                 href="#modifierModal"
               ></i>
             </div>
-            <!-- <button *ngIf="boutique.etat==true" (click)="ChangeEtat(boutique.id,false)">Changer l'état</button> -->
+             <button *ngIf="boutique.etat==true" (click)="ChangeEtat(boutique.id,false)">Changer l'état</button> -
             <div class="delete"><i class="bi bi-trash-fill i"></i></div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 col-lg-3"  *ngFor="let boutique of afficherBoutique">
+          <div class="card mb-3">
+            <img src="{{ boutique.image }}" alt="Image boutique" class="card-img-top">
+            <div class="card-body">
+              <p class="text-center title">{{ boutique.nom }}</p>
+              <p class="card-text text">{{ boutique.description }}</p>
+              <div class="row">
+                <div class="col-12 col-md-6 ">
+                  <div>
+                  <p><span class="fa fa-star checked"></span></p>
+
+                  </div>
+                  
+                </div>
+                <div class="col-6 col-md-5">
+
+                  <div class="iconss align-items-center justify-content-center">
+                    <div class="d-flex">
+                      <i class="bi bi-pencil-square i" data-bs-toggle="modal" href="#modifierModal" (click)="modifierBout(boutique.id)"></i>
+                      <!-- <i class="bi bi-trash" (click)="openModal(boutique.nom, boutique.id)"></i> -->
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                <div class="changeEtat">
+                  <div class="b">
+                    <button class="change"  (click)="ChangeEtat(boutique.id,!boutique.etat)">Changer l'état</button>
+          
+                  </div>
+                  <div >
+                    
+                    <p> Etat: {{ boutique.etat}}</p>
+          
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
     <!-- Partie poup pour le formulaire de creation d'une boutique -->
 
@@ -356,7 +402,7 @@
             <form
               *ngIf="!isLoggedIn"
               name="form"
-              (ngSubmit)="f.form.valid && modifierBoutique()"
+              (ngSubmit)="f.form.valid && modifierBoutique(affich.id)"
               #f="ngForm"
               novalidate
             >
@@ -367,10 +413,13 @@
                     type="text"
                     class="form-control"
                     id="code"
-                    value="{{nom}}"
+                    [value]="affich.nom"
                     name="boutique.nom"
                     [(ngModel)]="boutique.nom"
+
+                    [(ngModel)]="affich.nom"
                     required
+
                     #nom="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
                   />
@@ -389,6 +438,8 @@
                     id="description"
                     name="boutique.description"
                     [(ngModel)]="boutique.description"
+
+                    [(ngModel)]="affich.description"
                     required
                     #description="ngModel"
                     [ngClass]="{
@@ -413,6 +464,8 @@
                     id="adresse"
                     name="boutique.adresse"
                     [(ngModel)]="boutique.adresse"
+
+                    [(ngModel)]="affich.adresse"
                     required
                     #adresse="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }"
@@ -433,6 +486,8 @@
                     id="user_id"
                     name="boutique.user_id"
                     [(ngModel)]="boutique.user_id"
+
+                    [(ngModel)]="affich.user_id"
                     required
                     #user_id="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && user_id.errors }"
@@ -464,7 +519,7 @@
                     name="etat"
                     id="sexe"
                     class="form-select form-control"
-                    [(ngModel)]="etat"
+                    [(ngModel)]="affich.etat"
                   >
                     <label for="etat">--Etat--</label>
 
@@ -488,3 +543,67 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- La partie avec 4 CARDS -->
+
+<!-- <section class="row gy-3 py-3 set">
+  <div class="col-6 col-md-3 pt-3">
+    <div class="card bg">
+      <div class="haut">
+        <p class="pcard">{{ afficherBoutique.length }}</p>
+
+        <div class="icon">
+          <i class="bi bi-shop-window"></i>
+        </div>
+      </div>
+      <p class="textcard">Totals boutiques</p>
+    </div>
+  </div>
+  < <div class="col-6 col-md-3 pt-3">
+    <div class="card bg1">
+      <div class="haut">
+        <p class="pcard">200</p>
+        <div class="icon">
+          <i class="bi bi-shop-window"></i>
+        </div>
+      </div>
+      <p class="textcard">Totals revenus(annuel)</p>
+    </div>
+  </div> --
+  <div class="col-6 col-md-3 pt-3">
+    <div class="card user">
+      <div class="haut">
+        <p class="pcard">{{ user.length }}</p>
+        <div class="icon">
+          <i class="fa-solid fa-user"></i>
+        
+        </div>
+      </div>
+      <p class="textcard">Totals utilisateurs</p>
+    </div>
+  </div>
+  <div class="col-6 col-md-3 pt-3">
+    <div class="card bg">
+      <div class="haut">
+        <p class="pcard">200</p>
+        <div class="icon">
+          <i class="bi bi-shop-window"></i>
+        </div>
+      </div>
+      <p class="textcard">Totals revenus(mensuel)</p>
+    </div>
+  </div>
+</section> -->

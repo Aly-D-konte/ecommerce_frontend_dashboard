@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
@@ -19,6 +19,8 @@ import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { CommonModule } from '@angular/common';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
@@ -44,6 +46,9 @@ export function tokenGetter() {
     HttpClientModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    CommonModule,
+    NgMultiSelectDropDownModule.forRoot(),
+
     
     JwtModule.forRoot({
       config: {
@@ -51,9 +56,12 @@ export function tokenGetter() {
       allowedDomains: ["localhost:4200"]
       },
     }),
+  ],  schemas: [NO_ERRORS_SCHEMA],
     
 
-  ],
+    
+
+  
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -13,8 +13,11 @@ export class CategorieService {
 
   constructor( private http : HttpClient) { }
 
-  AfficherCategorie(): Observable<Categorie[]>{
+  AfficherCategorie():Observable<Categorie[]>{
     return this.http.get<Categorie[]>(`${this.url}`);
+  }
+  AfficherCategorieP():Observable<any>{
+    return this.http.get(`http://localhost:8080/api/categorie/liste`);
   }
 
   //methode permettant d'ajouter une categorie

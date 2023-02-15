@@ -1,5 +1,5 @@
 <section class="vh-10" style="background-color: #D9D9D9D9;">
-    <div class="container py-3 h-100">
+    <div class="container py-1 h-80">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-12">
           <div class="card" style="border-radius: 1rem;">
@@ -20,7 +20,9 @@
                   
   
                     <h1 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Inscription</h1>
-  
+
+                    <div class="row justify-content-between text-left mb-3">
+                      <div class="form-group col-sm-6 flex-column d-flex">
                    
                     <div class="form-floating mb-3">
                       <input type="text" class="form-control" id="floatingInput"  class="form-control"
@@ -47,6 +49,8 @@
                       </div>
                     
                     </div>
+                      </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput"  class="form-control"
                             name="prenom"
@@ -71,8 +75,12 @@
                         </div>
                       
                       </div>
-                      
-                      <div class="form-floating mb-3">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left mb-3">
+                      <div class="form-group col-sm-6 flex-column d-flex">
+                       <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput"  class="form-control"
                             name="Nom"
                             [(ngModel)]="form.Nom"
@@ -95,9 +103,9 @@
                           </div>
                         </div>
                       
+                        </div>
                       </div>
-                      
-                     
+                      <div class="form-group col-sm-6 flex-column d-flex">
                       <div class="form-floating mb-3 ">
                        
                         <input type="email"  class="form-control" id="floatingInput" 
@@ -116,7 +124,11 @@
                           </div>
                         </div>
                       </div>
+                      </div>
+                    </div>
 
+                    <div class="row justify-content-between text-left mb-3">
+                      <div class="form-group col-sm-6 flex-column d-flex">
                       <div class="form-floating mb-3 ">
                        
                         <input type="email"  class="form-control" id="floatingInput" 
@@ -135,7 +147,8 @@
                           </div>
                         </div>
                       </div>
-
+                      </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
                       <div class="mb-4 col-12 col-md-6 form-row form-floating">
                         <select name="sexe" id="sexe" class="form-select form-control">
                           <option selected>--Genre--</option>
@@ -145,7 +158,8 @@
                         </select>
               
                       </div>
-
+                        </div>
+                    </div>
                       <!-- <div class="mb-3 col-12 col-md-6 form-row form-floating">
                         <select id="sexe" formControlName="libelleEntite" class="form-select form-control inputvalue"
                           [(ngModel)]="libelleEntite">
@@ -154,7 +168,8 @@
                         </select>
                         <label for="entity">Entité<span style="color: red;">*</span></label>
                       </div> -->
-                        
+                      <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-sm-6 flex-column d-flex">
                       <div class="form-floating">
                         <input type="password" class="form-control" id="floatingPassword"
                             name="password"
@@ -174,8 +189,10 @@
                         </div>
 
                       </div>
-                      <div class="form-floating mb-3 py-3">
-                        <input type="text" class="form-control" id="floatingInput"  class="form-control"
+                        </div>
+                          <div class="form-group col-sm-6 flex-column d-flex">
+                         <div class="form-floating mb-3 py-3">
+                          <input type="text" class="form-control" id="floatingInput"  class="form-control"
                             name="adresse"
                             [(ngModel)]="form.adresse"
                             required
@@ -197,6 +214,8 @@
                           </div>
                         </div>
                       
+                      </div>
+                          </div>
                       </div>
                       
                       <a class="small text-muted "   style="color: red;" href="#!">Mot de passe oublié?</a>

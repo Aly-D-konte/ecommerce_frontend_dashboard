@@ -8,17 +8,33 @@
         <h3>Les produits</h3>
       </div>
 
-      <div class="bt mb-3">
-        <div class="ajout">
+      <!-- <div class="bt mb-3">
+        <div class="btntu">
           <a
             data-bs-toggle="modal"
             href="#exampleModal"
             data-bs-whatever="@getbootstrap"
-            class="btntu"
+            class="lien"
             >Nouvelle produit</a
           >
         </div>
-      </div>
+      </div> -->
+      <div class="bt mb-3">
+        <!-- <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4" >
+          <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+          Ajouter un challenge
+        </button> -->
+        <button class="btntu">
+          <a
+          data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4"
+          class="lien"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Ajouter un produit
+         </a
+        >
+        </button>
+        </div>
     </div>
     <style>
       .ici::-webkit-scrollbar {
@@ -175,17 +191,17 @@
          
 
               <div class="row justify-content-between text-left mb-3">
-                 <!-- <div class="form-group col-sm-6 flex-column d-flex">
+                 <div class="form-group col-sm-6 flex-column d-flex">
 
 
-              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="etat">
-                <label for="etat">--Etat--</label>
+              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="idcategorie">
+                <label for="etat">--Categorie--</label>
               
-                <option value="0">false</option>
-                <option value="1">true</option>
+                <!-- <option value="{{idcategorie}}">{{idcategorie.id}}</option> -->
+                <!-- <option value="1">true</option> -->
               </select>
                 </div>
-          </div> -->
+          </div>
                 <!-- <div class="form-group col-sm-6 flex-column d-flex">
                   <label class="col-form-label">Categorie_id :</label>
                   <input
@@ -231,7 +247,7 @@
               </div>
   
              
-            </div>
+            
             <div class="row justify-content-between text-left mb-3">
               <div class="form-group col-sm-6 flex-column d-flex">
                 <label class="col-form-label">Quantite_disponible :</label>
@@ -328,3 +344,109 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                  <div class="title">Ajouter un Produit</div>
+                  <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div> 
+                  <div class="content">
+                    <form action="#" >
+                      <div class="user-details">
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Nom</span>
+                            <input type="text" name="nom" formControlName="nom" placeholder="nom">
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Description</span>
+                            <input type="text" name="description" formControlName="description"
+                              placeholder="Donner une description">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Prix</span>
+                            <input type="text" name="prix" formControlName="prix" placeholder="prix">
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Type</span>
+                            <input type="text" name="type" formControlName="type"
+                              placeholder="Donner un type">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Marque</span>
+                            <input type="tex" name="datedebut" formControlName="marque" placeholder="Marque"
+                              required>
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Quantite_disponible</span>
+                            <input type="tex" name="quantite_disponible" formControlName="quantite_disponible" placeholder="quantite_disponible">
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir une Boutique</span>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir une categorie'" [data]="Options"
+                                formControlName="boutiqueMult" [settings]="boutiqueMult" defaultOpen="false">
+                              </ng-multiselect-dropdown> 
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir Catégorie</span>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="optionsCate"
+                                formControlName="categoMult" [settings]="categoMult"></ng-multiselect-dropdown> 
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir Critère</span>
+                          <div class="row">
+                            <!-- <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop6" (click)=" resetC()" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
+                                formControlName="critereids" [settings]="critere"></ng-multiselect-dropdown>
+                            </div> -->
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir une image</span>
+                          <input type="file" name="image" accept="image/*" formControlName="image"
+                            (change)="onFileChangePhoto($event)" placeholder="image" class="py-2">
+                        </div>
+                      </div>
+
+                      <div class="button">
+                        <input type="submit" value="Ajouter">
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>

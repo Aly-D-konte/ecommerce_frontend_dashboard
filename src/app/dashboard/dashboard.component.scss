@@ -1,93 +1,74 @@
-
-.card  {
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-    height: 100px;
-     
-  }
-  .btntu  {
-    background-color: #E38800;
-    text-decoration: none;
-    color: white;
-    box-shadow: 1px 1px 10px #E38800 ;
-    
-
-
-     
-  }
-  .textcard{
-    color: white;
-  }
- 
-
-  .pcard {
-    vertical-align: inherit;
-    font-size: 2rem;
-    font-weight: lighter;
-    color: white;
-  }
-  .haut{
-    display: flex;
-  
- 
-}
-.bg{
-  background-color: #84BD24;
-
-}
-.bg1{
-  background-color: #E38800;
-}
-.user{
-  background-color: #4D819E;
+.card img{
+  height: 230px;
 }
 
-
-.icon{
-    margin-left: 160px;
-    font-size: 30px;
-    color: white;
+.textcard{
+  color: white;
 }
 
-.checked {
-  color: #84BD24;
-}
-
-
-.bt{
-  background-color: #E38800;
-  text-decoration: none;
-}
-.lien, .modifi {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: #E38800;
-  margin: 10px;
-  font-size: 30px;
-}
 .cad{
   padding-bottom: 80px;
 }
-.boutique{
-  font-size: 10px;}
-h4{
-  font-size: 20px;
+.icon{
+  margin-left: 88%;
+  font-size: 30px;
+  color: white;
 }
-.milieu{
-  height: 290px; 
-  width: 240px;
+.pcard {
+  vertical-align: inherit;
+  font-size: 2rem;
+  font-weight: lighter;
+  color: white;
 }
-.text{
-  font-size: 12px;
-  
+.haut{
+  display: flex;
+
+
 }
-.etat{
-  margin-left: 80%;
-  color:#E38800;
+.bg{
+background-color: #84BD24;
+
 }
-.modifi{
-  margin-bottom: 30px;
+.bg1{
+background-color: #E38800;
 }
+.user{
+background-color: #4D819E;
+}
+.card  {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+   
+}
+
+.btntu  {
+  background-color: #E38800;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px 10px;
+  height: 40px;
+  border: none;
+}
+
+.lien{
+  text-decoration: none;
+  color: white;
+}
+// .iconss{
+//   //background: red;
+//    margin: 0;
+//    padding: 0;
+// }
+
+.iconss i{
+  //padding-left: 10px;
+  color:  #E38800;;
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+}
+
+
 
 .change{
   font-size: 15px;
@@ -100,6 +81,6 @@ h4{
 }
 .changeEtat{
   display: flex;
-  justify-content: space-around ;
+  justify-content: space-between ;
 
 }
