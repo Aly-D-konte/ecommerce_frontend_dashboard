@@ -1,5 +1,8 @@
 .card img{
-  height: 230px;
+  height: 220px;
+}
+.container-fluid{
+margin-bottom: 0;
 }
 
 .textcard{
@@ -83,4 +86,19 @@ background-color: #4D819E;
   display: flex;
   justify-content: space-between ;
 
+}
+
+.valide{
+  display: flex;
+  justify-content: space-between ;
+}
+.bt{
+  background-color: #E38800;
+  color: white;
+  border: #E38800 ;
+
+}
+
+.h5{
+  text-align: center;
 }

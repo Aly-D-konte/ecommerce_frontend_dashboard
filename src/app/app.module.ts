@@ -21,6 +21,7 @@ import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgxPaginationModule } from 'ngx-pagination';
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
@@ -47,9 +48,10 @@ export function tokenGetter() {
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     CommonModule,
+    NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),
 
-    
+
     JwtModule.forRoot({
       config: {
        tokenGetter: tokenGetter,

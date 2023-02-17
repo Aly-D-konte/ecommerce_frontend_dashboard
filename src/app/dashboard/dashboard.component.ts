@@ -8,6 +8,7 @@ import { User } from '../Model/user';
 import { UserService } from '../Services/authentification/utilisateur.service';
 import { BoutiquesService } from '../Services/boutiques.service';
 import * as Chart from 'chart.js';
+import { interval, firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,12 +18,12 @@ import * as Chart from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
   
+  p: number = 1;
   jaimes: any;
   afficherBoutique: any;
   // form: FormGroup;
 noms:any;
-  boutique: Boutiques = {
-    
+  boutique: Boutiques = {    
     nom: '',
     description: '',
     adresse: '',
@@ -43,22 +44,22 @@ noms:any;
   basicData: any;
 
   multiAxisData: any;
-
   multiAxisOptions: any;
-
   lineStylesData: any;
-
   basicOptions: any;
   formmodule!: FormGroup;
   idboutique: any
   aly=12;
-   mali=13
+  mali=13
   file: any;
   user: any;
   modifierBoutiquenId: any;
   affich: any;
   nom: any;
   etatchange: any;
+  name: any;
+  maboutique: any;
+  modifier: any;
   constructor(
     private fb: FormBuilder,
     private boutiqueservice: BoutiquesService,
@@ -124,23 +125,23 @@ PieChart(){
   });
 }
   ngOnInit(): void {
+    // this.loadList();
+    // this.loadCategories();
+    
 
   this.idboutique = this.route.snapshot.params['idboutique'];
     const moi=1;
     console.log("mon id =========================",this.idboutique)
-    this.boutiqueservice.AfficheBoutiqueParId(this.idboutique).subscribe(data=>{
-      
+    /* this.boutiqueservice.AfficheBoutiqueParId(this.idboutique).subscribe(data=>{      
       this.affich = data;
-
      // this.nom=data.nom;
       console.log("id de la boutique" + JSON.stringify( this.affich.nom));
-
       // this.boutiqueservice.changeEtat(this.idboutique, this.etat.etat).subscribe(data=>{
       //   console.log('est ce que ça marche ' + data)
       //   this.etat = data;
       //   console.log('est ce que ça marche ' + this.etat)
       // })
-    })
+    }) */
  
   
     //
@@ -149,15 +150,14 @@ PieChart(){
     //     this.boutiques =data
     // })
     this.createChart();
-
-
-    this.boutiqueservice.getAll().subscribe((data) => {
+    this.boutiqueservice.getAll().subscribe((data) =>{
       this.afficherBoutique = data;
+    // this.loadCategories();
       for(let bt of this.afficherBoutique)
       {
-        this.modifierBoutiquenId = bt.id
+        this.affich = bt.id
       }
-      console.log('Afficher la  ' + this.afficherBoutique);
+      console.log('Afficher la  ' +JSON.stringify(this.afficherBoutique));
     });
     //liste des utilisateurs
 
@@ -175,7 +175,16 @@ PieChart(){
     });
 
   }
-
+// async loadList(){
+//    await this.boutiqueservice.getAll().subscribe((data) =>{
+//     this.afficherBoutique = data;
+//     // for(let bt of this.afficherBoutique)
+//     // {
+//     //   this.modifierBoutiquenId = bt.id
+//     // }
+//     console.log('Afficher la  ' + this.afficherBoutique);
+//   });
+// }
 
   fileChang(event: any) {
     this.file = event.target.files[0];
@@ -186,6 +195,8 @@ PieChart(){
 
   Jaime() {
     // this.boutiqueservice.Jaime(this.jaimes, this.)
+    console.log("dehors de la fonction "+this.affich.nom);
+
   }
 
   ajoutBout() {
@@ -231,45 +242,45 @@ PieChart(){
 
   ///MOdificationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
   
-  modifierBoutique(idboutique:any) {
+//   modifierBoutique(idboutique:any) {
    
-    // console.log("azetyrut" +id);
+//     // console.log("azetyrut" +id);
 
-console.log("nom :"+ this.boutique.nom)
-console.log("adresse :"+ this.boutique.adresse)
-console.log("adresse :"+ this.boutique.adresse)
-console.log("etat :"+ this.boutique.etat)
+// console.log("nom :"+ this.boutique.nom)
+// console.log("adresse :"+ this.boutique.adresse)
+// console.log("adresse :"+ this.boutique.adresse)
+// console.log("etat :"+ this.boutique.etat)
 
-    this.boutiqueservice
-      .modifierBoutique(idboutique,
-        this.boutique.nom,
-        this.boutique.adresse,
-        this.boutique.adresse,
-        this.boutique.etat,
-        this.boutique.user_id,
-        this.file
-      )
-      .subscribe((data) => {
-        this.boutique = this.formmodule.value;
-        this.afficherBoutique = data;
-        Swal.fire({
-          heightAuto: false,
-          // position: 'top-end',
-          icon: 'success',
-          text: 'Boutique modifiée avec succès',
-          showConfirmButton: false,
-          timer: 2500,
-        });
-        // this.routes.navigateByUrl("/sidebar/dashboard")
-        // La methode permettra d'actualiser la page apres l'ajout
-        window.location.reload();
+//     this.boutiqueservice
+//       .modifierBoutique(idboutique,
+//         this.boutique.nom,
+//         this.boutique.adresse,
+//         this.boutique.adresse,
+//         this.boutique.etat,
+//         this.boutique.user_id,
+//         this.file
+//       )
+//       .subscribe((data) => {
+//         this.boutique = this.formmodule.value;
+//         this.afficherBoutique = data;
+//         Swal.fire({
+//           heightAuto: false,
+//           // position: 'top-end',
+//           icon: 'success',
+//           text: 'Boutique modifiée avec succès',
+//           showConfirmButton: false,
+//           timer: 2500,
+//         });
+//         // this.routes.navigateByUrl("/sidebar/dashboard")
+//         // La methode permettra d'actualiser la page apres l'ajout
+//         window.location.reload();
 
-        //finnnnnnnnnnnnnnnnnnnnnnnnnnn
-        this.formmodule.reset();
-        this.message = ' Boutique modifiée avec succès';
-        this.contenu = data.contenu;
-      });
-  }
+//         //finnnnnnnnnnnnnnnnnnnnnnnnnnn
+//         this.formmodule.reset();
+//         this.message = ' Boutique modifiée avec succès';
+//         this.contenu = data.contenu;
+//       });
+//   }
 
   //Modifier etat
 
@@ -280,7 +291,7 @@ console.log("etat :"+ this.boutique.etat)
       console.log('est ce que ça marche ' + data)
       this.etatchange = data
       console.log(data + "etat donné")
-      this.reloadPage();    
+      // this.reloadPage();    
     })
   }
 
@@ -288,19 +299,51 @@ console.log("etat :"+ this.boutique.etat)
     window.location.reload();
   // this.route.navigateByUrl("/sidebar/w")
    }
-
+   
+   onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+     
+    }
+  }
   //  +++++++++++++++++++++++++++++++++++
 
-  modifierBout(idboutique:any){
-        alert("Je suis ID "+ idboutique)
-      this.boutiqueservice.AfficheBoutiqueParId(idboutique).subscribe(data=>{
-      
-        this.affich = data;
 
-        console.log("je boutique "+this.affich.nom)
-      })
+//   async loadCategories() {
+ 
+// this.affich = await firstValueFrom(this.boutiqueservice.getAll());
+// //console.log("mon objet===========",this.affich.nom);
+// }
+  modifierBout(id:any){
+     alert("Je suis ID /////////////////////////"+ id)
+      this.boutiqueservice.modifierBoutique(id,
+        this.maboutique.nom,
+        this.maboutique.adresse,
+        this.maboutique.adresse,
+        this.maboutique.user_id,
+        this.file
+      ).subscribe(data=>{
+      this.maboutique = data
+      this.name=data[0]
+      Swal.fire({
+        heightAuto: false,
+        // position: 'top-end',
+        icon: 'success',
+        text: 'Boutique modifiée avec succès',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      console.log(data)
+      console.log("je boutique//////////////////////////////////////////////////// "+JSON.stringify(this.affich))
+      })      
   }
+getboutiquebyid(id:any){
+  this.boutiqueservice.getbyid(id).subscribe(data=>{
+    this.maboutique=data
+    console.log(this.maboutique)
+  })
 
+}
 
 
 

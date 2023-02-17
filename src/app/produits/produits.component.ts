@@ -76,26 +76,24 @@ boutiqueMult = {
      private fb: FormBuilder, private TokenStorage: StorageService,private boutique:BoutiquesService) { }
 
   ngOnInit(): void {
+    this.loadList();
 
     this.user=this.TokenStorage.getUser;
 
 
     //Affichage des toutes les boutique
 
-    this.produitService.AffichageProduit().subscribe(data=>{
-      this.produits = data 
+    // this.produitService.AffichageProduit().subscribe(data=>{
+    //   this.produits = data 
 
-    })
+    // })
 
     this.categorieService.AfficherCategorieP().subscribe(data =>{
       this.optionsCate = data[0];
           
      })
 
-     this.boutique.getAll1().subscribe(data=>{
-      this.Options=data;
-
-     })
+   
 
      this.idcategorie = this.route.snapshot.params['idcategorie'];
 
@@ -133,6 +131,12 @@ boutiqueMult = {
   }
   
 
+  async loadList(){
+    await   this.produitService.AffichageProduit().subscribe(data=>{
+      this.produits = data 
+
+    })
+ }
   //La methode permettant d'jouter un produit
 
 
@@ -155,7 +159,7 @@ AjouterProduit() {
       });
       
       // La methode permettra d'actualiser la page apres l'ajout
-      window.location.reload();
+      // window.location.reload();
 
       //finnnnnnnnnnnnnnnnnnnnnnnnnnn
       this.formmodule.reset();

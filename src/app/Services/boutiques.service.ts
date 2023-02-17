@@ -17,10 +17,7 @@ jaime ='http://localhost:8080/jaime/ajouter'
     return this.http.get<Boutiques[]>(`http://localhost:8080/api/boutique/liste`);
   }
 
-  
-  getAll1(): Observable<any> {
-    return this.http.get<any>(`http://localhost:8080/api/boutique/liste`);
-  }
+ 
 
     //methode permettant d'ajouter une boutique
     ajouterBoutique(nom:any, description :any, adresse: any, etat:any, user_id:any,  file :any): Observable<any>{
@@ -64,14 +61,13 @@ jaime ='http://localhost:8080/jaime/ajouter'
 
         //la partie modification d'une boutique
 
-        modifierBoutique(id:number, nom:any, description :any, adresse: any, etat:any, user_id:any,  file :any): Observable<any>{
-          console.log("nom : " + nom + "etat :" + etat    + "description: " + description)
+        modifierBoutique(id:number, nom:any, description :any, adresse: any,  user_id:any,  file :any): Observable<any>{
+          console.log("nom : " + nom +     + "description: " + description)
               const data = new FormData()
               //data.append('id', id);
               data.append('nom', nom );
               data.append('description', description );
               data.append('adresse', adresse );
-              data.append('etat', etat );
               data.append('file', file );
               data.append('user_id', user_id );
               console.log(file)
@@ -87,8 +83,8 @@ suprimerBoutique(id: any): Observable<any> {
 
 //Affichage par ID
 
-AfficheBoutiqueParId(id: number){
-  return this.http.get(`http://localhost:8080/api/boutique/${id}`)
+AfficheBoutiqueParId(id: number):Observable<any>{
+  return this.http.get(`http://localhost:8080/api/boutique/modifier/${id}`)
 }
 
 //Changer l'etat boutique
@@ -99,5 +95,7 @@ changeEtat(id: number, etat: boolean) {
 
   return this.http.patch(`http://localhost:8080/api/boutique/etat/${id}`, {etat});
 }
-        
+getbyid(id: number):Observable<any>{
+  return this.http.get(`http://localhost:8080/api/boutique/getbyid/${id}`)
+}       
 }

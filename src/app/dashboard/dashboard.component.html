@@ -8,7 +8,7 @@
         <div class="col-6 col-md-6 pt-3">
           <div class="card bg">
             <div class="haut">
-              <p *ngIf="afficherBoutique && afficherBoutique.length" class="pcard">{{afficherBoutique.length }}</p>
+              <p class="pcard">{{afficherBoutique.length }}</p>
 
               <div class="icon">
                 <i class="bi bi-shop-window"></i>
@@ -31,7 +31,7 @@
         <div class="col-6 col-md-6 pt-3">
           <div class="card user">
             <div class="haut">
-              <p class="pcard">{{ user.length }}</p>
+              <p class="pcard">{{user.length }}</p>
               <div class="icon">
                 <i class="fa-solid fa-user"></i>
               
@@ -177,14 +177,14 @@
         </div>
       </div>
     </div> -->
-    <div class="container">
+    <div class="container" style="margin-bottom: 20vh;">
       <div class="row">
-        <div class="col-12 col-md-4 col-lg-3"  *ngFor="let boutique of afficherBoutique">
+        <div class="col-12 col-md-4 col-lg-3"  *ngFor="let boutique of afficherBoutique.slice().reverse() | paginate:{ itemsPerPage: 4, currentPage: p}">
           <div class="card mb-3">
-            <img src="{{ boutique.image }}" alt="Image boutique" class="card-img-top">
+            <img src="{{boutique.image}}" alt="Image boutique" class="card-img-top"/>
             <div class="card-body">
-              <p class="text-center title">{{ boutique.nom }}</p>
-              <p class="card-text text">{{ boutique.description }}</p>
+              <p class="text-center title">{{boutique.nom}}</p>
+              <p class="card-text text">{{boutique.description}}</p>
               <div class="row">
                 <div class="col-12 col-md-6 ">
                   <div>
@@ -195,9 +195,9 @@
                 </div>
                 <div class="col-6 col-md-5">
 
-                  <div class="iconss align-items-center justify-content-center">
+                  <div class="iconss justify-content-center">
                     <div class="d-flex">
-                      <i class="bi bi-pencil-square i" data-bs-toggle="modal" href="#modifierModal" (click)="modifierBout(boutique.id)"></i>
+                      <i class="bi bi-pencil-square i" data-bs-toggle="modal" href="#modifierModal" (click)="getboutiquebyid(boutique.id)"></i>
                       <!-- <i class="bi bi-trash" (click)="openModal(boutique.nom, boutique.id)"></i> -->
                     </div>
                     
@@ -218,8 +218,16 @@
               </div>
             </div>
           </div>
+          
+          
         </div>
-
+         <pagination-controls (pageChange)="p =$event" class="text-center" nextLabel="Suivants"
+      previousLabel="Précédents"></pagination-controls>
+      
+      </div>
+    
+    </div>
+   
     <!-- Partie poup pour le formulaire de creation d'une boutique -->
 
     <div
@@ -232,7 +240,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
+            <h5 class="modal-title text-center" id="exampleModalLabel">
               Ajouter une Boutique
             </h5>
             <button
@@ -256,7 +264,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="code"
+                    id="nom"
                     name="boutique.nom"
                     [(ngModel)]="boutique.nom"
                     required
@@ -348,7 +356,7 @@
                     >Choisi une image</label
                   >
                 </div>
-                 <div class="form-group col-sm-6 flex-column d-flex">
+                 <!-- <div class="form-group col-sm-6 flex-column d-flex">
                   <select
                     name="etat"
                     id="sexe"
@@ -360,23 +368,30 @@
                     <option value="0">false</option>
                     <option value="1">true</option>
                   </select>
-                </div> 
+                </div>  -->
               </div>
-              <button type="submit" class="bt">Ajouter</button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                fermer
-              </button>
+              <div class="valide">
+                <div>
+                  <button type="submit" class="bt">Ajouter</button>
+
+                </div>
+                <div class="fermer">
+                  <button
+                  type="button"
+                  class=" btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  fermer
+                </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
 
-<!-- PARTIE POPU DU ModifiCATION--> 
+<!-- PARTIE Popop DU ModifiCATION--> 
 
     <div
       class="modal fade"
@@ -388,7 +403,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modifierModalLabel">
+            <h5 class="modal-title text-center" id="modifierModalLabel">
               Modifier une Boutique
             </h5>
             <button
@@ -400,9 +415,8 @@
           </div>
           <div class="modal-body">
             <form
-              *ngIf="!isLoggedIn"
               name="form"
-              (ngSubmit)="f.form.valid && modifierBoutique(affich.id)"
+              (ngSubmit)="f.form.valid && modifierBout(maboutique.id)"
               #f="ngForm"
               novalidate
             >
@@ -412,25 +426,68 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="code"
-                    [value]="affich.nom"
-                    name="boutique.nom"
-                    [(ngModel)]="boutique.nom"
+                    id="nom"
+                    [value]="maboutique.nom"
+                    [(ngModel)]="maboutique.nom"
+                    [ngModelOptions]="{standalone: true}"
+                    />
+                 
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="col-form-label">Description :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [value]="maboutique.description"
 
-                    [(ngModel)]="affich.nom"
-                    required
-
-                    #nom="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+                    [(ngModel)]="maboutique.description"
+                    [ngModelOptions]="{standalone: true}"
+                   
                   />
-                  <div
-                    *ngIf="nom.errors && f.submitted"
-                    class="invalid-feedback"
-                  >
-                    Le nom de la boutique est obligatoire
+                </div>
+                <div class="row justify-content-between text-left mb-3">
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="col-form-label">Adresse :</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adresse"
+                      [value]="maboutique.adresse"
+                      [(ngModel)]="maboutique.adresse"
+                      [ngModelOptions]="{standalone: true}"
+                      
+                      
+                      />
+                   
+                  </div>
+                  <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="col-form-label">Boutiquier :</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="user_id"
+                      [value]="maboutique.user_id"
+                      [(ngModel)]="maboutique.user_id"
+                      [ngModelOptions]="{standalone: true}"
+  
+                     
+                    />
                   </div>
                 </div>
                 <div class="form-group col-sm-6 flex-column d-flex">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01"
+                    (change)="onFileChange($event)"
+                  />
+                  <label class="custom-file-label" for="inputGroupFile01"
+                    >Choisi une image</label
+                  >
+                </div>
+             <!--      <div class="form-group col-sm-6 flex-column d-flex">
                   <label class="col-form-label">Description :</label>
                   <input
                     type="text"
@@ -526,23 +583,31 @@
                     <option value="0">false</option>
                     <option value="1">true</option>
                   </select>
+                </div>-->
+              </div> 
+              <div class="valide">
+                <div class="text-center">
+                  <button type="submit" class="bt">Modifier</button>
+
                 </div>
+                <!-- <div class="fermer">
+                  <button
+                  type="button"
+                  class=" btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  fermer
+                </button>
+                </div> -->
               </div>
-              <button type="submit" class="bt">Ajouter</button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                fermer
-              </button>
+            
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  
 
 
 
