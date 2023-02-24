@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../Services/authentification/stockage.service';
 import { UserService } from '../Services/authentification/utilisateur.service';
 import { CommandeService } from '../Services/commande.service';
 
@@ -10,23 +11,26 @@ import { CommandeService } from '../Services/commande.service';
 export class CommandeComponent implements OnInit {
   searchText: any;
   commandes:any
-  constructor( private commandeService :CommandeService, private userservice: UserService) { }
+  user:any;
+  commandeParUser: any;
+  constructor( private commandeService :CommandeService, private userservice: UserService,private storageService: StorageService) { }
 
   ngOnInit(): void {
+    this.user=this.storageService.getUser();
+
 
     //Recuperer toutes les commandes
     // console.log("voir si ca marche:" + this.commandes.code);
 
     this.commandeService.AffichageCommande().subscribe(data =>{
       return this.commandes= data
-
-      for(let test of this.commandes){
-         console.log("voir si ca marche:" + test.panier.id);
-
-      }
-
     })
     //recuperer toutes les 
+
+    this.commandeService.AfficherParUser(this.user.id).subscribe(data=>{
+      this.commandeParUser = data ;
+
+    })
 
   }
 

@@ -10,7 +10,7 @@
       </div>
 
       <div class="li mt-5 mb-5">
-        <div class="nav-item mb-3">
+        <div class="nav-item mb-3" >
           <a
             class="nav-link"
             routerLink="/sidebar/dashboard/" [routerLinkActive]="'active'"
@@ -49,10 +49,10 @@
             [routerLinkActive]="'active'"
           >
             <i class="bi bi-clipboard-data"></i
-            ><span class="ms-1 d-sm-inline light px-3">Commandes</span>
+            ><span class="ms-1 d-sm-inline light px-3" >Commandes</span>
           </a>
         </div>
-        <div class="nav-item mb-3">
+        <!-- <div class="nav-item mb-3">
           <a
             class="nav-link"
             routerLink="/sidebar/livreur"
@@ -61,18 +61,18 @@
             <i class="bi bi-truck"></i
             ><span class="ms-1 d-sm-inline light px-3">Livreurs</span>
           </a>
-        </div>
+        </div> -->
 
-        <div class="nav-item mb-3">
+        <div class="nav-item mb-3"  *ngIf="!showDashboard">
           <a class="nav-link"  routerLink="/sidebar/utilisateur" [routerLinkActive]="'active'">
             <i class="bi bi-person"></i
-            ><span class="ms-1 d-sm-inline light px-3">Utilisateur</span>
+            ><span class="ms-1 d-sm-inline light px-3">Admins</span>
           </a>
         </div>
         <div class="nav-item mb-3 " >
           <a class="nav-link" routerLink="/sidebar/dashboard/boutique" [routerLinkActive]="'active'">
             <i class="bi bi-shop-window"></i>
-            <span class="ms-1 d-sm-inline light px-3">Boutique</span>
+            <span class="ms-1 d-sm-inline light px-3">Boutiques</span>
           </a>
         </div>
         <div class="nav-item mb-3">

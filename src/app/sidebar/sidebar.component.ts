@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  showDashboard:any;
   Role!:any;
 
   isLoginFailed = false;
@@ -36,9 +37,11 @@ export class SidebarComponent implements OnInit {
         const user = this.storageService.getUser();
         this.roles = user.roles;
         this.Role= this.roles;
-  
-        this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-        this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+        this.showDashboard = this.roles.includes('ROLE_SUPER_ADMIN');
+
+        this.showDashboard = this.roles.includes('ROLE_ADMIN');
+        this.showDashboard = this.roles.includes('ROLE_USER');
   
         this.username = user.username;
       }

@@ -8,13 +8,16 @@ import { Commande } from '../Model/commande';
 })
 export class CommandeService {
 
-  url = 'http://localhost:8080/api/commande/liste'
+  url = 'http://localhost:8080/api/commande'
   constructor( private http: HttpClient) { }
 
 
   //affichage de commandes
-
   AffichageCommande(): Observable<Commande[]>{
-  return  this.http.get<Commande[]>(`${this.url}`);
+  return  this.http.get<Commande[]>(`${this.url}/liste`);
+  }
+
+  AfficherParUser(id:number): Observable<any>{
+    return this.http.get(`${this.url}/CommandeParUser/${id}`);
   }
 }

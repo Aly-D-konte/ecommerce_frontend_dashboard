@@ -1,20 +1,43 @@
 
 <div class="table-responsive ra py-5">
-    <div class="bt">
-      <div class="titre">
-        <h3>Les utilisateurs</h3>
-    
+   
+    <div class="entete mb-2 mt-3">
+      <div class="header">
+        <h3>Les Admins</h3>
       </div>
-      <!-- <div class="ajout pt-4">
-        <a
+
+      <!-- <div class="bt mb-3">
+        <div class="btntu">
+          <a
+            data-bs-toggle="modal"
+            href="#exampleModal"
+            data-bs-whatever="@getbootstrap"
+            class="lien"
+            >Nouvelle produit</a
+          >
+        </div>
+      </div> -->
+      <div class="bt mb-3">
+        <!-- <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4" >
+          <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
+          Ajouter un challenge
+        </button> -->
+       
+        <button class="btntu">
+          <a
           data-bs-toggle="modal"
           href="#exampleModal"
           data-bs-whatever="@getbootstrap"
-          class="btntu"
-          >Nouveau utilisateur</a
+          class="lien"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Ajouter un admin
+         </a
         >
-      </div> -->
+        </button>
+        </div>
     </div>
+
 <table class="table" id="season-tble">
     <thead>
       <tr>
@@ -23,19 +46,19 @@
         <th >Email</th>
         <th >Numéro</th>
         <th >Genre</th>
+        <th >Boutique</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-
-      
-      <tr *ngFor="let use of user">
+      <tr *ngFor="let use of user | paginate:{ itemsPerPage: 5, currentPage: p} | filter:searchText let i = index ">
         
         <td >{{use.nom}}</td>
         <td >{{use.prenom}}</td>
         <td>{{use.email}}</td>
-        <td>{{use.numero}}</td>
+        <td>{{use.telephone}}</td>
         <td>{{use.genre}}</td>
+        <td>{{use.boutique}}</td>
 
         <td>
           <i class="bi bi-pencil-square i" [routerLink]=""></i>&nbsp; &nbsp;
@@ -45,6 +68,329 @@
       <!-- (click)="supprimer(user)" -->
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p =$event" class="text-center" nextLabel="Suivants"
+  previousLabel="Précédents"></pagination-controls>
   <!-- <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls> -->
   <!-- <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Précédent" nexLabel="Suivant"> </pagination-controls> -->
 </div>
+  <!-- Partie poup pour le formulaire de creation d'une boutique -->
+
+  <div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModal">
+        Ajouter un ADMIN
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && Inscription()"
+          #f="ngForm"
+          novalidate
+        >
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Nom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                name="form.nom"
+                [(ngModel)]="form.nom"
+                required
+                #nom="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+              />
+              <div
+                *ngIf="nom.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le nom de la d'utilisateur est obligatoire
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Prenom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="prenom"
+                name="form.prenom"
+                [(ngModel)]="form.prenom"
+                required
+                #prenom="ngModel"
+                [ngClass]="{
+                  'is-invalid': f.submitted && prenom.errors
+                }"
+              />
+              <div
+                *ngIf="prenom.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le prenom est est obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Username :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="form.username"
+                [(ngModel)]="form.username"
+                required
+                #username="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+              />
+              <div
+                *ngIf="username.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le nom de la d'utilisateur est obligatoire
+              </div>
+            </div>
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Telephone :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telephone"
+                name="form.telephone"
+                [(ngModel)]="form.telephone"
+                required
+                #telephone="ngModel"
+                [ngClass]="{
+                  'is-invalid': f.submitted && telephone.errors
+                }"
+              />
+              <div
+                *ngIf="telephone.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le numero de telephone est est obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Genre :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="genre"
+                name="form.genre"
+                [(ngModel)]="form.genre"
+                required
+                #genre="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && genre.errors }"
+              />
+              <div
+                *ngIf="genre.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le genre est obligatoire
+              </div>
+            </div>
+
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Email: </label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="form.email"
+                [(ngModel)]="form.email"
+                required
+                #email="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+              />
+              <div
+                *ngIf="email.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                L'email est obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between text-left mb-3">
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Adresse :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="adresse"
+                name="form.adresse"
+                [(ngModel)]="form.adresse"
+                required
+                #adresse="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }"
+              />
+              <div
+                *ngIf="adresse.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                L'adresse  est obligatoire
+              </div>
+            </div>
+
+            <div class="form-group col-sm-6 flex-column d-flex">
+              <label class="col-form-label">Mot de passe: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="password"
+                name="form.password"
+                [(ngModel)]="form.password"
+                required
+                #password="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+              />
+              <div
+                *ngIf="password.errors && f.submitted"
+                class="invalid-feedback"
+              >
+                Le Mot de passe est obligatoire
+              </div>
+            </div>
+          </div> 
+         
+          <div class="valide">
+            <div>
+              <button type="submit" class="bt">Ajouter</button>
+
+            </div>
+            <div class="fermer">
+              <button
+              type="button"
+              class=" btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              fermer
+            </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
+            aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center">
+              <div class="modal-content w-100">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                  <div class="title">Ajouter un ADMIN</div>
+                  <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
+                  <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div> 
+                  <div class="content">
+                    <form action="#" >
+                      <div class="user-details">
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Nom</span>
+                            <input type="text" name="nom" formControlName="nom" placeholder="nom">
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Description</span>
+                            <input type="text" name="description" formControlName="description"
+                              placeholder="Donner une description">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Prix</span>
+                            <input type="text" name="prix" formControlName="prix" placeholder="prix">
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Type</span>
+                            <input type="text" name="type" formControlName="type"
+                              placeholder="Donner un type">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-box col">
+                            <span class="details">Marque</span>
+                            <input type="tex" name="datedebut" formControlName="marque" placeholder="Marque"
+                              required>
+                          </div>
+                          <div class="input-box col">
+                            <span class="details">Quantite_disponible</span>
+                            <input type="tex" name="quantite_disponible" formControlName="quantite_disponible" placeholder="quantite_disponible">
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir une Boutique</span>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                               <ng-multiselect-dropdown [placeholder]="'Choisir une categorie'" [data]="Options"
+                                formControlName="boutiqueMult" [settings]="boutiqueMult" defaultOpen="false">
+                              </ng-multiselect-dropdown>  --
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir Catégorie</span>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <!- <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="optionsCate"
+                                formControlName="categoMult" [settings]="categoMult"></ng-multiselect-dropdown>  --
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir Critère</span>
+                          <div class="row">
+                            <!- <div class="col-md-1">
+                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                                data-mdb-target="#staticBackdrop6" (click)=" resetC()" style="font-size: 2em;"></i>
+                            </div>
+                            <div class="col-md-11">
+                              <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
+                                formControlName="critereids" [settings]="critere"></ng-multiselect-dropdown>
+                            </div> --
+                          </div>
+                        </div>
+                        <div class="input-box">
+                          <span class="details">Choisir une image</span>
+                          <input type="file" name="image" accept="image/*" formControlName="image"
+                            (change)="onFileChangePhoto($event)" placeholder="image" class="py-2">
+                        </div>
+                      </div>
+
+                      <div class="button">
+                        <input type="submit" value="Ajouter">
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div> -->

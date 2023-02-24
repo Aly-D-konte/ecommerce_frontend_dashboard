@@ -3,3 +3,40 @@ thead{
     color: white;
 
 }
+
+.btntu  {
+    background-color: #E38800;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px 10px;
+    height: 40px;
+    border: none;
+    margin-top: 5px;
+  }
+  .entete{
+    display: flex;
+    flex-direction: row;
+  justify-content: space-around;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+
+  }
+
+  .header{
+    margin-left: 20px;  }
+
+    .lien{
+        text-decoration: none;
+        color: white;
+      }
+
+      .valide{
+        display: flex;
+        justify-content: space-between ;
+      }
+      .bt{
+        background-color: #E38800;
+        color: white;
+        border: #E38800 ;
+      
+      }

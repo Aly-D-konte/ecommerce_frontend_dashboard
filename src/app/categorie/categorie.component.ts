@@ -10,7 +10,9 @@ import { CategorieService } from '../Services/categorie.service';
   styleUrls: ['./categorie.component.scss']
 })
 export class CategorieComponent implements OnInit {
-  p = 1;
+  p: number = 1;
+  searchText: any;
+
   categories: any
  // catego:any
   categorie: Categorie={
@@ -51,7 +53,7 @@ export class CategorieComponent implements OnInit {
     this.categorieService.ajouterCategorie(this.categorie.nom, this.file).subscribe(data=>{
       //console.log("c'est quel nom" + )
       this.categorie =this.formmodule.value;
-      this.categories =data
+      this.categorie =data
 
       Swal.fire({
         heightAuto: false,

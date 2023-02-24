@@ -17,7 +17,7 @@
               </div>
               
               <div class="mb-3 col-12 col-md-6 form-row ">
-                <label for="firstname">Prénom</label>
+                <label for="firstname">Prénom </label>
       
                 <input type="text" name="firstname" id="firstname" value="{{ currentUser.prenom }}" placeholder="Prénom"
                   class="form form-control inputvalue">
@@ -58,7 +58,7 @@
       <div class="col-6 col-md-4">
         <div class="card mb-4 h-100">
           <div class="card-body text-center mb-4" *ngIf="users;  else loggedOut">
-            <img src="{{users.image}}" alt="avatar"
+            <img src="{{users.avatar}}" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px;">
             
           </div>

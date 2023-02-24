@@ -13,7 +13,7 @@ jaime ='http://localhost:8080/jaime/ajouter'
 
   //Affficher toutes les boutiques
 
-  getAll(): Observable<Boutiques[]> {
+  getAll(): Observable<any> {
     return this.http.get<Boutiques[]>(`http://localhost:8080/api/boutique/liste`);
   }
 
@@ -98,4 +98,7 @@ changeEtat(id: number, etat: boolean) {
 getbyid(id: number):Observable<any>{
   return this.http.get(`http://localhost:8080/api/boutique/getbyid/${id}`)
 }       
+AfficherParUser(id:number): Observable<any>{
+  return this.http.get(`http://localhost:8080/api/boutique/boutiqueByUser/${id}`)
+}
 }

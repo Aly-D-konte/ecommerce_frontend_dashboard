@@ -127,7 +127,7 @@ PieChart(){
   ngOnInit(): void {
     // this.loadList();
     // this.loadCategories();
-    
+    this.getboutiquebyid(this.idboutique);
 
   this.idboutique = this.route.snapshot.params['idboutique'];
     const moi=1;
@@ -152,12 +152,12 @@ PieChart(){
     this.createChart();
     this.boutiqueservice.getAll().subscribe((data) =>{
       this.afficherBoutique = data;
-    // this.loadCategories();
+      // this.loadCategories();
       for(let bt of this.afficherBoutique)
       {
         this.affich = bt.id
       }
-      console.log('Afficher la  ' +JSON.stringify(this.afficherBoutique));
+      // console.log('Afficher la  ' +JSON.stringify(this.afficherBoutique));
     });
     //liste des utilisateurs
 
@@ -175,16 +175,16 @@ PieChart(){
     });
 
   }
-// async loadList(){
-//    await this.boutiqueservice.getAll().subscribe((data) =>{
-//     this.afficherBoutique = data;
-//     // for(let bt of this.afficherBoutique)
-//     // {
-//     //   this.modifierBoutiquenId = bt.id
-//     // }
-//     console.log('Afficher la  ' + this.afficherBoutique);
-//   });
-// }
+async loadList(){
+   await this.boutiqueservice.getAll().subscribe((data) =>{
+    this.afficherBoutique = data;
+    // for(let bt of this.afficherBoutique)
+    // {
+    //   this.modifierBoutiquenId = bt.id
+    // }
+    console.log('Afficher la  ' + this.afficherBoutique);
+  });
+}
 
   fileChang(event: any) {
     this.file = event.target.files[0];
@@ -288,10 +288,10 @@ PieChart(){
     console.log(idboutique + "boutique donnée")
     console.log(etat + "etat donné")
     this.boutiqueservice.changeEtat(idboutique, etat).subscribe(data=>{
-      console.log('est ce que ça marche ' + data)
+      // console.log('est ce que ça marche ' + data)
       this.etatchange = data
-      console.log(data + "etat donné")
-      // this.reloadPage();    
+      // console.log(data + "etat donné")
+       this.reloadPage();    
     })
   }
 
@@ -315,16 +315,16 @@ PieChart(){
 // //console.log("mon objet===========",this.affich.nom);
 // }
   modifierBout(id:any){
-     alert("Je suis ID /////////////////////////"+ id)
+    //  alert("Je suis ID /////////////////////////"+ id)
       this.boutiqueservice.modifierBoutique(id,
         this.maboutique.nom,
         this.maboutique.adresse,
         this.maboutique.adresse,
         this.maboutique.user_id,
-        this.file
+        this.maboutique.file
       ).subscribe(data=>{
       this.maboutique = data
-      this.name=data[0]
+      // this.name=data[0]
       Swal.fire({
         heightAuto: false,
         // position: 'top-end',
@@ -333,14 +333,18 @@ PieChart(){
         showConfirmButton: false,
         timer: 2500,
       });
-      console.log(data)
-      console.log("je boutique//////////////////////////////////////////////////// "+JSON.stringify(this.affich))
+      window.location.reload();
+
+      //finnnnnnnnnnnnnnnnnnnnnnnnnnn
+      this.formmodule.reset();
+      // console.log(data)
+      // console.log("je boutique//////////////////////////////////////////////////// "+JSON.stringify(this.affich))
       })      
   }
 getboutiquebyid(id:any){
   this.boutiqueservice.getbyid(id).subscribe(data=>{
     this.maboutique=data
-    console.log(this.maboutique)
+    // console.log(this.maboutique)
   })
 
 }

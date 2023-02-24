@@ -8,34 +8,36 @@
         <h3>Les produits</h3>
       </div>
 
-      <!-- <div class="bt mb-3">
+       <div class="bt mb-3">
         <div class="btntu">
           <a
             data-bs-toggle="modal"
             href="#exampleModal"
             data-bs-whatever="@getbootstrap"
             class="lien"
-            >Nouvelle produit</a
+            >
+            <i class="fa-solid fa-plus"></i>
+            Nouvelle produit</a
           >
         </div>
-      </div> -->
-      <div class="bt mb-3">
-        <!-- <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4" >
+      </div> 
+      <!-- <div class="bt mb-3">
+        <button data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4" >
           <i class='bx bxs-message-square-add fa-1x' style="color: white;"></i>
-          Ajouter un challenge
+          Ajouter un produit
         </button> -->
-        <button class="btntu">
+        <!-- <button class="btntu">
           <a
-          data-mdb-toggle="modal" data-mdb-target="#staticBackdrop4"
+          data-mdb-toggle="modal" data-mdb-target="#exampleModalLabel"
           class="lien"
           >
             <i class="fa-solid fa-plus"></i>
             Ajouter un produit
          </a
         >
-        </button>
-        </div>
-    </div>
+        </button> -->
+        <!-- </div> -->
+    </div> -
     <style>
       .ici::-webkit-scrollbar {
         display: none;
@@ -43,18 +45,18 @@
     </style>
 
     <div class="row">
-      <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor="let prod of produits">
+      <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor="let prod of produitParUser">
         <div class="card milieu">
           
           <div class="image">
             <img
               style="width: 60%; margin-left: 50px"
-              src="{{ prod.image }}"
+              src="{{prod.image}}"
               alt="Image produit"
             />
           </div>
           <div class="card-body">
-            <h2 class="h3 card-title text-center pt-5">{{ prod.nom }}</h2>
+            <h2 class="h3 card-title text-center pt-5">{{prod.nom}}</h2>
             <!-- <p class="card-text">{{prod.description.slice(0.25)}}</p> -->
             <div>
               <h4 class="stock">Stock : {{prod.quantite_disponible}}</h4> 
@@ -65,7 +67,7 @@
                   <i class="fa-regular fa-pen-to-square"></i>
                 </div>
                 <div class="supprimer">
-                  <i class="fa-solid fa-trash-can "  (click)="supprimerProduit()"></i>
+                  <i class="fa-solid fa-trash-can"  (click)="supprimerProduit()"></i>
                 </div>
               </div>
             </div>
@@ -81,7 +83,234 @@
       display: none;
     }
   </style>
-  <div
+
+<div
+class="modal fade"
+id="exampleModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-center" id="exampleModal">
+      Ajouter un produit
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && AjouterProduits()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="row justify-content-between text-left mb-3">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Nom :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nom"
+              name="form.nom"
+              [(ngModel)]="form.nom"
+              required
+              #nom="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+            />
+            <div
+              *ngIf="nom.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              Le nom  est obligatoire
+            </div>
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Description :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              name="form.description"
+              [(ngModel)]="form.description"
+              required
+              #description="ngModel"
+              [ngClass]="{
+                'is-invalid': f.submitted && description.errors
+              }"
+            />
+            <div
+              *ngIf="description.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              Le prenom est est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between text-left mb-3">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Prix :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="prix"
+              name="form.prix"
+              [(ngModel)]="form.prix"
+              required
+              #prix="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && prix.errors }"
+            />
+            <div
+              *ngIf="prix.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              Le nom de la d'utilisateur est obligatoire
+            </div>
+          </div>
+
+        </div>
+        <div class="row justify-content-between text-left mb-3">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Marque :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marque"
+              name="form.marque"
+              [(ngModel)]="form.marque"
+              required
+              #marque="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && marque.errors }"
+            />
+            <div
+              *ngIf="marque.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              Le genre est obligatoire
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Quantite_disponible: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="quantite_disponible"
+              name="form.quantite_disponible"
+              [(ngModel)]="form.quantite_disponible"
+              required
+              #quantite_disponible="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && quantite_disponible.errors }"
+            />
+            <div
+              *ngIf="quantite_disponible.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              L'email est obligatoire
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-md-6">
+          <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+            data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
+            <label for="floatingInput"> <span class="details">Choisir un type</span></label>
+            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="ProduitPartype.nom"  name="type">
+                <option *ngFor="let type of ProduitPartype" value="{{type.id}}" >{{type.nom}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+          <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+            data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
+            <label for="floatingInput"> <span class="details">Choisir une Boutique</span></label>
+            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="afficherBoutique.nom" name="boutique" >
+                <option *ngFor="let boutique of afficherBoutique" value="{{boutique.id}}" >{{boutique.nom}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+          <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+            data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
+            <label for="floatingInput"> <span class="details">Choisir une categorie</span></label>
+            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="categorieAll.nom" name="categorie" >
+                <option selected>Choisir une categorie</option>
+                <option *ngFor="let categorie of categorieAll " value="{{categorie.id}}" >{{categorie.nom}}</option>
+            </select> 
+        </div>
+        
+        <div class="input-box">
+          <span class="details">Choisir une image</span>
+          <input type="file" name="image" accept="image/*" formControlName="image"
+            (change)="fileChang($event)" placeholder="image" class="py-2">
+        </div>
+        <!-- <div class="row justify-content-between text-left mb-3">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Adresse :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="adresse"
+              name="form.adresse"
+              [(ngModel)]="form.adresse"
+              required
+              #adresse="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }"
+            />
+            <div
+              *ngIf="adresse.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              L'adresse  est obligatoire
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label class="col-form-label">Mot de passe: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="password"
+              name="form.password"
+              [(ngModel)]="form.password"
+              required
+              #password="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+            />
+            <div
+              *ngIf="password.errors && f.submitted"
+              class="invalid-feedback"
+            >
+              Le Mot de passe est obligatoire
+            </div>
+          </div>
+        </div>  -->
+       
+        <div class="valide">
+          <div>
+            <button type="submit" class="bt">Ajouter</button>
+
+          </div>
+          <div class="fermer">
+            <button
+            type="button"xa
+            class=" btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            fermer
+          </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!--<div
     class="modal fade"
     id="exampleModal"
     tabindex="-1"
@@ -103,7 +332,7 @@
           <form
             *ngIf="!isLoggedIn"
             name="form"
-            (ngSubmit)="f.form.valid && AjouterProduit()"
+            (ngSubmit)="f.form.valid && AjouterProduits()"
             #f="ngForm"
             novalidate
           >
@@ -114,7 +343,7 @@
                   type="text"
                   class="form-control"
                   id="nom"
-                  name="produits.nom"
+                  name="produit.nom"
                   [(ngModel)]="produits.nom"
                   required
                   #nom="ngModel"
@@ -130,7 +359,7 @@
                   type="text"
                   class="form-control"
                   id="description"
-                  name="produits.description"
+                  name="produit.description"
                   [(ngModel)]="produits.description"
                   required
                   #description="ngModel"
@@ -146,7 +375,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="row justify-content-between text-left mb-3">
               <div class="form-group col-sm-6 flex-column d-flex">
@@ -194,22 +422,44 @@
                  <div class="form-group col-sm-6 flex-column d-flex">
 
 
-              <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="idcategorie">
+              !-- <select name="etat" id="sexe" class="form-select form-control" [(ngModel)]="idcategorie">
                 <label for="etat">--Categorie--</label>
               
-                <!-- <option value="{{idcategorie}}">{{idcategorie.id}}</option> -->
-                <!-- <option value="1">true</option> -->
-              </select>
+                !-- <option value="{{idcategorie}}">{{idcategorie.id}}</option> -->
+                <!-- <option value="1">true</option> --
+              </select> --
                 </div>
-          </div>
-                <!-- <div class="form-group col-sm-6 flex-column d-flex">
+          </div>--
+                 <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="col-form-label">boutique_id :</label>
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="boutique_id"
+                    name="produits.boutique_id"
+                    [(ngModel)]="produits.boutique_id"
+                    required
+                    #boutique_id="ngModel"
+                    [ngClass]="{
+                      'is-invalid': f.submitted && boutique_id.errors
+                    }"
+                  />
+                  <div
+                    *ngIf="boutique_id.errors && f.submitted"
+                    class="invalid-feedback"
+                  >
+                    L'id de la categorie du produit est obligatoire
+                  </div>
+                </div> 
+                <div class="form-group col-sm-6 flex-column d-flex">
                   <label class="col-form-label">Categorie_id :</label>
                   <input
-                    type="text"
+                    type="number"
                     min="0"
                     class="form-control"
                     id="categorie_id"
-                    name="produits.categorie_id"
+                    name="produit.categorie_id"
                     [(ngModel)]="produits.categorie_id"
                     required
                     #categorie_id="ngModel"
@@ -223,8 +473,18 @@
                   >
                     L'id de la categorie du produit est obligatoire
                   </div>
-                </div> -->
-                <div class="form-group col-sm-6 flex-column d-flex">
+                </div>
+                <div class="col-md-11">
+                  <ng-multiselect-dropdown [placeholder]="'Choisir une categorie'" [data]="Options"
+                    formControlName="categorie_id" [settings]="categoMult" defaultOpen="false">
+                  </ng-multiselect-dropdown> 
+                </div>
+                <div class="col-md-11">
+                  <ng-multiselect-dropdown [placeholder]="'Choisir une categorie'" [data]="Options"
+                    formControlName="boutique_id" [settings]="boutiqueMult" defaultOpen="false">
+                  </ng-multiselect-dropdown> 
+                </div>
+                !-- <div class="form-group col-sm-6 flex-column d-flex">
                   <label class="col-form-label">Capacité :</label>
                   <input
                     type="number"
@@ -243,12 +503,12 @@
                   >
                     La capacité de la du produit est obligatoire
                   </div>
-                </div>
+                </div> --
               </div>
   
              
-            
-            <div class="row justify-content-between text-left mb-3">
+             -->
+            <!-- <div class="row justify-content-between text-left mb-3">
               <div class="form-group col-sm-6 flex-column d-flex">
                 <label class="col-form-label">Quantite_disponible :</label>
                 <input
@@ -294,10 +554,10 @@
                   L'id de la boutique est obligatoire
                 </div>
               </div>
-            </div>
+            </div> --
 
             <div class="row justify-content-between text-left mb-2">
-              <div class="form-group col-sm-6 flex-column d-flex">
+              !-- <div class="form-group col-sm-6 flex-column d-flex">
                 <input
                   type="file"
                   class="custom-file-input"
@@ -308,7 +568,7 @@
                 <label class="custom-file-label" for="inputGroupFile01"
                   >Choisi une image</label
                 >
-              </div>
+              </div> -->
               <!-- <div class="form-group col-sm-6 flex-column d-flex">
 
 
@@ -319,22 +579,21 @@
                 <option value="1">true</option>
               </select>
                 </div>
-          </div> -->
-          <div class="mesbtn">
-            <div class="ajout">
+          </div> --
+          <div class="valide">
+            <div>
               <button type="submit" class="bt">Ajouter</button>
 
             </div>
             <div class="fermer">
               <button
               type="button"
-              class="btn btn-secondary"
+              class=" btn-secondary"
               data-bs-dismiss="modal"
             >
-              Annuller
+              fermer
             </button>
             </div>
-           
           </div>
              
             </div>
@@ -343,10 +602,10 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
 
-<div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
+ <!-- <div class="modal fade" id="staticBackdrop4" tabindex="100" aria-labelledby="exampleModalLabel4"
             aria-hidden="true">
             <div class="modal-dialog d-flex justify-content-center">
               <div class="modal-content w-100">
@@ -358,7 +617,7 @@
                   <div *ngIf="status==false" style="color: red; padding: 2%;">{{ errorMessage }}</div>
                   <div *ngIf="status==true" style="color: blue; padding: 2%;">{{ errorMessage }}</div> 
                   <div class="content">
-                    <form action="#" >
+                    <form action="#" [formGroup]="ProduitForm" (ngSubmit)="onSubmit()" >
                       <div class="user-details">
                         <div class="row">
                           <div class="input-box col">
@@ -374,7 +633,7 @@
                         <div class="row">
                           <div class="input-box col">
                             <span class="details">Prix</span>
-                            <input type="text" name="prix" formControlName="prix" placeholder="prix">
+                            <input type="number" name="prix" formControlName="prix" placeholder="prix">
                           </div>
                           <div class="input-box col">
                             <span class="details">Type</span>
@@ -385,53 +644,37 @@
                         <div class="row">
                           <div class="input-box col">
                             <span class="details">Marque</span>
-                            <input type="tex" name="datedebut" formControlName="marque" placeholder="Marque"
+                            <input type="tex" name="marque" formControlName="marque" placeholder="Marque"
                               required>
                           </div>
                           <div class="input-box col">
                             <span class="details">Quantite_disponible</span>
-                            <input type="tex" name="quantite_disponible" formControlName="quantite_disponible" placeholder="quantite_disponible">
+                            <input type="text" name="quantite_disponible" formControlName="quantite_disponible" placeholder="quantite_disponible">
                           </div>
                         </div>
                         <div class="input-box">
                           <span class="details">Choisir une Boutique</span>
                           <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-md-6">
                               <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
-                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                                data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
+                                <label for="floatingInput"> <span class="details">Choisir une Boutique</span></label>
+                                <select class="form-select" aria-label="Default select example" formControlName="boutique_id" selected [(ngModel)]="afficherBoutique.nom" name="boutique" >
+                                    <option *ngFor="let boutique of afficherBoutique" >{{boutique.nom}}</option>
+                                </select>
                             </div>
-                            <div class="col-md-11">
-                              <ng-multiselect-dropdown [placeholder]="'Choisir une categorie'" [data]="Options"
-                                formControlName="boutiqueMult" [settings]="boutiqueMult" defaultOpen="false">
-                              </ng-multiselect-dropdown> 
-                            </div>
-                          </div>
-                        </div>
-                        <div class="input-box">
-                          <span class="details">Choisir Catégorie</span>
-                          <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-md-6">
                               <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
-                                data-mdb-target="#staticBackdrop7" style="font-size: 2em;"></i>
+                                data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
+                                <label for="floatingInput"> <span class="details">Choisir une categorie</span></label>
+                                <select class="form-select" aria-label="Default select example" formControlName="categorie_id" selected [(ngModel)]="categorieAll.nom" name="categorie" >
+                                    <option selected>Choisir une categorie</option>
+                                    <option *ngFor="let categorie of categorieAll" >{{categorie.nom}}</option>
+                                </select> 
                             </div>
-                            <div class="col-md-11">
-                              <ng-multiselect-dropdown [placeholder]="'Choisir Catégorie'" [data]="optionsCate"
-                                formControlName="categoMult" [settings]="categoMult"></ng-multiselect-dropdown> 
-                          </div>
                         </div>
-                        <div class="input-box">
-                          <span class="details">Choisir Critère</span>
-                          <div class="row">
-                            <!-- <div class="col-md-1">
-                              <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
-                                data-mdb-target="#staticBackdrop6" (click)=" resetC()" style="font-size: 2em;"></i>
-                            </div>
-                            <div class="col-md-11">
-                              <ng-multiselect-dropdown [placeholder]="'Choisir Critère'" [data]="options2"
-                                formControlName="critereids" [settings]="critere"></ng-multiselect-dropdown>
-                            </div> -->
-                          </div>
-                        </div>
+                     
+                       
                         <div class="input-box">
                           <span class="details">Choisir une image</span>
                           <input type="file" name="image" accept="image/*" formControlName="image"
@@ -439,8 +682,11 @@
                         </div>
                       </div>
 
-                      <div class="button">
-                        <input type="submit" value="Ajouter">
+                      <!-- <div class="button">
+                        <button type="submit" class="bt" >Ajouter</button>
+                      </div> -->
+                      <!-- <div class="button">
+                        <input type="submit" value="Créer">
                       </div>
                       </div>
                     </form>
@@ -449,4 +695,4 @@
 
               </div>
             </div>
-          </div>
+          </div>   -->
