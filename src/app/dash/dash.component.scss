@@ -1,0 +1,108 @@
+.card img{
+    height: 215px;
+  }
+  .container-fluid{
+  margin-bottom: 0;
+  }
+  
+  .textcard{
+    color: white;
+  }
+  
+  .cad{
+    padding-bottom: 80px;
+  }
+  .icon{
+    margin-left: 88%;
+    font-size: 30px;
+    color: white;
+  }
+  .pcard {
+    vertical-align: inherit;
+    font-size: 2rem;
+    font-weight: lighter;
+    color: white;
+  }
+  .haut{
+    display: flex;
+  
+  
+  }
+  .bg{
+  background-color: #84BD24;
+  
+  }
+  .bg1{
+  background-color: #E38800;
+  }
+  .user{
+  background-color: #4D819E;
+  }
+  .card  {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+     
+  }
+  
+  .btntu  {
+    background-color: #E38800;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px 10px;
+    height: 40px;
+    border: none;
+  }
+  
+  .lien{
+    text-decoration: none;
+    color: white;
+  }
+  // .iconss{
+  //   //background: red;
+  //    margin: 0;
+  //    padding: 0;
+  // }
+  
+  .iconss i{
+    //padding-left: 10px;
+    color:  #E38800;;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: row;
+    margin: 4px;
+  }
+  
+  
+  
+  .change{
+    font-size: 15px;
+    text-decoration: none;
+    border: none;
+    box-shadow: #84BD24;
+    height: 25px;
+    color: #84BD24;
+    text-align: center;
+  }
+  .changeEtat{
+    display: flex;
+    justify-content: space-between ;
+  
+  }
+  
+  .valide{
+    display: flex;
+    justify-content: space-between ;
+  }
+  .bt{
+    background-color: #E38800;
+    color: white;
+    border: #E38800 ;
+  
+  }
+  
+  .h5{
+    text-align: center;
+  }
+  .liste{
+    font-size: 30px;
+  }
+

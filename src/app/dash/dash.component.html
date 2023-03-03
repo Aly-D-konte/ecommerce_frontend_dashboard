@@ -1,0 +1,315 @@
+<div
+  class="container-fluid h-100 ici"
+  style="overflow: scroll; overflow-x: hidden"
+>
+  <div class="row">
+    <div class="col-12 col-md-12">
+      <section class="row gy-3 py-3 set">
+        <div class="col-6 col-md-6 pt-3">
+          <div class="card bg">
+            <div class="haut">
+              <p class="pcard">10</p>
+
+              <div class="icon">
+                <i class="bi bi-shop-window"></i>
+              </div>
+            </div>
+            <p class="textcard">Totals boutiques</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-6 pt-3">
+          <div class="card user">
+            <div class="haut">
+              <p class="pcard">20</p>
+              <div class="icon">
+                <i class="fa-solid fa-user"></i>
+              
+              </div>
+            </div>
+            <p class="textcard">Totals utilisateurs</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!--Partie courbe(chart)------------------------------------------------------->
+    <div class="card"> </div>
+    <div class="liste text-center pt-3 ">
+      Les differentes boutiques 
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+
+
+
+    <div class="mb-3 ml-2" id="boutique">
+      <button class="btntu">
+        <a
+        data-bs-toggle="modal"
+        href="#exampleModal"
+        data-bs-whatever="@getbootstrap"
+        class="lien"
+        >
+          <i class="fa-solid fa-plus"></i>
+          Ajouter une boutique
+       </a
+      >
+      </button>
+      </div>
+     
+     
+     
+    </div>
+    <style>
+      .ici::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <div class="container" style="margin-bottom: 20vh;">
+      <div class="row">
+        <div class="col-12 col-md-4 col-lg-3" *ngFor="let boutique of afficherBoutique.slice().reverse() | paginate:{ itemsPerPage: 4, currentPage: p}" >
+          <div class="card mb-3">
+            <img src="{{boutique.image}}" alt="Image boutique" class="card-img-top"/>
+            <div class="card-body">
+              <p class="text-center title">{{boutique.nom}}</p>
+              <p class="card-text text">{{boutique.description}}</p>
+              <div class="row">
+                <div class="col-12 col-md-6 ">
+                  <div>
+                  <p><span class="fa fa-star checked"></span></p>
+
+                  </div>
+                  
+                </div>
+                <div class="col-6 col-md-5">
+
+                  <div class="iconss justify-content-center">
+                    <div class="d-flex">
+                      <!-- <i class="bi bi-pencil-square i" data-bs-toggle="modal" href="#modifierModal" (click)="getboutiquebyid(boutique.id)"></i> -->
+                      <!-- <i class="bi bi-trash" (click)="openModal(boutique.nom, boutique.id)"></i> -->
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                <div class="changeEtat">
+                  <div class="b">
+                    <button class="change"  (click)="ChangeEtat(boutique.id,!boutique.etat)">Changer l'état</button>
+          
+                  </div>
+                  <div >
+                    
+                    <p> Etat: {{boutique.etat}}</p>
+          
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+         <pagination-controls (pageChange)="p =$event" class="text-center" nextLabel="Suivants"
+      previousLabel="Précédents"></pagination-controls>
+      
+      </div>
+    
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Send message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Partie poup pour le formulaire de creation d'une boutique -->
+
+     <!-- <div
+     class="modal fade"
+     id="exampleModal"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+   >
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title text-center" id="exampleModalLabel">
+             Ajouter une Boutique
+           </h5>
+           <button
+             type="button"
+             class="btn-close"
+             data-bs-dismiss="modal"
+             aria-label="Close"
+           ></button>
+         </div>
+         <div class="modal-body">
+           <form
+             *ngIf="!isLoggedIn"
+             name="form"
+             (ngSubmit)="f.form.valid && ajoutBout()"
+             #f="ngForm"
+             novalidate
+           >
+             <div class="row justify-content-between text-left mb-3">
+               <div class="form-group col-sm-6 flex-column d-flex">
+                 <label class="col-form-label">Nom :</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="nom"
+                   name="ajout.nom"
+                   [(ngModel)]="ajout.nom"
+                   required
+                   #nom="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && nom.errors }"
+                 />
+                 <div
+                   *ngIf="nom.errors && f.submitted"
+                   class="invalid-feedback"
+                 >
+                   Le nom de la boutique est obligatoire
+                 </div>
+               </div>
+               <div class="form-group col-sm-6 flex-column d-flex">
+                 <label class="col-form-label">Description :</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="description"
+                   name="ajout.description"
+                   [(ngModel)]="ajout.description"
+                   required
+                   #description="ngModel"
+                   [ngClass]="{
+                     'is-invalid': f.submitted && description.errors
+                   }"
+                 />
+                 <div
+                   *ngIf="description.errors && f.submitted"
+                   class="invalid-feedback"
+                 >
+                   La description de la boutique est obligatoire
+                 </div>
+               </div>
+             </div>
+
+             <div class="row justify-content-between text-left mb-3">
+               <div class="form-group col-sm-6 flex-column d-flex">
+                 <label class="col-form-label">Adresse :</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="adresse"
+                   name="ajout.adresse"
+                   [(ngModel)]="ajout.adresse"
+                   required
+                   #adresse="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && adresse.errors }"
+                 />
+                 <div
+                   *ngIf="adresse.errors && f.submitted"
+                   class="invalid-feedback"
+                 >
+                   L'adresse de la boutique est obligatoire
+                 </div>
+               </div>
+               <div class="col-md-6">
+                <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
+                  data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
+                  <label for="floatingInput"> <span class="details">Choisir une Boutique</span></label>
+                  <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="ajout.user" name="user" >
+                      <option *ngFor="let use of user" value="{{use.nom}} {{use.nom}}" >{{use}}</option>
+                  </select>
+              </div>
+
+               <!-- <div class="form-group col-sm-6 flex-column d-flex">
+                 <label class="col-form-label">Boutiquier</label>
+                 <input
+                   type="number"
+                   class="form-control"
+                   id="user_id"
+                   name="boutique.user_id"
+                   [(ngModel)]="ajout.user_id"
+                   required
+                   #user_id="ngModel"
+                   [ngClass]="{ 'is-invalid': f.submitted && user_id.errors }"
+                 />
+                 <div
+                   *ngIf="user_id.errors && f.submitted"
+                   class="invalid-feedback"
+                 >
+                   User de la boutique est obligatoire
+                 </div>
+               </div> -->
+             <!-- </div>
+
+             <div class="row justify-content-between text-left mb-2">
+               <div class="form-group col-sm-6 flex-column d-flex">
+                 <input
+                   type="file"
+                   class="custom-file-input"
+                   id="inputGroupFile01"
+                   aria-describedby="inputGroupFileAddon01"
+                   (change)="fileChang($event)"
+                 />
+                 <label class="custom-file-label" for="inputGroupFile01"
+                   >Choisi une image</label
+                 >
+               </div> -->
+                <!-- <div class="form-group col-sm-6 flex-column d-flex">
+                 <select
+                   name="etat"
+                   id="sexe"
+                   class="form-select form-control"
+                   [(ngModel)]="etat"
+                 >
+                   <label for="etat">--Etat--</label>
+
+                   <option value="0">false</option>
+                   <option value="1">true</option>
+                 </select>
+               </div>  -->
+             <!-- </div>
+             <div class="valide">
+               <div>
+                 <button type="submit" class="bt">Ajouter</button>
+
+               </div>
+               <div class="fermer">
+                 <button
+                 type="button"
+                 class=" btn-secondary"
+                 data-bs-dismiss="modal"
+               >
+                 fermer
+               </button>
+               </div>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </div> --> 

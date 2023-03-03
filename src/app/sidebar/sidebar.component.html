@@ -20,6 +20,16 @@
             ><span class="ms-1 d-sm-inline light px-3" >Dashbord</span>
           </a>
         </div>
+        <div class="nav-item mb-3" >
+          <a
+            class="nav-link"
+            routerLink="/sidebar/dash/" [routerLinkActive]="'active'"
+          
+          >
+            <i class="bi bi-clipboard-data"></i
+            ><span class="ms-1 d-sm-inline light px-3" >Dash</span>
+          </a>
+        </div>
 
         <div class="nav-item mb-3">
           <a
@@ -87,7 +97,7 @@
         </div>
 
         <div class="nav-item mt-5">
-          <a class="nav-link mx-auto d-block" type="submit" routerLink="/inscription"
+          <a class="nav-link mx-auto d-block" type="submit" routerLink="/connexion"
           [routerLinkActive]="'active'"> 
             <i class="bi bi-box-arrow-right" ></i
             ><span class="ms-1 d-sm-inline light " (click)="logout()">Deconnexion</span>

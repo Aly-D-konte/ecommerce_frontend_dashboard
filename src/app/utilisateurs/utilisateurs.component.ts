@@ -36,18 +36,19 @@ export class UtilisateursComponent implements OnInit {
   users:any
   maboutique: any;
   boutiqueParUser: any;
+  boutique:any;
   constructor(private userservice : UserService, private authService: AuthService, private boutiqueservice: BoutiquesService,
     ) { }
 
   ngOnInit(): void {
 
+    this.boutique = this.boutiqueservice.getAll();
 
     //afficher toutes les utilisateurs
     this.userservice.getAllUser().subscribe(data=>{
       this.user = data
     })
 
-    console.log("etiyrotuyiu " +this.user.id)
 
     this.boutiqueservice.AfficherParUser(this.users.id).subscribe(data=>{
       console.log("etiyrotuyiu  "+this.user.id)

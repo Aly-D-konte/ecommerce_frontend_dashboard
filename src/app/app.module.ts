@@ -22,6 +22,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DashComponent } from './dash/dash.component';
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
@@ -38,6 +39,7 @@ export function tokenGetter() {
     CommandeComponent,
     PanierComponent,
     UtilisateursComponent,
+    DashComponent,
   
   ],
   imports: [

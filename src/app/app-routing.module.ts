@@ -5,6 +5,7 @@ import { CommandeComponent } from './commande/commande.component';
 import { ConnexionComponent } from './Compte/connexion/connexion.component';
 import { InscriptionComponent } from './Compte/inscription/inscription.component';
 import { ProfileComponent } from './Compte/profile/profile.component';
+import { DashComponent } from './dash/dash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ProduitsComponent } from './produits/produits.component';
@@ -28,7 +29,9 @@ const routes: Routes = [
     component: SidebarComponent, canActivate: [AuthGuardService],
     children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'dashboard/:idboutique', component: DashboardComponent},
+      {path: 'dash', component: DashComponent},
+
+      // {path: 'dashboard/:idboutique', component: DashboardComponent},
       {path: 'categorie', component: CategorieComponent},
       {path: 'produit', component: ProduitsComponent},
       {path: 'commande', component: CommandeComponent},
