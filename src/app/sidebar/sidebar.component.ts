@@ -9,6 +9,8 @@ import { StorageService } from '../Services/authentification/stockage.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  searhText: any
+
 
   //les attributions pour l'authentification
   private roles: string[] = [];

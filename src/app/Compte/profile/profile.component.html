@@ -32,12 +32,12 @@
               <div class="mb-3 col-12 col-md-6 form-row ">
                 <label for="num">Numéro</label>
       
-                <input type="text" name="num" id="num" value="{{ users.numero }}" placeholder="Numéro" class="form form-control inputvalue">
+                <input type="text" name="num" id="num" value="{{users.numero}}" placeholder="Numéro" class="form form-control inputvalue">
               </div>
               <div class="mb-3 col-12 col-md-6 form-row " *ngIf="nomboutique; else loggedOut ">
                 <label for="num">Boutique</label>
       
-                <input type="text" name="boutique" id="boutique" value="{{ nomboutique.nom }}" placeholder="boutique" class="form form-control inputvalue">
+                <input type="text" name="boutique" id="boutique" value="{{ currentUser.nomboutique.nom }}" placeholder="boutique" class="form form-control inputvalue">
               </div>
               <div class="mb-3 col-12 col-md-6 form-row ">
                 <label for="role">ROLE</label>

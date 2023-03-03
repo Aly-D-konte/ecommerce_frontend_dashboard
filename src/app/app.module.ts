@@ -51,6 +51,7 @@ export function tokenGetter() {
     Ng2SearchPipeModule,
     CommonModule,
     NgxPaginationModule,
+
     NgMultiSelectDropDownModule.forRoot(),
 
 

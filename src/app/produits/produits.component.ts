@@ -20,6 +20,9 @@ import { ProduitService } from '../Services/produit.service';
 })
 export class ProduitsComponent implements OnInit {
   user: any;
+  searhText: any
+  p:number = 1
+
 
   //produittttttttttttttttttttttttttttttttttttttttttttttt ajout
   ProduitPartype: any;
@@ -195,12 +198,16 @@ export class ProduitsComponent implements OnInit {
 
   AjouterProduits() {
 
-    alert(
-      JSON.stringify(
-     "fffffff"+
-     this.ProduitPartype.nom,
-     )
-    );
+    // alert(
+    //   JSON.stringify(
+    //  "fffffff"+
+    //  this.ProduitPartype.type_produit,
+    //  )
+    // );
+    console.log("test1 = "+this.form.ProduitPartype)
+    console.log("test2 = "+this.form.afficherBoutique)
+    console.log("test3 = "+this.form.categorie)
+
     this.produitService
       .PostProduit(
         this.form.nom,
@@ -208,12 +215,11 @@ export class ProduitsComponent implements OnInit {
         this.form.marque,
         this.form.prix,
         this.form.quantite_disponible,
-        this.ProduitPartype.nom,
-        this.categorieAll.nom,
-
-                this.user.id,
-        this.afficherBoutique.nom,
-                this.file
+        this.form.ProduitPartype,
+        this.form.categorie,
+        this.user.id,
+        this.form.afficherBoutique,
+        this.file
       )
 
       .subscribe((data) => {
@@ -229,8 +235,8 @@ export class ProduitsComponent implements OnInit {
           timer: 2500,
         });
 
-        // La methode permettra d'actualiser la page apres l'ajout
-        // window.location.reload();
+      //   // La methode permettra d'actualiser la page apres l'ajout
+        window.location.reload();
 
         //finnnnnnnnnnnnnnnnnnnnnnnnnnn
         this.formmodule.reset();

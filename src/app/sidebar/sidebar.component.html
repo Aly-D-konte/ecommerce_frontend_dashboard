@@ -129,11 +129,13 @@
 
           <i class="fa-regular fas-envelope"></i>
 
-          <form class="d-none d-md-flex ms-4 search">
+          <form class="d-none d-md-flex ms-4 search " >
             <input
               class="form-control border-0"
               type="search"
               placeholder="Search"
+              [(ngModel)]="searhText" 
+
               style="background-color: #e6eaf1"
             />
             <i class="bx bx-search icon" style="font-size: 35px"></i>

@@ -52,7 +52,7 @@ export class ProduitService {
     // data.append('capacite', capacite );
     data.append('quantite_disponible', quantite_disponible );
     data.append('type_produit', type_produit );
-    data.append('categorie_id', categorie_id );
+    data.append('categorie ', categorie_id );
     data.append('user_id', user_id );
     data.append('boutique_id', boutique_id );
 

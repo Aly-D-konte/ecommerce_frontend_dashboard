@@ -37,15 +37,10 @@
         >
         </button> -->
         <!-- </div> -->
-    </div> -
-    <style>
-      .ici::-webkit-scrollbar {
-        display: none;
-      }
-    </style>
+    </div> 
 
     <div class="row">
-      <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor="let prod of produitParUser">
+      <div class="col-6 col-md-6 col-lg-3 mb-2" *ngFor="let prod of produitParUser.slice().reverse() | paginate:{ itemsPerPage: 4, currentPage: p}">
         <div class="card milieu">
           
           <div class="image">
@@ -76,8 +71,10 @@
         </div>
       </div>
     </div>
+    <pagination-controls (pageChange)="p =$event" class="text-center" nextLabel="Suivants"
+    previousLabel="Précédents"></pagination-controls>
   </div>
-
+ 
   <style>
     .ici::-webkit-scrollbar {
       display: none;
@@ -221,15 +218,15 @@ aria-hidden="true"
           <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
             data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
             <label for="floatingInput"> <span class="details">Choisir un type</span></label>
-            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="ProduitPartype.nom"  name="type">
-                <option *ngFor="let type of ProduitPartype" value="{{type.id}}" >{{type.nom}}</option>
+            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="ProduitPartype.nom"  name="ProduitPartype">
+                <option *ngFor="let type of ProduitPartype" [value]="type.id" >{{type.nom}}</option>
             </select>
         </div>
         <div class="col-md-6">
           <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
             data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
             <label for="floatingInput"> <span class="details">Choisir une Boutique</span></label>
-            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="afficherBoutique.nom" name="boutique" >
+            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="form.afficherBoutique" name="afficherBoutique" >
                 <option *ngFor="let boutique of afficherBoutique" value="{{boutique.id}}" >{{boutique.nom}}</option>
             </select>
         </div>
@@ -237,7 +234,7 @@ aria-hidden="true"
           <i class="bi bi-plus-circle-fill" data-mdb-toggle="modal"
             data-mdb-target="#staticBackdrop7" style="font-size: 1em;"></i>
             <label for="floatingInput"> <span class="details">Choisir une categorie</span></label>
-            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="categorieAll.nom" name="categorie" >
+            <select class="form-select" aria-label="Default select example"  selected [(ngModel)]="form.categorie" name="categorie" >
                 <option selected>Choisir une categorie</option>
                 <option *ngFor="let categorie of categorieAll " value="{{categorie.id}}" >{{categorie.nom}}</option>
             </select> 
